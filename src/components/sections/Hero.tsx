@@ -27,108 +27,104 @@ export function Hero() {
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReduceMotion(mq.matches);
-    if (mq.matches) { setContentVisible(true); return; }
+    const onChange = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
+    mq.addEventListener("change", onChange);
 
-    const vid = videoRef.current;
-    if (!vid) { setContentVisible(true); return; }
-
-    const show = () => setContentVisible(true);
-    const onTimeUpdate = () => { if (vid.currentTime >= 2.2) show(); };
-    vid.addEventListener("timeupdate", onTimeUpdate);
-    vid.addEventListener("ended", show);
-    const fallback = setTimeout(show, 2800);
-
-    vid.play().catch(show);
+    const timer = setTimeout(() => setContentVisible(true), 300);
 
     return () => {
-      vid.removeEventListener("timeupdate", onTimeUpdate);
-      vid.removeEventListener("ended", show);
-      clearTimeout(fallback);
+      mq.removeEventListener("change", onChange);
+      clearTimeout(timer);
     };
   }, []);
 
-  const replay = () => {
+  useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-    setContentVisible(false);
-    vid.currentTime = 0;
-    vid.play().catch(() => setContentVisible(true));
-  };
+    if (reduceMotion) {
+      vid.pause();
+    } else {
+      vid.play().catch(() => {});
+    }
+  }, [reduceMotion]);
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden bg-gradient-to-b from-[#eaf1fb] to-white">
-      {/* Video — full bleed mobile, contained panel desktop */}
-      <div className="absolute inset-0 lg:relative lg:inset-auto lg:order-2 lg:flex-1 lg:h-[min(82svh,780px)] lg:flex lg:items-center lg:justify-center">
+    <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-brand-ink">
+      {/* Video background — full-screen cover, autoplay + loop, poster fallback */}
+      {!reduceMotion ? (
         <video
           ref={videoRef}
+          autoPlay
           muted
+          loop
           playsInline
           preload="auto"
           poster="/hero-poster.jpg"
-          aria-label="Drive More rijschool introductievideo"
-          className="w-full h-full object-cover object-[50%_40%] lg:object-contain lg:rounded-brand lg:shadow-[0_40px_80px_-42px_rgba(20,30,60,0.5)]"
-        />
-        {/* Scrim — mobile only */}
-        <div className="absolute inset-0 lg:hidden pointer-events-none bg-gradient-to-b from-white/10 via-transparent via-50% to-white" />
-      </div>
-
-      {/* Replay button */}
-      {!reduceMotion && (
-        <button
-          onClick={replay}
-          className="absolute top-[84px] right-4 z-10 lg:bottom-5 lg:top-auto lg:right-5 flex items-center gap-1.5 font-sora font-semibold text-[11px] text-brand-ink bg-white/70 backdrop-blur-md border border-brand-line rounded-full px-3.5 py-2 hover:bg-white transition-colors"
-          aria-label={t.hero.replay}
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         >
-          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 12a9 9 0 1 0 3-6.7" />
-            <path d="M3 4v5h5" />
-          </svg>
-          {t.hero.replay}
-        </button>
+          <source src="/Drive-more-headervideo.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src="/hero-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
       )}
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end flex-1 px-5 pb-16 lg:pb-0 lg:px-0 lg:order-1 lg:justify-center lg:pr-12 lg:max-w-[520px]">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={contentVisible ? "visible" : "hidden"}
-        >
-          <motion.span variants={itemVariants} className="inline-flex items-center gap-2 font-sora font-semibold text-[11px] tracking-[0.22em] uppercase text-brand-ink-soft">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
-            {t.hero.eyebrow}
-          </motion.span>
+      {/* Scrim — bottom-heavy gradient for text legibility (video is dark, text is light) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/55 via-40% to-transparent pointer-events-none" />
+      {/* Scrim — top, keeps header legible over the video */}
+      <div className="absolute inset-x-0 top-0 h-32 md:h-40 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" />
 
-          <motion.h1
-            variants={itemVariants}
-            className="font-sora font-extrabold text-[clamp(34px,7.5vw,62px)] leading-[1.02] tracking-[-0.025em] mt-4 max-w-[14ch]"
+      {/* Content — bottom-left, over the scrim */}
+      <div className="relative z-10 w-full">
+        <div className="max-w-wrap mx-auto px-5 md:px-10 pb-[max(56px,7vh)] md:pb-20 lg:pb-24">
+          <motion.div
+            variants={containerVariants}
+            initial={reduceMotion ? false : "hidden"}
+            animate={contentVisible ? "visible" : "hidden"}
+            className="max-w-[600px]"
           >
-            {t.hero.heading1}{" "}
-            <span className="grad">{t.hero.headingAccent}</span>{" "}
-            {t.hero.heading2}
-          </motion.h1>
+            <motion.span variants={itemVariants} className="inline-flex items-center gap-2 font-sora font-semibold text-[11px] tracking-[0.22em] uppercase text-white/85">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
+              {t.hero.eyebrow}
+            </motion.span>
 
-          <motion.p variants={itemVariants} className="mt-4 text-[clamp(15px,1.8vw,17px)] leading-[1.65] text-brand-ink-body max-w-[44ch]">
-            {t.hero.lead}
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="mt-7 flex flex-wrap gap-3">
-            <MagneticButton>
-              <Link
-                href="/contact"
-                className="font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-6 py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
-              >
-                {t.hero.ctaPrimary}
-              </Link>
-            </MagneticButton>
-            <Link
-              href="/rijlespakketten"
-              className="font-sora font-semibold text-[15px] border border-brand-line text-brand-ink rounded-full px-6 py-4 hover:border-brand-ink hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
+            <motion.h1
+              variants={itemVariants}
+              className="font-sora font-extrabold text-[clamp(34px,7.5vw,62px)] leading-[1.02] tracking-[-0.025em] mt-4 max-w-[14ch] text-white"
             >
-              {t.hero.ctaSecondary}
-            </Link>
+              {t.hero.heading1}{" "}
+              <span className="grad">{t.hero.headingAccent}</span>{" "}
+              {t.hero.heading2}
+            </motion.h1>
+
+            <motion.p variants={itemVariants} className="mt-4 text-[clamp(15px,1.8vw,17px)] leading-[1.65] text-white/75 max-w-[44ch]">
+              {t.hero.lead}
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="mt-7 flex flex-wrap gap-3">
+              <MagneticButton>
+                <Link
+                  href="/contact"
+                  className="font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-6 py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
+                >
+                  {t.hero.ctaPrimary}
+                </Link>
+              </MagneticButton>
+              <Link
+                href="/rijlespakketten"
+                className="font-sora font-semibold text-[15px] border border-white/35 text-white rounded-full px-6 py-4 backdrop-blur-sm hover:border-white hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
+              >
+                {t.hero.ctaSecondary}
+              </Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
@@ -143,9 +139,9 @@ export function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="font-sora text-[10px] tracking-[0.2em] uppercase text-brand-ink-soft">Scroll</span>
-          <div className="w-5 h-8 rounded-full border-2 border-brand-line flex items-start justify-center pt-1.5">
-            <div className="w-1 h-2 bg-brand-ink-soft rounded-full" />
+          <span className="font-sora text-[10px] tracking-[0.2em] uppercase text-white/70">Scroll</span>
+          <div className="w-5 h-8 rounded-full border-2 border-white/40 flex items-start justify-center pt-1.5">
+            <div className="w-1 h-2 bg-white/70 rounded-full" />
           </div>
         </motion.div>
       </motion.div>

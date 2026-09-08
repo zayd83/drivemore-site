@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -27,8 +28,13 @@ const linkVariant = {
 
 export function Header() {
   const { t, lang, toggleLang } = useLanguage();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Homepage hero is a full-screen dark video — use light header text there until scrolled.
+  // Every other page keeps the original dark-text header untouched.
+  const lightMode = pathname === "/" && !scrolled && !menuOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -64,10 +70,10 @@ export function Header() {
               <span className="text-brand-blue">M</span>
             </span>
             <span className="hidden sm:block leading-none">
-              <span className="font-sora font-bold text-[13px] tracking-[0.14em] text-brand-ink">
+              <span className={`font-sora font-bold text-[13px] tracking-[0.14em] transition-colors duration-300 ${lightMode ? "text-white" : "text-brand-ink"}`}>
                 DRIVE MORE
               </span>
-              <span className="block font-inter text-[9px] tracking-[0.22em] text-brand-ink-soft font-semibold uppercase">
+              <span className={`block font-inter text-[9px] tracking-[0.22em] font-semibold uppercase transition-colors duration-300 ${lightMode ? "text-white/70" : "text-brand-ink-soft"}`}>
                 RIJSCHOOL · {lang.toUpperCase()}
               </span>
             </span>
@@ -79,7 +85,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-inter font-medium text-brand-ink-soft hover:text-brand-ink transition-colors duration-150"
+                className={`text-sm font-inter font-medium transition-colors duration-300 ${lightMode ? "text-white/80 hover:text-white" : "text-brand-ink-soft hover:text-brand-ink"}`}
               >
                 {t.nav[link.labelKey]}
               </Link>
@@ -90,7 +96,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3 ml-6">
             <button
               onClick={toggleLang}
-              className="text-[12px] font-sora font-semibold text-brand-ink-soft hover:text-brand-ink transition-colors cursor-pointer"
+              className={`text-[12px] font-sora font-semibold transition-colors duration-300 cursor-pointer ${lightMode ? "text-white/80 hover:text-white" : "text-brand-ink-soft hover:text-brand-ink"}`}
               aria-label="Taal wisselen"
             >
               {t.nav.langSwitch}
@@ -107,23 +113,23 @@ export function Header() {
 
           {/* Hamburger */}
           <button
-            className="lg:hidden ml-auto w-11 h-11 rounded-xl border border-brand-line bg-white/60 flex flex-col items-center justify-center gap-[5px] transition-colors hover:bg-white"
+            className={`lg:hidden ml-auto w-11 h-11 rounded-xl border flex flex-col items-center justify-center gap-[5px] transition-colors duration-300 ${lightMode ? "border-white/30 bg-white/10 hover:bg-white/20" : "border-brand-line bg-white/60 hover:bg-white"}`}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
             aria-expanded={menuOpen}
           >
             <motion.span
-              className="block w-[18px] h-[2px] bg-brand-ink rounded-full origin-center"
+              className={`block w-[18px] h-[2px] rounded-full origin-center transition-colors duration-300 ${lightMode ? "bg-white" : "bg-brand-ink"}`}
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             />
             <motion.span
-              className="block w-[18px] h-[2px] bg-brand-ink rounded-full"
+              className={`block w-[18px] h-[2px] rounded-full transition-colors duration-300 ${lightMode ? "bg-white" : "bg-brand-ink"}`}
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="block w-[18px] h-[2px] bg-brand-ink rounded-full origin-center"
+              className={`block w-[18px] h-[2px] rounded-full origin-center transition-colors duration-300 ${lightMode ? "bg-white" : "bg-brand-ink"}`}
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             />

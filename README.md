@@ -3,6 +3,8 @@
 Productieklare, meertalige (NL/EN) multi-page website voor Rijschool Drive More.
 Gebouwd met Next.js 15 App Router · TypeScript · Tailwind CSS · Framer Motion · GSAP · Lenis · React Three Fiber.
 
+> **Let op:** dit project draait alleen via `npm run dev`. Gebruik **geen** Live Server of andere statische file server — er is geen losse `index.html`, de app wordt volledig door Next.js gerenderd.
+
 ---
 
 ## Snel starten
