@@ -51,6 +51,11 @@ html.lenis body {
   color: transparent;
 }
 
+/* Playful organic "blob" shape — used behind icons instead of photography */
+.rounded-blob {
+  border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+}
+
 /* Focus ring */
 :focus-visible {
   outline: 2px solid var(--blue);

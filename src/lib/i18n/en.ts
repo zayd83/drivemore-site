@@ -12,24 +12,27 @@ export const en: Dictionary = {
     intensive: "Crash Course",
     about: "About",
     contact: "Contact",
-    cta: "Book trial lesson",
+    cta: "Book intake",
     langSwitch: "NL",
   },
   hero: {
     eyebrow: "Driving School · 1-on-1 bespoke",
-    heading1: "Your road to your",
-    headingAccent: "driver's license",
-    heading2: "starts here.",
-    lead: "Personal driving lessons at your own pace — focused, tailored, and always heading toward that pink card.",
-    ctaPrimary: "Book a free trial lesson →",
+    // Option B (inactive) — alternative angle for students who failed before or fear exam anxiety:
+    // heading1: "Failed before?", headingAccent: "Or worried it'll happen again?", heading2: ""
+    // lead: "At Drive More you drive with an instructor who knows your pace — no rush, no judgment, until you pass with confidence."
+    heading1: "Driving lessons that fit",
+    headingAccent: "you,",
+    heading2: "not the other way around.",
+    lead: "No fixed lesson schedule, no rotating instructors. One dedicated coach who moves at your pace — until that pink card is in your pocket.",
+    ctaPrimary: "Book an intake →",
     ctaSecondary: "View packages",
     replay: "Replay",
   },
   stats: {
-    s1: { value: 98, suffix: "%*", label: "first-time pass rate" },
-    s2: { value: 10000, suffix: "+*", label: "km of lessons driven", prefix: "" },
-    s3: { value: 4.9, suffix: "★*", label: "average rating", decimal: true },
-    s4: { value: 100, suffix: "%", label: "bespoke per student" },
+    s1: { suffix: "%*", label: "first-time pass rate" },
+    s2: { suffix: "+*", label: "km of lessons driven", prefix: "" },
+    s3: { suffix: "★*", label: "average rating", decimal: true },
+    s4: { suffix: "%", label: "bespoke per student" },
     note: "* Placeholders — to be replaced with real data.",
   },
   services: {
@@ -44,6 +47,8 @@ export const en: Dictionary = {
         subtitle: "Practical, one-on-one",
         description:
           "Behind the wheel at your own pace. Each lesson builds logically on the previous one, with a lesson plan that suits your level — not a fixed schedule.",
+        forWhom: "For those who want to build up steadily, step by step.",
+        emphasized: false,
         link: "/rijlespakketten",
         linkLabel: "View packages",
         color: "blue" as const,
@@ -54,6 +59,8 @@ export const en: Dictionary = {
         subtitle: "Exam-ready fast",
         description:
           "In a hurry for your license? In an intensive programme we schedule your lessons back-to-back, including the exam — ready in weeks, not months.",
+        forWhom: "For those who need a car within 6 weeks for work, an internship or studies.",
+        emphasized: false,
         link: "/spoedcursus",
         linkLabel: "To crash course",
         color: "red" as const,
@@ -64,6 +71,8 @@ export const en: Dictionary = {
         subtitle: "Calm and confident",
         description:
           "Nervous about the exam or behind the wheel? With targeted coaching you learn to stay calm, so you enter your exam composed and self-assured.",
+        forWhom: "Shaky hands on the exam? Heart racing at just the thought of it? You're not the only one — and it can be solved.",
+        emphasized: true,
         link: "/diensten",
         linkLabel: "Read how we help",
         color: "blue" as const,
@@ -74,6 +83,8 @@ export const en: Dictionary = {
         subtitle: "Pass in one go",
         description:
           "No endless cramming, but genuine understanding. Our theory training and practice exams truly prepare you, so you remember and apply the material on the road.",
+        forWhom: "For those who prefer real understanding over cramming tricks.",
+        emphasized: false,
         link: "/diensten",
         linkLabel: "Start with theory",
         color: "red" as const,
@@ -82,14 +93,14 @@ export const en: Dictionary = {
   },
   howItWorks: {
     eyebrow: "How it works",
-    heading1: "From first trial to",
+    heading1: "From first intake to",
     headingAccent: "passed",
     lead: "A clear journey in four steps — tailored to you at every stage.",
     steps: [
       {
         n: "01",
-        title: "Free trial lesson",
-        body: "We assess where you are and which approach suits you. No obligation.",
+        title: "Intake",
+        body: "We assess where you are and which approach suits you.",
       },
       {
         n: "02",
@@ -129,18 +140,20 @@ export const en: Dictionary = {
     cta: "Choose",
     note: {
       heading: "Not sure which package suits you?",
-      body: "Book a free trial lesson — we'll give you honest advice. Prefer individual lessons?",
+      body: "Book an intake — we'll give you honest advice. Prefer individual lessons?",
       body2: "That's possible too, from €59 per 60-minute lesson.",
-      cta: "Book a free trial lesson",
+      cta: "Book an intake",
     },
+    noWaitlistBadge: "No waitlist · start right away",
     regulier: [
       {
         label: "Step 01 · Start",
         name: "Drive",
         tagline: "Get acquainted with driving and build your base steadily.",
+        forWhom: "For: those new behind the wheel who want to build up steadily.",
         price: 595,
         features: [
-          "Free trial lesson to get started",
+          "Intake to get started",
           "10 driving lessons of 60 minutes",
           "Personal lesson plan at your level",
           "Evening and weekend lessons available",
@@ -151,6 +164,7 @@ export const en: Dictionary = {
         label: "Step 02 · Progress",
         name: "Drive More",
         tagline: "The complete route, from your first lesson to your exam.",
+        forWhom: "For those who want the complete route arranged in one go, including progress test and exam.",
         price: 1295,
         features: [
           "Everything in Drive",
@@ -165,6 +179,7 @@ export const en: Dictionary = {
         label: "Step 03 · Pass",
         name: "Drive Most",
         tagline: "Everything arranged. You just focus on driving.",
+        forWhom: "For those who want everything taken care of and maximum peace of mind.",
         price: 1895,
         features: [
           "Everything in Drive More",
@@ -181,9 +196,10 @@ export const en: Dictionary = {
         label: "Intensive · Start",
         name: "Drive Intensive",
         tagline: "Start quickly and build in a compact pace.",
+        forWhom: "For those who want to start fast and learn at a compact pace.",
         price: 895,
         features: [
-          "Free trial lesson to get started",
+          "Intake to get started",
           "15 intensive driving lessons",
           "Lessons scheduled close together",
           "Weeks, not months",
@@ -194,6 +210,7 @@ export const en: Dictionary = {
         label: "Intensive · Complete",
         name: "Drive More Intensive",
         tagline: "The complete intensive programme through to your exam.",
+        forWhom: "For those who want speed and completeness, including the progress test.",
         price: 1795,
         features: [
           "Everything in Drive Intensive",
@@ -208,6 +225,7 @@ export const en: Dictionary = {
         label: "Intensive · Max",
         name: "Drive Most Intensive",
         tagline: "Maximum pace, everything included — you focus on passing.",
+        forWhom: "For those who want maximum speed with maximum peace of mind, exam included.",
         price: 2495,
         features: [
           "Everything in Drive More Intensive",
@@ -219,6 +237,18 @@ export const en: Dictionary = {
         featured: false,
       },
     ],
+  },
+  trustBar: {
+    noWaitlist: "No waitlist — start right away",
+    bilingual: "Lessons in NL & EN",
+  },
+  serviceArea: {
+    eyebrow: "Service area",
+    heading1: "Where we",
+    headingAccent: "teach",
+    lead: "We provide driving lessons in [enter city name] and surrounding areas.",
+    cities: ["[Enter city name]", "[Enter city name]", "[Enter city name]"],
+    note: "* Placeholder — enter your real service area (city/region) here.",
   },
   why: {
     eyebrow: "Why Drive More",
@@ -293,14 +323,15 @@ export const en: Dictionary = {
     heading1: "Ready to",
     headingAccent: "start",
     heading2: "?",
-    lead: "Book your free trial lesson or ask your question. We respond quickly via WhatsApp, phone or email.",
+    lead: "Book your intake or ask your question. We respond quickly via WhatsApp, phone or email.",
+    lowThreshold: "Still unsure? Just send us a WhatsApp message — no obligations.",
     form: {
       naam: "Name",
       tel: "Phone",
       email: "Email",
       interesse: "What are you contacting us about?",
       interesseOptions: [
-        "Free trial lesson",
+        "Intake",
         "Lesson package",
         "Crash course",
         "Exam anxiety coaching",
@@ -319,7 +350,7 @@ export const en: Dictionary = {
       heading: "Direct contact",
       whatsapp: { label: "WhatsApp", sub: "06 11206001 — usually fastest" },
       phone: { label: "Call", sub: "06 11206001" },
-      email: { label: "Email", sub: "mbouslam@hotmail.com" },
+      email: { label: "Email", sub: "contact@rijschooldrivemore.nl" },
     },
   },
   footer: {
@@ -348,13 +379,15 @@ export const en: Dictionary = {
       placeholder: "Your email address",
       cta: "Subscribe",
       success: "Thank you — you're subscribed!",
+      error: "Something went wrong. Please try again later.",
       privacy: "No spam. Unsubscribe anytime.",
     },
-    kvk: "CoC 00000000",
+    // VUL IN: real CoC/KvK number.
+    kvk: "CoC: FILL IN",
     copyright: "Drive More Driving School",
   },
   mobileCta: {
-    plan: "Book trial",
+    plan: "Book intake",
     whatsapp: "WhatsApp",
   },
   faq: {
@@ -364,23 +397,23 @@ export const en: Dictionary = {
     items: [
       {
         q: "How many lessons do I need?",
-        a: "This varies per person — that's why we work with bespoke plans. During your free trial we assess where you are and give an honest estimate. Our Drive More package (20 lessons) suits most students well.",
+        a: "This varies per person — during your intake we give an honest estimate. For many students our Drive More package (20 lessons) fits well.",
       },
       {
         q: "Can I learn in an automatic?",
-        a: "Yes. We offer both manual and automatic. During your trial lesson we advise what suits you best.",
+        a: "Yes, both manual and automatic. During your intake we advise what suits you best.",
       },
       {
         q: "Do you offer a crash course?",
-        a: "Absolutely. With our crash course you drive to your exam in a compact, intensive programme — sometimes in a few weeks. See the intensive packages or ask about the options via contact.",
+        a: "Absolutely. A compact, intensive programme toward your exam — sometimes in just a few weeks.",
       },
       {
         q: "In which languages can I have lessons?",
-        a: "We teach in Dutch and English. Have a preference? Let us know when you sign up.",
+        a: "Dutch and English.",
       },
       {
         q: "How quickly can I start?",
-        a: "Often within a few days. Book a free trial lesson and we'll look at when we can begin immediately.",
+        a: "Often within a week for your intake.",
       },
     ],
   },

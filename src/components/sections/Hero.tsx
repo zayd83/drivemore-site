@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 
 const containerVariants = {
   hidden: {},
@@ -89,7 +90,17 @@ export function Hero() {
             animate={contentVisible ? "visible" : "hidden"}
             className="max-w-[600px]"
           >
-            <motion.span variants={itemVariants} className="inline-flex items-center gap-2 font-sora font-semibold text-[11px] tracking-[0.22em] uppercase text-white/85">
+            <motion.span
+              variants={itemVariants}
+              className="inline-flex items-center gap-1.5 mb-3 rounded-full bg-white/10 border border-white/25 backdrop-blur-sm px-3.5 py-1.5 text-[11.5px] font-sora font-semibold text-white"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 2 4 14h6l-1 8 9-12h-6z" />
+              </svg>
+              {t.trustBar.noWaitlist}
+            </motion.span>
+
+            <motion.span variants={itemVariants} className="flex items-center gap-2 font-sora font-semibold text-[11px] tracking-[0.22em] uppercase text-white/85">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
               {t.hero.eyebrow}
             </motion.span>
@@ -109,19 +120,11 @@ export function Hero() {
 
             <motion.div variants={itemVariants} className="mt-7 flex flex-wrap gap-3">
               <MagneticButton>
-                <Link
-                  href="/contact"
-                  className="font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-6 py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
-                >
-                  {t.hero.ctaPrimary}
-                </Link>
+                <Button href="/contact">{t.hero.ctaPrimary}</Button>
               </MagneticButton>
-              <Link
-                href="/rijlespakketten"
-                className="font-sora font-semibold text-[15px] border border-white/35 text-white rounded-full px-6 py-4 backdrop-blur-sm hover:border-white hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center"
-              >
+              <Button href="/rijlespakketten" variant="ghost-light">
                 {t.hero.ctaSecondary}
-              </Link>
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -145,6 +148,8 @@ export function Hero() {
           </div>
         </motion.div>
       </motion.div>
+
+      <WaveDivider fill="#ffffff" className="z-[2]" />
     </section>
   );
 }

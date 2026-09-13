@@ -29,7 +29,8 @@ npm run dev
 | Variabele           | Verplicht | Omschrijving                                          |
 |---------------------|-----------|-------------------------------------------------------|
 | `RESEND_API_KEY`    | Nee*      | API-sleutel van [resend.com](https://resend.com) voor het contactformulier |
-| `CONTACT_EMAIL`     | Nee       | E-mailadres dat de contactformulieren ontvangt (default: mbouslam@hotmail.com) |
+| `CONTACT_EMAIL`     | Nee       | E-mailadres dat contactformulier- en nieuwsbrief-aanmeldingen ontvangt (default: contact@rijschooldrivemore.nl) |
+| `MAIL_FROM`         | Nee       | Afzenderadres voor uitgaande mail. Werkt pas na domeinverificatie op resend.com/domains — zonder deze variabele valt de app terug op het Resend-testadres `onboarding@resend.dev` |
 | `NEXT_PUBLIC_SITE_URL` | Nee    | Basis-URL voor OG-tags (default: https://rijschooldrivemore.nl) |
 
 \* Zonder API-sleutel worden formuliersubmissies alleen gelogd in de console.

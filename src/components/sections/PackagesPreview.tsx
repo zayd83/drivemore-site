@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Button } from "@/components/ui/Button";
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
   return (
@@ -45,6 +45,13 @@ export function PackagesPreview() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <span className="inline-flex items-center gap-1.5 mb-3 rounded-full bg-brand-red/10 px-3.5 py-1.5 text-[11.5px] font-sora font-semibold text-brand-red">
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2 4 14h6l-1 8 9-12h-6z" />
+            </svg>
+            {t.packages.noWaitlistBadge}
+          </span>
+          <br />
           <span className="inline-flex items-center gap-2 font-sora font-semibold text-[11px] tracking-[0.22em] uppercase text-brand-ink-soft">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
             {t.packages.eyebrow}
@@ -97,7 +104,7 @@ export function PackagesPreview() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative flex flex-col rounded-brand transition-all duration-300 ${
+                className={`relative flex flex-col rounded-brand-lg transition-all duration-300 ${
                   pkg.featured
                     ? "p-0 md:-translate-y-3 hover:md:-translate-y-4"
                     : "border border-brand-line bg-white p-7 hover:-translate-y-1 hover:shadow-card"
@@ -119,7 +126,7 @@ export function PackagesPreview() {
                 <div
                   className={`flex flex-col flex-1 ${
                     pkg.featured
-                      ? "bg-white rounded-[20px] m-0.5 p-7"
+                      ? "bg-white rounded-[32px] m-0.5 p-7"
                       : ""
                   }`}
                 >
@@ -131,6 +138,13 @@ export function PackagesPreview() {
                   </h3>
                   <p className="text-[14.5px] text-brand-ink-soft leading-relaxed mt-1.5 min-h-[44px]">
                     {pkg.tagline}
+                  </p>
+                  <p
+                    className={`text-[13px] leading-relaxed mt-1 font-medium ${
+                      pkg.featured ? "text-brand-ink-soft" : "text-brand-ink-soft/90"
+                    }`}
+                  >
+                    {pkg.forWhom}
                   </p>
                   <div className="font-sora font-extrabold text-[clamp(32px,4vw,40px)] tracking-[-0.02em] mt-4 flex items-baseline gap-2">
                     <span className="font-inter font-medium text-[13px] text-brand-ink-soft">
@@ -151,17 +165,10 @@ export function PackagesPreview() {
                       </li>
                     ))}
                   </ul>
-                  <MagneticButton className="mt-auto">
-                    <Link
-                      href="/contact"
-                      className={`w-full text-center font-sora font-semibold text-[15px] rounded-full py-3.5 transition-all duration-200 inline-block ${
-                        pkg.featured
-                          ? "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5"
-                          : "border border-brand-line text-brand-ink hover:border-brand-ink hover:-translate-y-0.5"
-                      }`}
-                    >
+                  <MagneticButton className="mt-auto w-full">
+                    <Button href="/contact" variant={pkg.featured ? "primary" : "secondary"} className="w-full">
                       {t.packages.cta} {pkg.name}
-                    </Link>
+                    </Button>
                   </MagneticButton>
                 </div>
               </motion.article>
@@ -174,7 +181,7 @@ export function PackagesPreview() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5 }}
-          className="mt-10 bg-brand-light border border-brand-line rounded-brand p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between"
+          className="mt-10 bg-brand-light border border-brand-line rounded-brand-lg p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between"
         >
           <div>
             <h3 className="font-sora font-bold text-[19px] text-brand-ink">
@@ -185,12 +192,11 @@ export function PackagesPreview() {
               <strong className="text-brand-ink">{t.packages.note.body2}</strong>
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="flex-shrink-0 font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-6 py-3.5 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
-          >
-            {t.packages.note.cta}
-          </Link>
+          <MagneticButton className="flex-shrink-0">
+            <Button href="/contact" className="whitespace-nowrap">
+              {t.packages.note.cta}
+            </Button>
+          </MagneticButton>
         </motion.div>
       </div>
     </section>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PackagesPreview } from "@/components/sections/PackagesPreview";
 import { Reviews } from "@/components/sections/Reviews";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import { SHOW_REVIEWS } from "@/lib/config/reviews";
+import { Button } from "@/components/ui/Button";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 
 export const metadata: Metadata = {
   title: "Spoedcursus",
@@ -44,20 +46,11 @@ export default function SpoedcursusPage() {
             De spoedcursus van Drive More is een compact, intensief traject waarbij we alles rond jou plannen: lessen, tussentijdse toets en examen — in minimale tijd, zonder in te leveren op kwaliteit.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="font-sora font-semibold text-[15px] bg-white text-brand-ink rounded-full px-6 py-4 hover:-translate-y-0.5 hover:shadow-card transition-all duration-200 inline-flex items-center"
-            >
-              Vraag de mogelijkheden →
-            </Link>
-            <a
-              href="#pakketten"
-              className="font-sora font-semibold text-[15px] border border-white/40 text-white rounded-full px-6 py-4 hover:bg-white/10 transition-all duration-200 inline-flex items-center"
-            >
-              Bekijk pakketten
-            </a>
+            <Button href="/contact" variant="white">Vraag de mogelijkheden →</Button>
+            <Button href="#pakketten" variant="ghost-light">Bekijk pakketten</Button>
           </div>
         </div>
+        <WaveDivider fill="#ffffff" />
       </section>
 
       {/* How it works */}
@@ -72,11 +65,11 @@ export default function SpoedcursusPage() {
               Van aanmelding tot <span className="grad">geslaagd</span>.
             </h2>
             <p className="mt-5 text-[16px] leading-[1.75] text-brand-ink-body">
-              We starten met een gratis gesprek om te kijken wat je al kunt en hoeveel lessen realistisch zijn. Daarna plannen we alles in een vloeiend schema: lessen achter elkaar, examendatum zo vroeg mogelijk.
+              We starten met een intake om te kijken wat je al kunt en hoeveel lessen realistisch zijn. Daarna plannen we alles in een vloeiend schema: lessen achter elkaar, examendatum zo vroeg mogelijk.
             </p>
             <div className="mt-8 flex flex-col gap-4">
               {[
-                { n: "01", t: "Gratis intakegesprek", b: "We beoordelen je niveau en bespreken een realistisch tijdspad." },
+                { n: "01", t: "Intake", b: "We beoordelen je niveau en bespreken een realistisch tijdspad." },
                 { n: "02", t: "Intensief lesschema", b: "Lessen worden compact ingepland — ook s' avonds of in het weekend." },
                 { n: "03", t: "Tussentijdse toets (TVT)", b: "Verplicht bij CBR — we regelen dit als onderdeel van het traject." },
                 { n: "04", t: "Praktijkexamen", b: "We regelen een vroege exaamendatum en begeleiden je volledig." },
@@ -99,7 +92,7 @@ export default function SpoedcursusPage() {
           </div>
 
           {/* For who */}
-          <div className="bg-brand-light border border-brand-line rounded-brand p-8">
+          <div className="bg-brand-light border border-brand-line rounded-brand-lg p-8">
             <h3 className="font-sora font-bold text-[22px] text-brand-ink">
               Is de spoedcursus iets voor jou?
             </h3>
@@ -109,7 +102,7 @@ export default function SpoedcursusPage() {
             <ul className="mt-5 flex flex-col gap-3">
               {checks.map((item, i) => (
                 <li key={i} className="flex gap-3 text-[15px] text-[#2a3344]">
-                  <span className="w-5 h-5 rounded-full bg-brand-red/10 text-brand-red grid place-items-center flex-shrink-0 mt-0.5 text-xs font-bold">
+                  <span className="w-5 h-5 rounded-blob bg-brand-red/10 text-brand-red grid place-items-center flex-shrink-0 mt-0.5 text-xs font-bold">
                     ✓
                   </span>
                   {item}
@@ -120,17 +113,12 @@ export default function SpoedcursusPage() {
               <p className="text-[14px] text-brand-ink-soft">
                 Twijfel je of het bij je past? Bel of app ons — we geven je eerlijk advies.
               </p>
-              <a
-                href="https://wa.me/31611206001"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-2 font-sora font-semibold text-[14px] bg-[#25D366] text-white rounded-full px-5 py-3"
-              >
+              <Button href="https://wa.me/31611206001" variant="whatsapp" size="md" className="mt-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z" />
                 </svg>
                 WhatsApp ons
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -139,7 +127,7 @@ export default function SpoedcursusPage() {
       <div id="pakketten">
         <PackagesPreview />
       </div>
-      <Reviews />
+      {SHOW_REVIEWS && <Reviews />}
       <ContactCTA />
     </>
   );

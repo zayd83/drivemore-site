@@ -30,25 +30,27 @@ export function FAQ() {
           </h2>
         </motion.div>
 
-        <div className="max-w-[820px] mx-auto">
+        <div className="max-w-[820px] mx-auto flex flex-col gap-3">
           {t.faq.items.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 + i * 0.07 }}
-              className="border-b border-brand-line"
+              className={`rounded-brand-sm border transition-colors duration-200 ${
+                openIndex === i ? "bg-brand-light border-brand-line" : "bg-white border-brand-line"
+              }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 py-5 px-1 text-left group"
+                className="w-full flex items-center justify-between gap-4 py-[18px] px-5 sm:px-6 text-left group"
                 aria-expanded={openIndex === i}
               >
                 <span className="font-sora font-bold text-[clamp(16px,2.2vw,19px)] text-brand-ink group-hover:text-brand-red transition-colors">
                   {item.q}
                 </span>
                 <span
-                  className={`flex-shrink-0 w-[26px] h-[26px] rounded-full border border-brand-line grid place-items-center relative transition-all ${
+                  className={`flex-shrink-0 w-[30px] h-[30px] rounded-blob border border-brand-line grid place-items-center relative transition-all ${
                     openIndex === i ? "bg-brand-red border-brand-red" : ""
                   }`}
                 >
@@ -74,7 +76,7 @@ export function FAQ() {
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-5 px-1 text-[15px] leading-[1.65] text-brand-ink-body">
+                    <p className="pb-5 px-5 sm:px-6 text-[15px] leading-[1.65] text-brand-ink-body">
                       {item.a}
                     </p>
                   </motion.div>

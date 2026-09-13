@@ -24,9 +24,12 @@ export function AboutTeaser() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative aspect-[4/5] max-w-sm mx-auto lg:mx-0 w-full"
           >
-            <div className="w-full h-full rounded-[24px] bg-gradient-to-br from-[#dfe6f3] to-[#eef2f9] border border-brand-line grid place-items-center overflow-hidden">
+            <div className="w-full h-full rounded-brand-lg bg-gradient-to-br from-[#dfe6f3] to-[#eef2f9] border border-brand-line grid place-items-center overflow-hidden relative">
+              {/* Soft decorative blobs */}
+              <div className="absolute -top-8 -left-8 w-32 h-32 rounded-blob bg-brand-red/10" />
+              <div className="absolute -bottom-10 -right-6 w-40 h-40 rounded-blob bg-brand-blue/10" />
               {/* DM monogram as placeholder */}
-              <div className="text-center select-none">
+              <div className="text-center select-none relative">
                 <div className="font-sora font-black text-[90px] leading-none tracking-[-3px] opacity-30">
                   <span className="text-brand-red">D</span>
                   <span className="text-brand-blue">M</span>
@@ -37,9 +40,9 @@ export function AboutTeaser() {
               </div>
             </div>
             {/* Decorative badge */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-[16px] shadow-card p-4 flex items-center gap-3">
+            <div className="absolute -bottom-4 -right-4 bg-white rounded-brand-sm shadow-card p-4 flex items-center gap-3">
               <div
-                className="w-10 h-10 rounded-xl grid place-items-center text-white font-sora font-extrabold"
+                className="w-10 h-10 rounded-blob grid place-items-center text-white font-sora font-extrabold"
                 style={{ background: "linear-gradient(135deg, #E11D28, #1B4FD1)" }}
               >
                 ★

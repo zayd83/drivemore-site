@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/utils";
 
 export default function ContactPage() {
@@ -16,6 +17,7 @@ export default function ContactPage() {
     interesse: tf.interesseOptions[0],
     bericht: "",
     newsletter: false,
+    website: "", // honeypot — moet leeg blijven, echte bezoekers zien/vullen dit veld niet
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -122,12 +124,26 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
           >
             {status === "success" ? (
-              <div className="rounded-brand bg-brand-blue/10 border border-brand-blue/30 p-8 text-center">
+              <div className="rounded-brand-lg bg-brand-blue/10 border border-brand-blue/30 p-8 text-center">
                 <div className="text-4xl mb-4">🚗</div>
                 <h2 className="font-sora font-bold text-[22px] text-brand-ink">{tf.success}</h2>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-0">
+                {/* Honeypot — hidden from real visitors, bots tend to fill every field */}
+                <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 {/* Name + tel */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div className="flex flex-col gap-2">
@@ -228,14 +244,18 @@ export default function ContactPage() {
                   <p className="text-brand-red text-[14px] mb-3">{tf.error}</p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="w-full font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
+                <Button type="submit" disabled={status === "loading"} className="w-full">
                   {status === "loading" ? "Versturen..." : tf.submit}
-                </button>
+                </Button>
                 <p className="text-[13px] text-brand-ink-soft mt-3 text-center">{tf.note}</p>
+
+                <Button href={CONTACT.whatsapp} variant="secondary" className="w-full mt-4">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z" />
+                    <path d="M8.5 9.5c0 3 2 5 5 5" />
+                  </svg>
+                  {t.contact.lowThreshold}
+                </Button>
               </form>
             )}
           </motion.div>
@@ -260,10 +280,10 @@ export default function ContactPage() {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 border border-brand-line rounded-[15px] px-4 py-4 hover:-translate-y-0.5 hover:shadow-card-sm transition-all duration-200"
+                  className="flex items-center gap-4 border border-brand-line rounded-brand-sm px-4 py-4 hover:-translate-y-0.5 hover:shadow-card-sm transition-all duration-200"
                 >
                   <div
-                    className="w-11 h-11 rounded-[12px] grid place-items-center flex-shrink-0"
+                    className="w-11 h-11 rounded-blob grid place-items-center flex-shrink-0"
                     style={{ background: link.bg }}
                   >
                     {link.icon}
@@ -281,7 +301,7 @@ export default function ContactPage() {
             </div>
 
             {/* Hours / note */}
-            <div className="mt-8 p-5 bg-brand-light rounded-brand border border-brand-line">
+            <div className="mt-8 p-5 bg-brand-light rounded-brand-lg border border-brand-line">
               <h3 className="font-sora font-bold text-[15px] text-brand-ink">Bereikbaarheid</h3>
               <div className="mt-3 flex flex-col gap-2 text-[14px] text-brand-ink-body">
                 <div className="flex justify-between">

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { IconBlob } from "@/components/ui/IconBlob";
 
 const ICONS = {
   rijlessen: (
@@ -71,19 +72,13 @@ export function ServicesPreview() {
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white border border-brand-line rounded-brand p-7 group hover:-translate-y-1 hover:shadow-card hover:border-brand-ink/15 transition-all duration-300"
+              className={`rounded-brand-lg p-7 group hover:-translate-y-1 transition-all duration-300 ${
+                item.emphasized
+                  ? "bg-brand-blue/5 border border-brand-blue/20 hover:shadow-card"
+                  : "bg-white border border-brand-line hover:shadow-card hover:border-brand-ink/15"
+              }`}
             >
-              <div
-                className={`w-14 h-14 rounded-[15px] grid place-items-center mb-5 ${
-                  item.color === "blue"
-                    ? "bg-blue-brand/10 text-brand-blue"
-                    : "bg-red-brand/10 text-brand-red"
-                }`}
-              >
-                <div className="w-[26px] h-[26px]">
-                  {ICONS[item.id as keyof typeof ICONS]}
-                </div>
-              </div>
+              <IconBlob icon={ICONS[item.id as keyof typeof ICONS]} color={item.color} size="md" className="mb-5" />
               <h3 className="font-sora font-bold text-[21px] tracking-[-0.01em] text-brand-ink">
                 {item.name}
               </h3>
@@ -92,6 +87,15 @@ export function ServicesPreview() {
               </p>
               <p className="mt-3 text-[14.5px] leading-[1.65] text-brand-ink-body">
                 {item.description}
+              </p>
+              <p
+                className={
+                  item.emphasized
+                    ? "mt-3 font-sora font-bold text-[15px] leading-[1.5] text-brand-ink"
+                    : "mt-3 text-[13.5px] leading-[1.5] text-brand-ink-soft"
+                }
+              >
+                {item.forWhom}
               </p>
               <Link
                 href={item.link}

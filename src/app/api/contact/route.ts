@@ -7,11 +7,17 @@ interface ContactBody {
   interesse: string;
   bericht?: string;
   newsletter?: boolean;
+  website?: string; // honeypot — moet leeg zijn
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as ContactBody;
+
+    // Honeypot: bots vullen doorgaans elk veld in. Doe alsof het gelukt is, verstuur niets.
+    if (body.website) {
+      return NextResponse.json({ ok: true });
+    }
 
     if (!body.naam || !body.email) {
       return NextResponse.json({ error: "naam en email zijn verplicht" }, { status: 400 });
@@ -23,7 +29,10 @@ export async function POST(req: NextRequest) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_EMAIL ?? "mbouslam@hotmail.com";
+    const toEmail = process.env.CONTACT_EMAIL ?? "contact@rijschooldrivemore.nl";
+    // MAIL_FROM werkt pas nadat het domein rijschooldrivemore.nl bij Resend is geverifieerd.
+    // Tot die tijd valt dit terug op het Resend-testadres, zodat versturen tijdens development blijft werken.
+    const mailFrom = process.env.MAIL_FROM ?? "onboarding@resend.dev";
 
     if (!apiKey) {
       console.warn("RESEND_API_KEY not set — logging form submission");
@@ -52,7 +61,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+        from: mailFrom,
         reply_to: body.email,
         to: [toEmail],
         subject: `Nieuwe aanvraag: ${body.interesse} — ${body.naam}`,

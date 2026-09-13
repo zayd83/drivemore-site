@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { IconBlob } from "@/components/ui/IconBlob";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 
 const ICONS = {
   red: [
@@ -34,8 +36,9 @@ export function WhyDriveMore() {
   const iconList = [ICONS.red[0], ICONS.blue[0], ICONS.red[1]];
 
   return (
-    <section className="py-[clamp(60px,9vw,118px)] bg-brand-light">
-      <div className="max-w-wrap mx-auto px-5 md:px-10">
+    <section className="relative py-[clamp(64px,9vw,124px)] bg-brand-light overflow-hidden">
+      <WaveDivider fill="#ffffff" flip />
+      <div className="max-w-wrap mx-auto px-5 md:px-10 relative z-[2]">
         <motion.div
           ref={ref}
           className="max-w-[600px] mx-auto text-center mb-14"
@@ -61,15 +64,9 @@ export function WhyDriveMore() {
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white border border-brand-line rounded-brand p-7 hover:-translate-y-1 hover:shadow-card transition-all duration-300"
+              className="bg-white border border-brand-line rounded-brand-lg p-8 hover:-translate-y-1.5 hover:shadow-card transition-all duration-300"
             >
-              <div
-                className={`w-14 h-14 rounded-[15px] grid place-items-center mb-5 ${
-                  item.color === "red" ? "bg-brand-red/10 text-brand-red" : "bg-brand-blue/10 text-brand-blue"
-                }`}
-              >
-                <div className="w-[26px] h-[26px]">{iconList[i]}</div>
-              </div>
+              <IconBlob icon={iconList[i]} color={item.color} size="md" className="mb-5" />
               <h3 className="font-sora font-bold text-[21px] tracking-[-0.01em] text-brand-ink">
                 {item.title}
               </h3>

@@ -40,7 +40,7 @@ export function Reviews() {
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white border border-brand-line rounded-brand p-7 flex flex-col"
+              className="bg-white border border-brand-line rounded-brand-lg p-7 flex flex-col hover:-translate-y-1 hover:shadow-card transition-all duration-300"
             >
               {/* Stars */}
               <div className="text-[#f5b301] text-[15px] tracking-widest">★★★★★</div>
@@ -49,7 +49,7 @@ export function Reviews() {
               </blockquote>
               <div className="mt-5 flex items-center gap-3 pt-4 border-t border-brand-line">
                 <div
-                  className="w-11 h-11 rounded-full grid place-items-center font-sora font-bold text-white text-[15px] flex-shrink-0"
+                  className="w-11 h-11 rounded-blob grid place-items-center font-sora font-bold text-white text-[15px] flex-shrink-0"
                   style={{
                     background: "linear-gradient(135deg, #E11D28, #1B4FD1)",
                   }}

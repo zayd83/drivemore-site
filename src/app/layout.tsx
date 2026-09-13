@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MobileCTA } from "@/components/layout/MobileCTA";
+import { getLocalBusinessSchema } from "@/lib/structuredData";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Rijschool Drive More",
   },
   description:
-    "Rijschool Drive More: persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie. Plan je gratis proefles.",
+    "Rijschool Drive More: persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie. Plan je intake.",
   keywords: [
     "rijschool",
     "rijlessen",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Rijschool Drive More",
     title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
     description:
-      "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je gratis proefles.",
+      "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake.",
   },
   twitter: {
     card: "summary_large_image",
@@ -67,6 +68,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-inter antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
+        />
         <LanguageProvider>
           <LenisProvider>
             <ScrollProgress />

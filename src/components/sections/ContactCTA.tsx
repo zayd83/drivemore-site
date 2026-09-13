@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Button } from "@/components/ui/Button";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 import { CONTACT } from "@/lib/utils";
 
 export function ContactCTA() {
@@ -51,8 +52,9 @@ export function ContactCTA() {
   ];
 
   return (
-    <section className="py-[clamp(60px,9vw,118px)] bg-brand-ink text-white">
-      <div className="max-w-wrap mx-auto px-5 md:px-10">
+    <section className="relative py-[clamp(60px,9vw,118px)] bg-brand-ink text-white overflow-hidden">
+      <WaveDivider fill="#F6F8FC" flip />
+      <div className="max-w-wrap mx-auto px-5 md:px-10 relative z-[2]">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-[clamp(40px,5vw,72px)]">
           {/* Left: heading + CTA */}
           <motion.div
@@ -74,12 +76,7 @@ export function ContactCTA() {
             </p>
             <div className="mt-8">
               <MagneticButton>
-                <Link
-                  href="/contact"
-                  className="font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-7 py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center gap-2"
-                >
-                  {t.hero.ctaPrimary}
-                </Link>
+                <Button href="/contact">{t.hero.ctaPrimary}</Button>
               </MagneticButton>
             </div>
           </motion.div>
@@ -100,9 +97,9 @@ export function ContactCTA() {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 bg-white/[0.05] border border-white/[0.12] rounded-[15px] px-4 py-4 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200"
+                  className="flex items-center gap-4 bg-white/[0.05] border border-white/[0.12] rounded-brand-sm px-4 py-4 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <div className="w-10 h-10 rounded-[11px] bg-white/[0.08] grid place-items-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-blob bg-white/[0.08] grid place-items-center flex-shrink-0">
                     {link.icon}
                   </div>
                   <div>

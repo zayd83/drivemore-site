@@ -1,91 +1,67 @@
-"use client";
-
-import { forwardRef, type ButtonHTMLAttributes, type AnchorHTMLAttributes } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "white";
-type Size = "sm" | "md" | "lg";
+type Variant = "primary" | "secondary" | "ghost-light" | "whatsapp" | "white";
+type Size = "md" | "lg";
 
-interface ButtonBaseProps {
-  variant?: Variant;
-  size?: Size;
-  className?: string;
-  children: React.ReactNode;
-}
-
-interface ButtonAsButton extends ButtonBaseProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> {
-  as?: "button";
-  href?: never;
-}
-
-interface ButtonAsLink extends ButtonBaseProps {
-  as: "link";
-  href: string;
-}
-
-interface ButtonAsAnchor extends ButtonBaseProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> {
-  as: "a";
-  href: string;
-}
-
-type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsAnchor;
+const base =
+  "inline-flex items-center justify-center gap-2 font-sora font-semibold rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5",
-  secondary:
-    "bg-brand-blue text-white shadow-brand-blue hover:-translate-y-0.5",
-  ghost:
-    "bg-transparent text-brand-ink border border-brand-line hover:border-brand-ink hover:-translate-y-0.5",
-  white:
-    "bg-white text-brand-ink hover:-translate-y-0.5 hover:shadow-card-sm",
+  primary: "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover hover:bg-brand-red-dark",
+  secondary: "bg-white border-2 border-brand-line text-brand-ink hover:border-brand-red hover:text-brand-red",
+  "ghost-light": "border-2 border-white/35 text-white backdrop-blur-sm hover:bg-white/10 hover:border-white",
+  whatsapp: "bg-[#25D366] text-white hover:brightness-95",
+  // Solid white pill for use on colored/gradient bands (e.g. the crash-course highlight)
+  white: "bg-white text-brand-ink shadow-card-sm hover:shadow-card",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "text-sm px-4 py-2.5 gap-1.5",
-  md: "text-[15px] px-6 py-3.5 gap-2",
-  lg: "text-base px-7 py-4 gap-2.5",
+  md: "text-[14px] px-5 py-3",
+  lg: "text-[15px] px-6 py-3.5 sm:px-7 sm:py-4",
 };
 
-const baseClass =
-  "font-sora font-semibold rounded-full inline-flex items-center justify-center transition-all duration-200 ease-out whitespace-nowrap cursor-pointer select-none";
+interface ButtonProps {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  className?: string;
+  children: ReactNode;
+  onClick?: () => void;
+  type?: "button" | "submit";
+  disabled?: boolean;
+  ariaLabel?: string;
+}
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  ({ variant = "primary", size = "md", className, children, ...props }, ref) => {
-    const cls = cn(baseClass, variants[variant], sizes[size], className);
+/** Consistent pill CTA used everywhere on the site — internal links, external (WhatsApp/tel/mailto), and form buttons. */
+export function Button({ href, variant = "primary", size = "lg", className = "", children, onClick, type = "button", disabled, ariaLabel }: ButtonProps) {
+  const cls = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 
-    if (props.as === "link") {
-      const { href, as: _, ...rest } = props as ButtonAsLink;
+  if (href) {
+    if (/^https?:\/\//.test(href)) {
       return (
-        <Link href={href} className={cls} {...(rest as object)}>
-          {children}
-        </Link>
-      );
-    }
-
-    if (props.as === "a") {
-      const { href, as: _, ...rest } = props as ButtonAsAnchor;
-      return (
-        <a ref={ref as React.Ref<HTMLAnchorElement>} href={href} className={cls} {...rest}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={ariaLabel}>
           {children}
         </a>
       );
     }
-
-    const { as: _, ...rest } = props as ButtonAsButton;
+    if (/^(mailto:|tel:)/.test(href)) {
+      return (
+        <a href={href} className={cls} aria-label={ariaLabel}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <motion.button
-        ref={ref as React.Ref<HTMLButtonElement>}
-        className={cls}
-        whileTap={{ scale: 0.97 }}
-        {...(rest as object)}
-      >
+      <Link href={href} className={cls} aria-label={ariaLabel}>
         {children}
-      </motion.button>
+      </Link>
     );
   }
-);
 
-Button.displayName = "Button";
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} className={cls} aria-label={ariaLabel}>
+      {children}
+    </button>
+  );
+}

@@ -16,8 +16,10 @@ const services = [
     eyebrow: "1 · Rijlessen",
     title: "Rijlessen op maat",
     subtitle: "Praktijk · Één-op-één · Elke les afgestemd op jou",
+    forWhom: "Voor wie rustig en stap voor stap wil opbouwen.",
+    emphasized: false,
     body: [
-      "Bij Drive More start je niet met een standaard programma. We beginnen met een gratis proefles om in kaart te brengen waar je staat: wat kun je al, waar zit je spanning, en hoe leer jij het liefst? Pas daarna stellen we een lesplan op — alleen voor jou.",
+      "Bij Drive More start je niet met een standaard programma. We beginnen met een intake om in kaart te brengen waar je staat: wat kun je al, waar zit je spanning, en hoe leer jij het liefst? Pas daarna stellen we een lesplan op — alleen voor jou.",
       "Elke rijles duurt 60 minuten en is gericht op concrete vooruitgang. Na elke les krijg je eerlijke, opbouwende feedback: wat ging goed, wat gaan we de volgende keer aanpakken. Zo weet je altijd waar je aan toe bent.",
     ],
     color: "blue" as const,
@@ -27,6 +29,8 @@ const services = [
     eyebrow: "2 · Spoedcursus",
     title: "Spoedcursus",
     subtitle: "Intensief · Compact · Klaar in weken",
+    forWhom: "Voor wie over 6 weken een auto nodig heeft voor werk, stage of studie.",
+    emphasized: false,
     body: [
       "Heb je je rijbewijs snel nodig — voor een nieuwe baan, je studie of gewoon omdat het er al te lang bij staat? Met de spoedcursus van Drive More plannen we je lessen compact achter elkaar en regelen we een vroeg examen.",
       "Snel wil niet zeggen slopend. We stemmen ook het spoedtraject af op jouw tempo en energieniveau, zodat je niet alleen snel maar ook goed achter het stuur zit.",
@@ -38,6 +42,8 @@ const services = [
     eyebrow: "3 · Faalangstbegeleiding",
     title: "Faalangstbegeleiding",
     subtitle: "Rust · Vertrouwen · Jij achter het stuur",
+    forWhom: "Trillende handen op het examen? Hartkloppingen bij het idee alleen al? Je bent niet de enige — en het is op te lossen.",
+    emphasized: true,
     body: [
       "Faalangst bij het rijden is veel gewoner dan je denkt. Zenuwen voor het examen, het gevoel dat je achter het stuur blokkeert, of steeds opnieuw zakken terwijl je het eigenlijk wél kunt — het komt vaker voor dan mensen beseffen.",
       "We werken rustig aan je zelfvertrouwen: kleine stapjes, veel herhaling waar nodig, en altijd in een veilige omgeving. Geen druk, geen haast — alleen aandacht voor jou.",
@@ -49,6 +55,8 @@ const services = [
     eyebrow: "4 · Theorie",
     title: "Theorietraining",
     subtitle: "Inzicht · Oefenexamens · In één keer slagen",
+    forWhom: "Voor wie liever inzicht heeft dan trucjes stampen.",
+    emphasized: false,
     body: [
       "Theorie slagen begint met écht begrijpen, niet met stampen. Onze theorietraining is gericht op inzicht in de verkeersregels: hoe werken voorrangssituaties, wat betekenen borden in de context van een weg, hoe beoordeel je gevaar?",
       "We oefenen met echte CBR-examentrainingen en bespreken de logica achter lastige vragen. Zo ga je het examen in met begrip, niet alleen met antwoorden uit je hoofd.",
@@ -83,7 +91,9 @@ export default function DienstenPage() {
             <div
               key={svc.id}
               id={svc.id}
-              className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-16 items-start"
+              className={`grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-16 items-start ${
+                svc.emphasized ? "bg-brand-blue/5 border border-brand-blue/15 rounded-brand-lg p-6 lg:p-10 -mx-6 lg:-mx-10" : ""
+              }`}
             >
               {/* Label column */}
               <div>
@@ -104,6 +114,15 @@ export default function DienstenPage() {
                 >
                   {svc.subtitle}
                 </p>
+                <p
+                  className={
+                    svc.emphasized
+                      ? "mt-4 font-sora font-bold text-[17px] leading-[1.45] text-brand-ink"
+                      : "mt-4 text-[14.5px] leading-relaxed text-brand-ink-soft"
+                  }
+                >
+                  {svc.forWhom}
+                </p>
                 <Link
                   href="/contact"
                   className={`mt-6 inline-flex items-center gap-2 font-sora font-semibold text-[14px] rounded-full px-5 py-3 transition-all hover:-translate-y-0.5 ${
@@ -112,7 +131,7 @@ export default function DienstenPage() {
                       : "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover"
                   }`}
                 >
-                  Plan een proefles →
+                  Plan een intake →
                 </Link>
               </div>
               {/* Body column */}

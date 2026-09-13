@@ -27,8 +27,9 @@ const config: Config = {
         inter: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       borderRadius: {
-        brand: "22px",
-        "brand-sm": "15px",
+        brand: "28px",
+        "brand-sm": "18px",
+        "brand-lg": "36px",
       },
       maxWidth: {
         wrap: "1180px",
@@ -42,11 +43,16 @@ const config: Config = {
       animation: {
         float: "float 4s ease-in-out infinite",
         "spin-slow": "spin 12s linear infinite",
+        "blob-morph": "blob-morph 9s ease-in-out infinite",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-12px)" },
+        },
+        "blob-morph": {
+          "0%, 100%": { borderRadius: "42% 58% 65% 35% / 45% 45% 55% 55%" },
+          "50%": { borderRadius: "58% 42% 35% 65% / 55% 60% 40% 45%" },
         },
       },
     },

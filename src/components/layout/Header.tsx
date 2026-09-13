@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -102,18 +103,13 @@ export function Header() {
               {t.nav.langSwitch}
             </button>
             <MagneticButton>
-              <Link
-                href="/contact"
-                className="font-sora font-semibold text-[14px] bg-brand-red text-white rounded-full px-5 py-2.5 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200"
-              >
-                {t.nav.cta}
-              </Link>
+              <Button href="/contact" size="md">{t.nav.cta}</Button>
             </MagneticButton>
           </div>
 
           {/* Hamburger */}
           <button
-            className={`lg:hidden ml-auto w-11 h-11 rounded-xl border flex flex-col items-center justify-center gap-[5px] transition-colors duration-300 ${lightMode ? "border-white/30 bg-white/10 hover:bg-white/20" : "border-brand-line bg-white/60 hover:bg-white"}`}
+            className={`lg:hidden ml-auto w-11 h-11 rounded-blob border flex flex-col items-center justify-center gap-[5px] transition-colors duration-300 ${lightMode ? "border-white/30 bg-white/10 hover:bg-white/20" : "border-brand-line bg-white/60 hover:bg-white"}`}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
             aria-expanded={menuOpen}
@@ -185,22 +181,14 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.4 }}
               >
-                <Link
-                  href="/contact"
-                  className="w-full text-center font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full py-4 shadow-red-cta"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t.nav.cta}
-                </Link>
-                <a
-                  href={CONTACT.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center font-sora font-semibold text-[15px] border border-brand-line text-brand-ink rounded-full py-4 hover:border-brand-ink transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  WhatsApp — {CONTACT.phoneDisplay}
-                </a>
+                <div onClick={() => setMenuOpen(false)}>
+                  <Button href="/contact" className="w-full">{t.nav.cta}</Button>
+                </div>
+                <div onClick={() => setMenuOpen(false)}>
+                  <Button href={CONTACT.whatsapp} variant="secondary" className="w-full">
+                    WhatsApp — {CONTACT.phoneDisplay}
+                  </Button>
+                </div>
                 <button
                   onClick={() => { toggleLang(); }}
                   className="text-sm font-inter text-brand-ink-soft mt-2"

@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -40,10 +41,11 @@ export function HowItWorks() {
   return (
     <section
       ref={ref}
-      className="py-[clamp(60px,9vw,118px)] bg-brand-light"
+      className="relative py-[clamp(64px,9vw,124px)] bg-brand-light overflow-hidden"
       id="aanpak"
     >
-      <div className="max-w-wrap mx-auto px-5 md:px-10">
+      <WaveDivider fill="#ffffff" flip />
+      <div className="max-w-wrap mx-auto px-5 md:px-10 relative z-[2]">
         {/* Header */}
         <motion.div
           className="max-w-[660px] mx-auto text-center mb-[clamp(48px,6vw,72px)]"
@@ -76,14 +78,29 @@ export function HowItWorks() {
                   "repeating-linear-gradient(to right, rgba(14,19,32,0.12) 0 14px, transparent 14px 28px)",
               }}
             />
-            {/* Animated car emoji */}
+            {/* Animated car */}
             <div
               ref={carRef}
-              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl"
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2"
               style={{ left: "4%" }}
               aria-hidden="true"
             >
-              🚗
+              <svg
+                width="30"
+                height="18"
+                viewBox="0 0 30 18"
+                style={{ filter: "drop-shadow(0 3px 5px rgba(14,19,32,0.45))" }}
+              >
+                <path
+                  d="M4 12.5c-1.4 0-2.5-1.1-2.5-2.5v-.8c0-1 .6-1.9 1.6-2.3l3.4-1.3 2.3-3c.6-.8 1.5-1.2 2.5-1.2h8.9c1.2 0 2.3.6 2.9 1.7l1.6 2.8 3.4 1c1 .3 1.7 1.2 1.7 2.3v1.6c0 1.4-1.1 2.5-2.5 2.5h-1"
+                  fill="#ffffff"
+                />
+                <rect x="1.5" y="11" width="27" height="1.8" rx="0.9" fill="#ffffff" />
+                <circle cx="8" cy="13.5" r="2.8" fill="#0E1320" />
+                <circle cx="8" cy="13.5" r="1.2" fill="#ffffff" />
+                <circle cx="22" cy="13.5" r="2.8" fill="#0E1320" />
+                <circle cx="22" cy="13.5" r="1.2" fill="#ffffff" />
+              </svg>
             </div>
           </div>
           {/* Step dots */}
@@ -112,9 +129,12 @@ export function HowItWorks() {
             >
               {/* Number badge */}
               <div
-                className={`w-16 h-16 rounded-full bg-white border border-brand-line shadow-card-sm grid place-items-center font-sora font-extrabold text-[22px] relative z-10 ${
-                  i % 2 === 0 ? "text-brand-red" : "text-brand-blue"
-                }`}
+                className="w-16 h-16 rounded-blob grid place-items-center font-sora font-extrabold text-[22px] text-white relative z-10 shadow-card-sm"
+                style={{
+                  background: i % 2 === 0
+                    ? "linear-gradient(135deg, #E11D28, #ff6b73)"
+                    : "linear-gradient(135deg, #1B4FD1, #3f74ff)",
+                }}
               >
                 {step.n}
               </div>
@@ -128,6 +148,8 @@ export function HowItWorks() {
           ))}
         </div>
       </div>
+
+      <WaveDivider fill="#ffffff" />
     </section>
   );
 }

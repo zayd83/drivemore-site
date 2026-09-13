@@ -17,5 +17,5 @@ export const CONTACT = {
   phone: "0611206001",
   phoneDisplay: "06 11206001",
   whatsapp: "https://wa.me/31611206001",
-  email: "mbouslam@hotmail.com",
+  email: "contact@rijschooldrivemore.nl",
 } as const;

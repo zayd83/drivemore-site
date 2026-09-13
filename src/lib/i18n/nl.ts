@@ -2,7 +2,7 @@ export const nl = {
   meta: {
     siteName: "Rijschool Drive More",
     siteDescription:
-      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je gratis proefles.",
+      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je intake.",
   },
   nav: {
     services: "Diensten",
@@ -10,24 +10,28 @@ export const nl = {
     intensive: "Spoedcursus",
     about: "Over ons",
     contact: "Contact",
-    cta: "Plan proefles",
+    cta: "Plan intake",
     langSwitch: "EN",
   },
   hero: {
     eyebrow: "Rijschool · 1-op-1 maatwerk",
-    heading1: "Jouw weg naar je",
-    headingAccent: "rijbewijs",
-    heading2: "begint hier.",
-    lead: "Persoonlijke rijlessen op jouw tempo — gericht, op maat, en altijd richting die roze pas.",
-    ctaPrimary: "Plan een gratis proefles →",
+    // Optie B (niet actief) — alternatieve invalshoek gericht op leerlingen die al eens gezakt zijn of examenangst hebben:
+    // heading1: "Al een keer gezakt?", headingAccent: "Of bang dat het weer gebeurt?", heading2: ""
+    // lead: "Bij Drive More rij je met een instructeur die jouw tempo kent — zonder haast, zonder oordeel, tot je met vertrouwen slaagt."
+    heading1: "Rijles die past bij",
+    headingAccent: "jou,",
+    heading2: "niet andersom.",
+    lead: "Geen vast lesschema, geen wisselende instructeurs. Eén vaste begeleider die met jou meebeweegt — tot die roze pas op zak zit.",
+    ctaPrimary: "Plan een intake →",
     ctaSecondary: "Bekijk pakketten",
     replay: "Opnieuw",
   },
+  // Cijfers zelf staan in src/lib/config/stats.ts (STATS_VALUES) — hier alleen labels/opmaak.
   stats: {
-    s1: { value: 98, suffix: "%*", label: "eerste keer geslaagd" },
-    s2: { value: 10000, suffix: "+*", label: "km lesweg gereden", prefix: "" },
-    s3: { value: 4.9, suffix: "★*", label: "gemiddelde beoordeling", decimal: true },
-    s4: { value: 100, suffix: "%", label: "maatwerk per leerling" },
+    s1: { suffix: "%*", label: "eerste keer geslaagd" },
+    s2: { suffix: "+*", label: "km lesweg gereden", prefix: "" },
+    s3: { suffix: "★*", label: "gemiddelde beoordeling", decimal: true },
+    s4: { suffix: "%", label: "maatwerk per leerling" },
     note: "* Placeholders — worden vervangen door echte data.",
   },
   services: {
@@ -42,6 +46,8 @@ export const nl = {
         subtitle: "Praktijk, één-op-één",
         description:
           "Achter het stuur in jouw tempo. Elke les bouwt logisch voort op de vorige, met een lesplan dat past bij jouw niveau — niet bij een vast schema.",
+        forWhom: "Voor wie rustig en stap voor stap wil opbouwen.",
+        emphasized: false,
         link: "/rijlespakketten",
         linkLabel: "Bekijk pakketten",
         color: "blue" as const,
@@ -52,6 +58,8 @@ export const nl = {
         subtitle: "Snel examenklaar",
         description:
           "Haast met je rijbewijs? In een intensief traject plannen we je lessen compact achter elkaar, inclusief examen — klaar in weken, niet in maanden.",
+        forWhom: "Voor wie over 6 weken een auto nodig heeft voor werk, stage of studie.",
+        emphasized: false,
         link: "/spoedcursus",
         linkLabel: "Naar spoedcursus",
         color: "red" as const,
@@ -62,6 +70,8 @@ export const nl = {
         subtitle: "Rustig en met vertrouwen",
         description:
           "Zenuwen voor het examen of achter het stuur? Met gerichte begeleiding leer je je rust bewaren, zodat je kalm en zelfverzekerd je examen ingaat.",
+        forWhom: "Trillende handen op het examen? Hartkloppingen bij het idee alleen al? Je bent niet de enige — en het is op te lossen.",
+        emphasized: true,
         link: "/diensten",
         linkLabel: "Lees hoe wij helpen",
         color: "blue" as const,
@@ -72,6 +82,8 @@ export const nl = {
         subtitle: "In één keer slagen",
         description:
           "Geen eindeloos stampen, maar inzicht. Onze theorietraining en oefenexamens bereiden je echt voor, zodat je de stof onthoudt én toepast op de weg.",
+        forWhom: "Voor wie liever inzicht heeft dan trucjes stampen.",
+        emphasized: false,
         link: "/diensten",
         linkLabel: "Start met theorie",
         color: "red" as const,
@@ -80,14 +92,14 @@ export const nl = {
   },
   howItWorks: {
     eyebrow: "Zo werkt het",
-    heading1: "Van eerste proefles tot",
+    heading1: "Van eerste intake tot",
     headingAccent: "geslaagd",
     lead: "Een helder traject in vier stappen — en op elk moment afgestemd op jou.",
     steps: [
       {
         n: "01",
-        title: "Gratis proefles",
-        body: "We kijken samen waar je staat en welke aanpak bij je past. Vrijblijvend.",
+        title: "Intake",
+        body: "We kijken samen waar je staat en welke aanpak bij je past.",
       },
       {
         n: "02",
@@ -127,18 +139,20 @@ export const nl = {
     cta: "Kies",
     note: {
       heading: "Twijfel je welk pakket past?",
-      body: "Plan een gratis proefles — we adviseren je eerlijk wat bij je past. Liever per losse les?",
+      body: "Plan een intake — we adviseren je eerlijk wat bij je past. Liever per losse les?",
       body2: "Dat kan ook, vanaf €59 per rijles van 60 minuten.",
-      cta: "Plan een gratis proefles",
+      cta: "Plan een intake",
     },
+    noWaitlistBadge: "Geen wachtlijst · direct starten",
     regulier: [
       {
         label: "Stap 01 · Starten",
         name: "Drive",
         tagline: "Maak kennis met het rijden en bouw rustig je basis op.",
+        forWhom: "Voor wie: nieuw achter het stuur en rustig wil opbouwen.",
         price: 595,
         features: [
-          "Gratis proefles om te starten",
+          "Intake om te starten",
           "10 rijlessen van 60 minuten",
           "Persoonlijk lesplan op jouw niveau",
           "Avond- en weekendlessen mogelijk",
@@ -149,6 +163,7 @@ export const nl = {
         label: "Stap 02 · Doorpakken",
         name: "Drive More",
         tagline: "De complete route, van je eerste les tot en met je examen.",
+        forWhom: "Voor wie de complete route in één keer wil regelen, inclusief toets en examen.",
         price: 1295,
         features: [
           "Alles uit Drive",
@@ -163,6 +178,7 @@ export const nl = {
         label: "Stap 03 · Slagen",
         name: "Drive Most",
         tagline: "Alles geregeld. Jij hoeft je alleen op het rijden te richten.",
+        forWhom: "Voor wie alles uit handen wil geven én maximale zekerheid wil.",
         price: 1895,
         features: [
           "Alles uit Drive More",
@@ -179,9 +195,10 @@ export const nl = {
         label: "Spoed · Start",
         name: "Drive Spoed",
         tagline: "Snel beginnen en in een compact tempo opbouwen.",
+        forWhom: "Voor wie snel wil starten en in een compact tempo wil leren.",
         price: 895,
         features: [
-          "Gratis proefles om te starten",
+          "Intake om te starten",
           "15 intensieve rijlessen",
           "Lessen kort achter elkaar gepland",
           "In weken, niet in maanden",
@@ -192,6 +209,7 @@ export const nl = {
         label: "Spoed · Compleet",
         name: "Drive More Spoed",
         tagline: "Het complete spoedtraject tot en met je examen.",
+        forWhom: "Voor wie snel én compleet naar het examen toe wil, inclusief toets.",
         price: 1795,
         features: [
           "Alles uit Drive Spoed",
@@ -206,6 +224,7 @@ export const nl = {
         label: "Spoed · Max",
         name: "Drive Most Spoed",
         tagline: "Maximaal tempo, alles inclusief — jij focust op slagen.",
+        forWhom: "Voor wie maximale snelheid wil met maximale zekerheid, examen inbegrepen.",
         price: 2495,
         features: [
           "Alles uit Drive More Spoed",
@@ -217,6 +236,20 @@ export const nl = {
         featured: false,
       },
     ],
+  },
+  // USP-balk direct onder de hero — items aan/uit te zetten via src/lib/config/trustBar.ts
+  trustBar: {
+    noWaitlist: "Geen wachtlijst — direct starten",
+    bilingual: "Les in NL & EN",
+  },
+  serviceArea: {
+    eyebrow: "Werkgebied",
+    heading1: "Waar wij",
+    headingAccent: "lesgeven",
+    // VUL IN: echte plaats(en)/regio waar daadwerkelijk lesgegeven wordt — belangrijk voor lokale vindbaarheid (SEO).
+    lead: "Wij verzorgen rijlessen in [plaatsnaam invullen] en omliggende plaatsen.",
+    cities: ["[Plaatsnaam invullen]", "[Plaatsnaam invullen]", "[Plaatsnaam invullen]"],
+    note: "* Placeholder — vul hier het echte werkgebied (stad/regio) in.",
   },
   why: {
     eyebrow: "Waarom Drive More",
@@ -291,14 +324,15 @@ export const nl = {
     heading1: "Klaar om te",
     headingAccent: "starten",
     heading2: "?",
-    lead: "Plan je gratis proefles of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
+    lead: "Plan je intake of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
+    lowThreshold: "Nog twijfels? Stuur ons gewoon een appje — geen verplichtingen.",
     form: {
       naam: "Naam",
       tel: "Telefoon",
       email: "E-mail",
       interesse: "Waarvoor neem je contact op?",
       interesseOptions: [
-        "Gratis proefles",
+        "Intake",
         "Rijlespakket",
         "Spoedcursus",
         "Faalangstbegeleiding",
@@ -317,7 +351,7 @@ export const nl = {
       heading: "Direct contact",
       whatsapp: { label: "WhatsApp", sub: "06 11206001 — vaak het snelst" },
       phone: { label: "Bellen", sub: "06 11206001" },
-      email: { label: "E-mail", sub: "mbouslam@hotmail.com" },
+      email: { label: "E-mail", sub: "contact@rijschooldrivemore.nl" },
     },
   },
   footer: {
@@ -346,13 +380,15 @@ export const nl = {
       placeholder: "Je e-mailadres",
       cta: "Aanmelden",
       success: "Bedankt — je bent aangemeld!",
+      error: "Er ging iets mis. Probeer het later opnieuw.",
       privacy: "Geen spam. Afmelden kan altijd.",
     },
-    kvk: "KvK 00000000",
+    // VUL IN: echt KvK-nummer.
+    kvk: "KvK: VUL IN",
     copyright: "Rijschool Drive More",
   },
   mobileCta: {
-    plan: "Plan proefles",
+    plan: "Plan intake",
     whatsapp: "WhatsApp",
   },
   faq: {
@@ -362,23 +398,23 @@ export const nl = {
     items: [
       {
         q: "Hoeveel lessen heb ik nodig?",
-        a: "Dat verschilt per persoon — daarom werken we met maatwerk. Tijdens je gratis proefles kijken we waar je staat en geven we een eerlijke inschatting. Ons Drive More-pakket (20 lessen) past voor de meeste leerlingen goed.",
+        a: "Dat verschilt per persoon — tijdens je intake geven we een eerlijke inschatting. Voor veel leerlingen past ons Drive More-pakket (20 lessen) goed.",
       },
       {
         q: "Kan ik in een automaat rijden?",
-        a: "Ja. We bieden zowel schakel als automaat. Tijdens je proefles adviseren we wat het beste bij jou past.",
+        a: "Ja, schakel én automaat. Tijdens je intake adviseren we wat het beste past.",
       },
       {
         q: "Bieden jullie een spoedcursus aan?",
-        a: "Zeker. Met onze spoedcursus rijd je in een compact, intensief traject naar je examen — soms in een paar weken. Bekijk de spoedpakketten of vraag de mogelijkheden via contact.",
+        a: "Zeker. In een compact, intensief traject naar je examen — soms in een paar weken.",
       },
       {
         q: "In welke talen kan ik les krijgen?",
-        a: "We geven les in het Nederlands en Engels. Heb je een voorkeur? Laat het ons weten bij je aanmelding.",
+        a: "Nederlands en Engels.",
       },
       {
         q: "Hoe snel kan ik starten?",
-        a: "Vaak binnen enkele dagen. Plan een gratis proefles en we kijken meteen wanneer we kunnen beginnen.",
+        a: "Vaak al binnen een week terecht voor je intake.",
       },
     ],
   },

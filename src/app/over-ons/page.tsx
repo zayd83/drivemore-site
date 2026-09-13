@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { WhyDriveMore } from "@/components/sections/WhyDriveMore";
 import { Reviews } from "@/components/sections/Reviews";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import { SHOW_REVIEWS } from "@/lib/config/reviews";
+import { Button } from "@/components/ui/Button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 
 export const metadata: Metadata = {
   title: "Over ons",
@@ -47,8 +50,11 @@ export default function OverOnsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
             {/* Photo */}
             <div className="relative aspect-[4/5] max-w-sm mx-auto lg:mx-0 w-full">
-              <div className="w-full h-full rounded-[24px] bg-gradient-to-br from-[#dfe6f3] to-[#eef2f9] border border-brand-line grid place-items-center overflow-hidden">
-                <div className="text-center select-none">
+              <div className="w-full h-full rounded-brand-lg bg-gradient-to-br from-[#dfe6f3] to-[#eef2f9] border border-brand-line grid place-items-center overflow-hidden relative">
+                {/* Soft decorative blobs — stand-in for photography */}
+                <div className="absolute -top-10 -right-8 w-36 h-36 rounded-blob bg-brand-red/10" />
+                <div className="absolute -bottom-12 -left-10 w-44 h-44 rounded-blob bg-brand-blue/10" />
+                <div className="text-center select-none relative">
                   <div className="font-sora font-black text-[90px] leading-none tracking-[-3px] opacity-30">
                     <span className="text-brand-red">D</span>
                     <span className="text-brand-blue">M</span>
@@ -58,7 +64,7 @@ export default function OverOnsPage() {
                   </p>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-[16px] shadow-card p-5">
+              <div className="absolute -bottom-4 -right-4 bg-white rounded-brand-sm shadow-card p-5">
                 <div className="font-sora font-bold text-[15px] text-brand-ink">Mouad</div>
                 <div className="font-inter text-[12px] text-brand-ink-soft mt-0.5">Oprichter & Rijinstructeur</div>
               </div>
@@ -74,7 +80,7 @@ export default function OverOnsPage() {
                   Drive More is opgericht door Mouad met een simpele overtuiging: rijles moet passen bij de leerling, niet andersom. Na jarenlange ervaring in het rijonderwijs merkte hij keer op keer hetzelfde patroon: leerlingen die vastliepen, niet omdat ze niet konden rijden, maar omdat de aanpak niet bij hen paste.
                 </p>
                 <p>
-                  Dus begon hij anders. Geen vast programma, geen afvinklijstjes. In plaats daarvan: een gratis proefles om te begrijpen wie jij bent als leerling. Daarna een plan dat écht bij je past — of je nu rustig wilt opbouwen, snel moet slagen of zenuwen hebt bij het examen.
+                  Dus begon hij anders. Geen vast programma, geen afvinklijstjes. In plaats daarvan: een intake om te begrijpen wie jij bent als leerling. Daarna een plan dat écht bij je past — of je nu rustig wilt opbouwen, snel moet slagen of zenuwen hebt bij het examen.
                 </p>
                 <p>
                   Dat idee is uitgegroeid tot Rijschool Drive More. Een kleine rijschool met een grote focus: jij, achter het stuur, met vertrouwen. En uiteindelijk — die roze pas.
@@ -93,8 +99,9 @@ export default function OverOnsPage() {
       </section>
 
       {/* Values */}
-      <section className="py-[clamp(48px,7vw,96px)] bg-brand-light">
-        <div className="max-w-wrap mx-auto px-5 md:px-10">
+      <section className="relative py-[clamp(48px,7vw,96px)] bg-brand-light overflow-hidden">
+        <WaveDivider fill="#ffffff" flip />
+        <div className="max-w-wrap mx-auto px-5 md:px-10 relative z-[2]">
           <div className="max-w-[560px] mb-12">
             <h2 className="font-sora font-extrabold text-[clamp(28px,4.5vw,44px)] leading-[1.06] tracking-[-0.025em]">
               Zo werken we bij <span className="grad">Drive More</span>.
@@ -102,7 +109,7 @@ export default function OverOnsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {values.map((v, i) => (
-              <div key={i} className="bg-white border border-brand-line rounded-brand p-7">
+              <div key={i} className="bg-white border border-brand-line rounded-brand-lg p-7 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
                 <h3 className="font-sora font-bold text-[20px] text-brand-ink">{v.title}</h3>
                 <p className="mt-3 text-[15px] leading-[1.65] text-brand-ink-body">{v.body}</p>
               </div>
@@ -118,19 +125,18 @@ export default function OverOnsPage() {
             Klaar om kennis te maken?
           </h2>
           <p className="mt-4 text-[16px] text-brand-ink-body max-w-[46ch] mx-auto leading-relaxed">
-            Plan een gratis proefles en maak kennis met de aanpak van Drive More — geheel vrijblijvend.
+            Plan een intake en maak kennis met de aanpak van Drive More.
           </p>
-          <Link
-            href="/contact"
-            className="mt-7 inline-flex items-center font-sora font-semibold text-[15px] bg-brand-red text-white rounded-full px-7 py-4 shadow-red-cta hover:shadow-red-hover hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Plan een gratis proefles →
-          </Link>
+          <div className="mt-7 flex justify-center">
+            <MagneticButton>
+              <Button href="/contact">Plan een intake →</Button>
+            </MagneticButton>
+          </div>
         </div>
       </section>
 
       <WhyDriveMore />
-      <Reviews />
+      {SHOW_REVIEWS && <Reviews />}
       <ContactCTA />
     </>
   );

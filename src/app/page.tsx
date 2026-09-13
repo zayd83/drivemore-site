@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { Stats } from "@/components/sections/Stats";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -8,21 +9,30 @@ import { PackagesPreview } from "@/components/sections/PackagesPreview";
 import { WhyDriveMore } from "@/components/sections/WhyDriveMore";
 import { Reviews } from "@/components/sections/Reviews";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
+import { ServiceArea } from "@/components/sections/ServiceArea";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { FAQ } from "@/components/sections/FAQ";
 import { FloatingCardClient } from "@/components/3d/FloatingCardClient";
+import { getFaqSchema } from "@/lib/structuredData";
+import { nl } from "@/lib/i18n/nl";
+import { SHOW_REVIEWS } from "@/lib/config/reviews";
 
 export const metadata: Metadata = {
   title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
   description:
-    "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je gratis proefles bij Rijschool Drive More.",
+    "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake bij Rijschool Drive More.",
   alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqSchema(nl.faq.items)) }}
+      />
       <Hero />
+      <TrustBar />
       <Stats />
       <ServicesPreview />
       <HowItWorks />
@@ -53,9 +63,10 @@ export default function HomePage() {
       <SpeedHighlight />
       <PackagesPreview />
       <WhyDriveMore />
-      <Reviews />
+      {SHOW_REVIEWS && <Reviews />}
       <AboutTeaser />
       <FAQ />
+      <ServiceArea />
       <ContactCTA />
     </>
   );
