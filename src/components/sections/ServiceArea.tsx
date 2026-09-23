@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { IconBlob } from "@/components/ui/IconBlob";
@@ -45,22 +46,21 @@ export function ServiceArea() {
 
           <div className="mt-6 flex flex-wrap justify-center gap-2.5">
             {t.serviceArea.cities.map((city, i) => (
-              <span
-                key={i}
-                className={`inline-flex items-center gap-1.5 font-sora font-semibold text-[13px] text-brand-ink bg-white border rounded-full px-4 py-2 ${
-                  i % 2 === 0 ? "border-brand-red/25" : "border-brand-blue/25"
+              <Link
+                key={city.slug}
+                href={`/rijschool-${city.slug}`}
+                className={`inline-flex items-center gap-1.5 font-sora font-semibold text-[13px] text-brand-ink bg-white border rounded-full px-4 py-2 hover:-translate-y-0.5 hover:shadow-card-sm transition-all duration-200 ${
+                  i % 2 === 0 ? "border-brand-red/25 hover:border-brand-red/50" : "border-brand-blue/25 hover:border-brand-blue/50"
                 }`}
               >
                 <svg className={`w-3.5 h-3.5 ${i % 2 === 0 ? "text-brand-red" : "text-brand-blue"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10z" />
                   <circle cx="12" cy="11" r="2.2" />
                 </svg>
-                {city}
-              </span>
+                {city.name}
+              </Link>
             ))}
           </div>
-
-          <p className="mt-4 text-[12px] text-brand-ink-soft">{t.serviceArea.note}</p>
         </motion.div>
       </div>
     </section>

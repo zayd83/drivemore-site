@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/Button";
 import { WaveDivider } from "@/components/ui/WaveDivider";
@@ -39,9 +40,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <div className="font-sora font-black text-[28px] leading-none tracking-tight mb-4">
-              <span className="text-brand-red">D</span>
-              <span className="text-brand-blue-light">M</span>
+            <div className="relative w-12 h-12 rounded-full overflow-hidden mb-4">
+              <Image src="/drivemorelogo.jpeg" alt="Drive More logo" fill sizes="48px" className="object-cover" />
             </div>
             <p className="text-[14px] leading-relaxed text-[#8e98ad] max-w-[280px]">
               {t.footer.tagline}

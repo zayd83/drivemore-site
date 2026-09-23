@@ -80,7 +80,7 @@ export default function OverOnsPage() {
                   Drive More is opgericht door Mouad met een simpele overtuiging: rijles moet passen bij de leerling, niet andersom. Na jarenlange ervaring in het rijonderwijs merkte hij keer op keer hetzelfde patroon: leerlingen die vastliepen, niet omdat ze niet konden rijden, maar omdat de aanpak niet bij hen paste.
                 </p>
                 <p>
-                  Dus begon hij anders. Geen vast programma, geen afvinklijstjes. In plaats daarvan: een intake om te begrijpen wie jij bent als leerling. Daarna een plan dat écht bij je past — of je nu rustig wilt opbouwen, snel moet slagen of zenuwen hebt bij het examen.
+                  Dus begon hij anders. Geen vast programma, geen afvinklijstjes. In plaats daarvan: een proefles om te begrijpen wie jij bent als leerling. Daarna een plan dat écht bij je past — of je nu rustig wilt opbouwen, snel moet slagen of zenuwen hebt bij het examen.
                 </p>
                 <p>
                   Dat idee is uitgegroeid tot Rijschool Drive More. Een kleine rijschool met een grote focus: jij, achter het stuur, met vertrouwen. En uiteindelijk — die roze pas.
@@ -125,11 +125,11 @@ export default function OverOnsPage() {
             Klaar om kennis te maken?
           </h2>
           <p className="mt-4 text-[16px] text-brand-ink-body max-w-[46ch] mx-auto leading-relaxed">
-            Plan een intake en maak kennis met de aanpak van Drive More.
+            Plan een proefles en maak kennis met de aanpak van Drive More.
           </p>
           <div className="mt-7 flex justify-center">
             <MagneticButton>
-              <Button href="/contact">Plan een intake →</Button>
+              <Button href="/contact">Plan een proefles →</Button>
             </MagneticButton>
           </div>
         </div>

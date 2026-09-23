@@ -2,7 +2,7 @@ export const nl = {
   meta: {
     siteName: "Rijschool Drive More",
     siteDescription:
-      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je intake.",
+      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je proefles.",
   },
   nav: {
     services: "Diensten",
@@ -10,7 +10,7 @@ export const nl = {
     intensive: "Spoedcursus",
     about: "Over ons",
     contact: "Contact",
-    cta: "Plan intake",
+    cta: "Plan proefles",
     langSwitch: "EN",
   },
   hero: {
@@ -21,57 +21,34 @@ export const nl = {
     heading1: "Rijles die past bij",
     headingAccent: "jou,",
     heading2: "niet andersom.",
-    lead: "Geen vast lesschema, geen wisselende instructeurs. Eén vaste begeleider die met jou meebeweegt — tot die roze pas op zak zit.",
-    ctaPrimary: "Plan een intake →",
+    lead: "Persoonlijke rijlessen in Dordrecht en omgeving. Schakel of automaat, altijd met persoonlijke begeleiding en een aanpak die bij jou past.",
+    points: [
+      { icon: "bolt" as const, label: "Geen wachtlijst — direct starten" },
+      { icon: "car" as const, label: "Schakel & automaat" },
+      { icon: "person" as const, label: "Persoonlijke begeleiding" },
+    ],
+    ctaPrimary: "Plan een proefles →",
     ctaSecondary: "Bekijk pakketten",
     replay: "Opnieuw",
   },
-  // Cijfers zelf staan in src/lib/config/stats.ts (STATS_VALUES) — hier alleen labels/opmaak.
-  stats: {
-    s1: { suffix: "%*", label: "eerste keer geslaagd" },
-    s2: { suffix: "+*", label: "km lesweg gereden", prefix: "" },
-    s3: { suffix: "★*", label: "gemiddelde beoordeling", decimal: true },
-    s4: { suffix: "%", label: "maatwerk per leerling" },
-    note: "* Placeholders — worden vervangen door echte data.",
-  },
+  // Compact "Extra begeleiding"-kaarten — volledige uitleg staat op de eigen pagina's.
   services: {
-    eyebrow: "Diensten",
-    heading1: "Voor elke leerling de",
-    headingAccent: "juiste les",
-    lead: "De ene leerling bouwt rustig op, de andere wil zo snel mogelijk slagen. Daarom hebben we niet één aanpak, maar een vorm die bij jóu past — met altijd dezelfde persoonlijke begeleiding.",
+    eyebrow: "Extra begeleiding",
+    heading1: "Meer dan alleen",
+    headingAccent: "rijlessen",
     items: [
       {
-        id: "rijlessen",
-        name: "Rijlessen",
-        subtitle: "Praktijk, één-op-één",
-        description:
-          "Achter het stuur in jouw tempo. Elke les bouwt logisch voort op de vorige, met een lesplan dat past bij jouw niveau — niet bij een vast schema.",
-        forWhom: "Voor wie rustig en stap voor stap wil opbouwen.",
-        emphasized: false,
-        link: "/rijlespakketten",
-        linkLabel: "Bekijk pakketten",
-        color: "blue" as const,
-      },
-      {
         id: "spoedcursus",
-        name: "Spoedcursus",
-        subtitle: "Snel examenklaar",
-        description:
-          "Haast met je rijbewijs? In een intensief traject plannen we je lessen compact achter elkaar, inclusief examen — klaar in weken, niet in maanden.",
-        forWhom: "Voor wie over 6 weken een auto nodig heeft voor werk, stage of studie.",
-        emphasized: false,
+        name: "Spoedopleiding",
+        description: "Snel richting je rijbewijs met een intensief traject.",
         link: "/spoedcursus",
-        linkLabel: "Naar spoedcursus",
+        linkLabel: "Bekijk spoedopleiding",
         color: "red" as const,
       },
       {
         id: "faalangst",
         name: "Faalangstbegeleiding",
-        subtitle: "Rustig en met vertrouwen",
-        description:
-          "Zenuwen voor het examen of achter het stuur? Met gerichte begeleiding leer je je rust bewaren, zodat je kalm en zelfverzekerd je examen ingaat.",
-        forWhom: "Trillende handen op het examen? Hartkloppingen bij het idee alleen al? Je bent niet de enige — en het is op te lossen.",
-        emphasized: true,
+        description: "Rust en vertrouwen achter het stuur en tijdens je examen.",
         link: "/diensten",
         linkLabel: "Lees hoe wij helpen",
         color: "blue" as const,
@@ -79,42 +56,38 @@ export const nl = {
       {
         id: "theorie",
         name: "Theorie",
-        subtitle: "In één keer slagen",
-        description:
-          "Geen eindeloos stampen, maar inzicht. Onze theorietraining en oefenexamens bereiden je echt voor, zodat je de stof onthoudt én toepast op de weg.",
-        forWhom: "Voor wie liever inzicht heeft dan trucjes stampen.",
-        emphasized: false,
+        description: "Begrijpen in plaats van alleen stampen.",
         link: "/diensten",
-        linkLabel: "Start met theorie",
+        linkLabel: "Bekijk theorietraining",
         color: "red" as const,
       },
     ],
   },
   howItWorks: {
     eyebrow: "Zo werkt het",
-    heading1: "Van eerste intake tot",
-    headingAccent: "geslaagd",
+    heading1: "Van eerste proefles tot",
+    headingAccent: "rijbewijs",
     lead: "Een helder traject in vier stappen — en op elk moment afgestemd op jou.",
     steps: [
       {
         n: "01",
-        title: "Intake",
-        body: "We kijken samen waar je staat en welke aanpak bij je past.",
+        title: "Proefles",
+        body: "We bekijken je niveau en bepalen welke aanpak bij jou past.",
       },
       {
         n: "02",
-        title: "Lesplan op maat",
-        body: "Je krijgt een persoonlijk plan op jouw niveau en tempo, met duidelijke doelen.",
+        title: "Persoonlijk lesplan",
+        body: "Je krijgt een traject gebaseerd op jouw niveau, tempo en doel.",
       },
       {
         n: "03",
-        title: "Rijlessen op maat",
-        body: "Eén-op-één achter het stuur met gerichte, eerlijke feedback na elke les.",
+        title: "Rijlessen",
+        body: "Je werkt stap voor stap aan zelfstandig en veilig autorijden.",
       },
       {
         n: "04",
-        title: "Slagen",
-        body: "Met tussentijdse toets en examenbegeleiding rij je richting die roze pas.",
+        title: "Praktijkexamen",
+        body: "Ben je er klaar voor? Dan begeleiden we je richting het praktijkexamen.",
       },
     ],
   },
@@ -139,9 +112,9 @@ export const nl = {
     cta: "Kies",
     note: {
       heading: "Twijfel je welk pakket past?",
-      body: "Plan een intake — we adviseren je eerlijk wat bij je past. Liever per losse les?",
+      body: "Plan een proefles — we adviseren je eerlijk wat bij je past. Liever per losse les?",
       body2: "Dat kan ook, vanaf €59 per rijles van 60 minuten.",
-      cta: "Plan een intake",
+      cta: "Plan een proefles",
     },
     noWaitlistBadge: "Geen wachtlijst · direct starten",
     regulier: [
@@ -152,7 +125,7 @@ export const nl = {
         forWhom: "Voor wie: nieuw achter het stuur en rustig wil opbouwen.",
         price: 595,
         features: [
-          "Intake om te starten",
+          "Proefles om te starten",
           "10 rijlessen van 60 minuten",
           "Persoonlijk lesplan op jouw niveau",
           "Avond- en weekendlessen mogelijk",
@@ -198,7 +171,7 @@ export const nl = {
         forWhom: "Voor wie snel wil starten en in een compact tempo wil leren.",
         price: 895,
         features: [
-          "Intake om te starten",
+          "Proefles om te starten",
           "15 intensieve rijlessen",
           "Lessen kort achter elkaar gepland",
           "In weken, niet in maanden",
@@ -237,19 +210,117 @@ export const nl = {
       },
     ],
   },
-  // USP-balk direct onder de hero — items aan/uit te zetten via src/lib/config/trustBar.ts
+  // Compacte USP/vertrouwen-balk — items aan/uit te zetten via src/lib/config/trustBar.ts
   trustBar: {
-    noWaitlist: "Geen wachtlijst — direct starten",
-    bilingual: "Les in NL & EN",
+    experience: "13+ jaar ervaring",
+    noWaitlist: "Geen wachtlijst",
+    personalGuidance: "Vaste persoonlijke begeleiding",
+    manualAutomatic: "Schakel & automaat",
+    // Google-beoordeling — pas SHOW_GOOGLE_REVIEW aan in src/lib/config/googleReview.ts zodra
+    // dit onderbouwd is met een echt cijfer en aantal reviews.
+    googleReviewSuffix: "op Google",
+  },
+  trainingChoice: {
+    eyebrow: "Rijopleiding",
+    heading: "Kies de rijopleiding die bij jou past.",
+    items: [
+      {
+        id: "schakel",
+        icon: "gear" as const,
+        title: "Schakel",
+        description: "Leer volledig zelfstandig rijden en schakelen.",
+        linkLabel: "Meer over schakel",
+        // VUL IN: link naar eigen landingspagina voor schakel zodra die bestaat.
+        href: "#",
+        color: "blue" as const,
+      },
+      {
+        id: "automaat",
+        icon: "car" as const,
+        title: "Automaat",
+        description: "Comfortabel en ontspannen leren rijden zonder schakelen.",
+        linkLabel: "Meer over automaat",
+        // VUL IN: link naar eigen landingspagina voor automaat zodra die bestaat.
+        href: "#",
+        color: "red" as const,
+      },
+      {
+        id: "spoed",
+        icon: "bolt" as const,
+        title: "Spoedopleiding",
+        description: "Snel je rijbewijs nodig? Volg een intensief traject richting je examen.",
+        linkLabel: "Bekijk spoedopleiding",
+        href: "/spoedcursus",
+        color: "blue" as const,
+      },
+    ],
+  },
+  // Compacte pakketten-teaser op de homepage. Prijzen/inhoud zijn nog placeholders (// VUL IN),
+  // op één plek hier aan te passen. De volledige, uitgebreide pakketten (met regulier/spoed-
+  // toggle en bevestigde prijzen) staan los op /rijlespakketten — die blijven ongewijzigd.
+  packagesTeaser: {
+    eyebrow: "Rijlespakketten",
+    heading: "Kies je pakket.",
+    lead: "Drie heldere pakketten. Geen kleine lettertjes.",
+    badge: "Populair",
+    from: "vanaf",
+    items: [
+      {
+        id: "start",
+        name: "Start",
+        lessons: "20 rijlessen",
+        // VUL IN: definitieve prijs.
+        price: "VUL IN",
+        features: ["20 rijlessen", "Persoonlijk lesplan", "Vaste begeleiding"],
+        cta: "Kies Start",
+        featured: false,
+      },
+      {
+        id: "populair",
+        name: "Populair",
+        lessons: "30 rijlessen",
+        // VUL IN: definitieve prijs.
+        price: "VUL IN",
+        features: ["30 rijlessen", "Persoonlijk lesplan", "Tussentijdse toets", "Examenbegeleiding"],
+        cta: "Kies Populair",
+        featured: true,
+      },
+      {
+        id: "compleet",
+        name: "Compleet",
+        lessons: "40 rijlessen",
+        // VUL IN: definitieve prijs.
+        price: "VUL IN",
+        // VUL IN: bevestig de exacte inclusief-lijst voor dit pakket — onderstaande is een voorstel.
+        features: ["40 rijlessen", "Persoonlijk lesplan", "Examenbegeleiding", "Voorrang bij inplannen"],
+        cta: "Kies Compleet",
+        featured: false,
+      },
+    ],
+    perLesson: "Liever per les betalen? Dat kan ook, vanaf €59 per rijles van 60 minuten.",
+    note: {
+      heading: "Twijfel je welk pakket bij jou past?",
+      body: "Plan een proefles. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
+      cta: "Plan mijn proefles →",
+    },
   },
   serviceArea: {
     eyebrow: "Werkgebied",
-    heading1: "Waar wij",
-    headingAccent: "lesgeven",
-    // VUL IN: echte plaats(en)/regio waar daadwerkelijk lesgegeven wordt — belangrijk voor lokale vindbaarheid (SEO).
-    lead: "Wij verzorgen rijlessen in [plaatsnaam invullen] en omliggende plaatsen.",
-    cities: ["[Plaatsnaam invullen]", "[Plaatsnaam invullen]", "[Plaatsnaam invullen]"],
-    note: "* Placeholder — vul hier het echte werkgebied (stad/regio) in.",
+    heading1: "Rijles bij jou",
+    headingAccent: "in de buurt",
+    lead: "Drive More geeft rijles in onder andere:",
+    // Losse landingspagina's per plaats (/rijschool-<slug>) volgen later — links wijzen er
+    // nu al naartoe zodat er niets meer aangepast hoeft te worden zodra die pagina's er zijn.
+    cities: [
+      { name: "Dordrecht", slug: "dordrecht" },
+      { name: "Zwijndrecht", slug: "zwijndrecht" },
+      { name: "Papendrecht", slug: "papendrecht" },
+      { name: "Sliedrecht", slug: "sliedrecht" },
+      { name: "Hendrik-Ido-Ambacht", slug: "hendrik-ido-ambacht" },
+      { name: "Alblasserdam", slug: "alblasserdam" },
+      { name: "Barendrecht", slug: "barendrecht" },
+      { name: "Ridderkerk", slug: "ridderkerk" },
+    ],
   },
   why: {
     eyebrow: "Waarom Drive More",
@@ -258,52 +329,68 @@ export const nl = {
     heading2: "tempo.",
     items: [
       {
-        title: "Echt maatwerk",
-        body: "Elke leerling leert anders. Daarom stemmen we elke les af op jouw niveau, doelen en tempo.",
+        icon: "person" as const,
+        title: "Vaste begeleiding",
+        body: "Geen steeds wisselende aanpak.",
         color: "red" as const,
       },
       {
-        title: "Persoonlijke begeleiding",
-        body: "Eén vaste, geduldige instructeur die je écht leert kennen en je stap voor stap zelfverzekerd maakt.",
+        icon: "clipboard" as const,
+        title: "Persoonlijk lesplan",
+        body: "Je rijdt op jouw niveau en tempo.",
         color: "blue" as const,
       },
       {
-        title: "Flexibel inplannen",
-        body: "Lessen overdag, 's avonds of in het weekend — ingepland rond jouw schema, niet andersom.",
+        icon: "calendar" as const,
+        title: "Flexibel plannen",
+        body: "We kijken samen naar een passend lesschema.",
         color: "red" as const,
+      },
+      {
+        icon: "shield" as const,
+        title: "Eerlijke begeleiding",
+        body: "Geen onnodige lessen; we kijken naar wat jij daadwerkelijk nodig hebt.",
+        color: "blue" as const,
       },
     ],
   },
-  reviews: {
-    eyebrow: "Ervaringen",
-    heading1: "Leerlingen die",
-    headingAccent: "reden",
-    heading2: "zoals jij.",
-    lead: "Echte verhalen volgen — onderstaande zijn voorbeelden.*",
-    note: "* Placeholder reviews — worden vervangen door echte ervaringen.",
+  lessonCars: {
+    eyebrow: "Onze lesauto's",
+    heading: "Kies wat bij jou past.",
+    // FOTO'S: de fotoplekken hieronder tonen nu een nette illustratieve placeholder
+    // (geen echte autofoto). Vervang zodra er echte foto's van de Cupra Formentor en
+    // Volkswagen Golf 8 zijn — zie /public en photoAlt hieronder.
     items: [
       {
-        text: "In één keer geslaagd. De lessen waren echt op mij afgestemd en ik voelde me nooit opgejaagd. Mouad legt alles rustig uit.",
-        name: "Sara",
-        city: "Rotterdam",
-        tag: "Geslaagd in 1x",
-        initials: "S",
+        id: "automaat",
+        badge: "Automaat",
+        carName: "Cupra Formentor",
+        description: "Comfortabel, modern en ontspannen leren rijden.",
+        cta: "Rijles in automaat →",
+        href: "/contact",
+        photoAlt: "VUL IN: foto van de Cupra Formentor lesauto",
+        color: "red" as const,
       },
       {
-        text: "Ik had veel faalangst. Door de rust en het geduld kon ik mijn examen kalm en met vertrouwen rijden. Echt aangeraden!",
-        name: "Youssef",
-        city: "Den Haag",
-        tag: "Faalangstbegeleiding",
-        initials: "Y",
-      },
-      {
-        text: "Spoedcursus gedaan en binnen een paar weken mijn rijbewijs. Strak geregeld van begin tot eind, zeker doen.",
-        name: "Lisa",
-        city: "Dordrecht",
-        tag: "Spoedcursus",
-        initials: "L",
+        id: "schakel",
+        badge: "Schakel",
+        carName: "Volkswagen Golf 8",
+        description: "Leer volledig zelfstandig schakelen en autorijden.",
+        cta: "Rijles in schakel →",
+        href: "/contact",
+        photoAlt: "VUL IN: foto van de Volkswagen Golf 8 lesauto",
+        color: "blue" as const,
       },
     ],
+  },
+  // Reviewdata (namen/tekst/rating) staat in src/lib/config/reviews.ts (REVIEWS) — klaar
+  // om later te vervangen door een Google Reviews-koppeling. Hier alleen de sectietekst.
+  reviews: {
+    eyebrow: "Ervaringen",
+    heading1: "Wat leerlingen over",
+    headingAccent: "Drive More",
+    heading2: "zeggen.",
+    cta: "Bekijk alle reviews →",
   },
   about: {
     eyebrow: "Over ons",
@@ -324,7 +411,7 @@ export const nl = {
     heading1: "Klaar om te",
     headingAccent: "starten",
     heading2: "?",
-    lead: "Plan je intake of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
+    lead: "Plan je proefles of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
     lowThreshold: "Nog twijfels? Stuur ons gewoon een appje — geen verplichtingen.",
     form: {
       naam: "Naam",
@@ -332,7 +419,7 @@ export const nl = {
       email: "E-mail",
       interesse: "Waarvoor neem je contact op?",
       interesseOptions: [
-        "Intake",
+        "Proefles",
         "Rijlespakket",
         "Spoedcursus",
         "Faalangstbegeleiding",
@@ -353,6 +440,18 @@ export const nl = {
       phone: { label: "Bellen", sub: "06 11206001" },
       email: { label: "E-mail", sub: "contact@rijschooldrivemore.nl" },
     },
+  },
+  // Compacte eind-CTA vlak boven de footer (homepage) — los van `contact`, dat blijft
+  // de hero-tekst van de losse /contact-pagina.
+  endCta: {
+    eyebrow: "Aan de slag",
+    heading1: "Klaar om achter het stuur te",
+    headingAccent: "stappen",
+    heading2: "?",
+    lead: "Plan je proefles en ontdek welk rijtraject bij jou past.",
+    cta: "Plan mijn proefles →",
+    whatsappPrefix: "Liever eerst iets vragen?",
+    whatsappLink: "WhatsApp ons.",
   },
   footer: {
     tagline: "Rijschool Drive More — persoonlijke rijlessen op maat. Jouw weg naar je rijbewijs, op jouw tempo.",
@@ -388,7 +487,7 @@ export const nl = {
     copyright: "Rijschool Drive More",
   },
   mobileCta: {
-    plan: "Plan intake",
+    plan: "Plan proefles",
     whatsapp: "WhatsApp",
   },
   faq: {
@@ -397,24 +496,36 @@ export const nl = {
     headingAccent: "weten",
     items: [
       {
-        q: "Hoeveel lessen heb ik nodig?",
-        a: "Dat verschilt per persoon — tijdens je intake geven we een eerlijke inschatting. Voor veel leerlingen past ons Drive More-pakket (20 lessen) goed.",
+        q: "Hoeveel rijlessen heb ik nodig?",
+        a: "Dat verschilt per persoon — tijdens je proefles geven we een eerlijke inschatting. Voor veel leerlingen past een pakket van 20 tot 30 lessen goed.",
       },
       {
-        q: "Kan ik in een automaat rijden?",
-        a: "Ja, schakel én automaat. Tijdens je intake adviseren we wat het beste past.",
+        q: "Kan ik direct beginnen met rijlessen?",
+        a: "In veel gevallen wel. Plan een proefles en we bekijken samen wanneer je kunt starten.",
       },
       {
-        q: "Bieden jullie een spoedcursus aan?",
+        q: "Geven jullie automaat- en schakelrijlessen?",
+        a: "Ja, beide. Tijdens je proefles adviseren we wat het beste bij jou past.",
+      },
+      {
+        q: "Kan ik mijn rijopleiding in termijnen betalen?",
+        a: "Neem contact met ons op om de mogelijkheden te bespreken — we denken graag met je mee.",
+      },
+      {
+        q: "Hoe lang duurt een rijles?",
+        a: "Een rijles duurt bij ons altijd 60 minuten — een vol lesuur, geen 50 minuten 'lesuur'.",
+      },
+      {
+        q: "In welke plaatsen geeft Drive More rijles?",
+        a: "We geven rijles in onder andere Dordrecht, Zwijndrecht, Papendrecht, Sliedrecht, Hendrik-Ido-Ambacht, Alblasserdam, Barendrecht en Ridderkerk.",
+      },
+      {
+        q: "Bieden jullie spoedopleidingen aan?",
         a: "Zeker. In een compact, intensief traject naar je examen — soms in een paar weken.",
       },
       {
-        q: "In welke talen kan ik les krijgen?",
-        a: "Nederlands en Engels.",
-      },
-      {
-        q: "Hoe snel kan ik starten?",
-        a: "Vaak al binnen een week terecht voor je intake.",
+        q: "Wat gebeurt er tijdens de proefles?",
+        a: "Tijdens je proefles rijd je een stukje, zodat we je niveau kunnen inschatten. Daarna geven we je eerlijk advies over welk traject en tempo het beste bij je past.",
       },
     ],
   },

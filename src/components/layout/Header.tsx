@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -66,15 +67,14 @@ export function Header() {
             aria-label="Drive More home"
             onClick={() => setMenuOpen(false)}
           >
-            <span className="font-sora font-black text-[24px] leading-none tracking-tight">
-              <span className="text-brand-red">D</span>
-              <span className="text-brand-blue">M</span>
+            <span className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <Image src="/drivemorelogo.jpeg" alt="Drive More logo" fill sizes="40px" className="object-cover" priority />
             </span>
-            <span className="hidden sm:block leading-none">
-              <span className={`font-sora font-bold text-[13px] tracking-[0.14em] transition-colors duration-300 ${lightMode ? "text-white" : "text-brand-ink"}`}>
+            <span className="leading-none">
+              <span className={`block font-sora font-bold text-[12px] sm:text-[13px] tracking-[0.13em] transition-colors duration-300 ${lightMode ? "text-white" : "text-brand-ink"}`}>
                 DRIVE MORE
               </span>
-              <span className={`block font-inter text-[9px] tracking-[0.22em] font-semibold uppercase transition-colors duration-300 ${lightMode ? "text-white/70" : "text-brand-ink-soft"}`}>
+              <span className={`block font-inter text-[8.5px] sm:text-[9px] tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${lightMode ? "text-white/70" : "text-brand-ink-soft"}`}>
                 RIJSCHOOL · {lang.toUpperCase()}
               </span>
             </span>

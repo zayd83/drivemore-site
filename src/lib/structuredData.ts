@@ -10,12 +10,12 @@ const ADDRESS = {
   addressCountry: "NL",
 };
 
-export function getLocalBusinessSchema() {
+export function getLocalBusinessSchema(options?: { areaServed?: string; url?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "DrivingSchool",
     name: "Rijschool Drive More",
-    url: SITE_URL,
+    url: options?.url ?? SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo.png`,
     telephone: `+31${CONTACT.phone.slice(1)}`,
@@ -24,8 +24,8 @@ export function getLocalBusinessSchema() {
       "@type": "PostalAddress",
       ...ADDRESS,
     },
-    // VUL IN: pas aan naar het echte werkgebied (zie ook src/lib/i18n — serviceArea.cities).
-    areaServed: "Plaatsnaam e.o.",
+    // VUL IN: pas aan naar het echte (bredere) werkgebied als er geen specifieke plaats is opgegeven.
+    areaServed: options?.areaServed ?? "Plaatsnaam e.o.",
   };
 }
 
