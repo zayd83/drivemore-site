@@ -1,3 +1,5 @@
+import { BUSINESS } from "@/lib/config/business";
+
 export const nl = {
   meta: {
     siteName: "Rijschool Drive More",
@@ -98,114 +100,55 @@ export const nl = {
     ctaPrimary: "Vraag de mogelijkheden →",
     ctaSecondary: "Bekijk spoedpakketten",
   },
+  // Echte pakketten en prijzen — op één plek aan te passen.
   packages: {
     eyebrow: "Rijlespakketten",
     heading1: "Kies je route naar je",
     headingAccent: "rijbewijs",
-    lead: "Drie heldere pakketten — en geen van allen in beton gegoten. Maatwerk is bij ons het startpunt, niet het meerwerk.",
-    toggle: {
-      regular: "Regulier",
-      intensive: "Spoed",
-    },
-    badge: "Meest gekozen",
+    lead: "Vijf heldere pakketten — kies wat past bij jouw tempo en doel.",
     from: "vanaf",
-    cta: "Kies",
+    cta: "Plan een proefles →",
+    perLesson: "Liever per les betalen? Dat kan ook — €65 per rijles van 50 minuten, of €78 per 60 minuten.",
     note: {
-      heading: "Twijfel je welk pakket past?",
-      body: "Plan een proefles — we adviseren je eerlijk wat bij je past. Liever per losse les?",
-      body2: "Dat kan ook, vanaf €59 per rijles van 60 minuten.",
-      cta: "Plan een proefles",
+      heading: "Twijfel je welk pakket bij jou past?",
+      body: "Plan een proefles. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
+      cta: "Plan mijn proefles →",
     },
     noWaitlistBadge: "Geen wachtlijst · direct starten",
-    regulier: [
+    items: [
       {
-        label: "Stap 01 · Starten",
-        name: "Drive",
-        tagline: "Maak kennis met het rijden en bouw rustig je basis op.",
-        forWhom: "Voor wie: nieuw achter het stuur en rustig wil opbouwen.",
-        price: 595,
-        features: [
-          "Proefles om te starten",
-          "10 rijlessen van 60 minuten",
-          "Persoonlijk lesplan op jouw niveau",
-          "Avond- en weekendlessen mogelijk",
-        ],
+        name: "Voordelig starten",
+        lessons: "15 rijlessen",
+        price: 795,
+        features: ["15 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: false,
       },
       {
-        label: "Stap 02 · Doorpakken",
-        name: "Drive More",
-        tagline: "De complete route, van je eerste les tot en met je examen.",
-        forWhom: "Voor wie de complete route in één keer wil regelen, inclusief toets en examen.",
-        price: 1295,
-        features: [
-          "Alles uit Drive",
-          "20 rijlessen van 60 minuten",
-          "Tussentijdse toets inbegrepen",
-          "Begeleiding t/m je praktijkexamen",
-          "Gratis ophalen en thuisbrengen",
-        ],
+        name: "Meest gekozen",
+        lessons: "25 rijlessen",
+        price: 1325,
+        features: ["25 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Examenbegeleiding"],
         featured: true,
       },
       {
-        label: "Stap 03 · Slagen",
-        name: "Drive Most",
-        tagline: "Alles geregeld. Jij hoeft je alleen op het rijden te richten.",
-        forWhom: "Voor wie alles uit handen wil geven én maximale zekerheid wil.",
-        price: 1895,
-        features: [
-          "Alles uit Drive More",
-          "30 rijlessen van 60 minuten",
-          "Praktijkexamen inbegrepen",
-          "Examentraining en faalangstbegeleiding",
-          "Voorrang bij het inplannen",
-        ],
-        featured: false,
-      },
-    ],
-    spoed: [
-      {
-        label: "Spoed · Start",
-        name: "Drive Spoed",
-        tagline: "Snel beginnen en in een compact tempo opbouwen.",
-        forWhom: "Voor wie snel wil starten en in een compact tempo wil leren.",
-        price: 895,
-        features: [
-          "Proefles om te starten",
-          "15 intensieve rijlessen",
-          "Lessen kort achter elkaar gepland",
-          "In weken, niet in maanden",
-        ],
+        name: "Premium",
+        lessons: "35 rijlessen",
+        price: 1855,
+        features: ["35 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
         featured: false,
       },
       {
-        label: "Spoed · Compleet",
-        name: "Drive More Spoed",
-        tagline: "Het complete spoedtraject tot en met je examen.",
-        forWhom: "Voor wie snel én compleet naar het examen toe wil, inclusief toets.",
-        price: 1795,
-        features: [
-          "Alles uit Drive Spoed",
-          "25 intensieve rijlessen",
-          "Tussentijdse toets inbegrepen",
-          "Versneld praktijkexamen geregeld",
-          "Gratis ophalen en thuisbrengen",
-        ],
-        featured: true,
+        name: "Extra zekerheid",
+        lessons: "40 rijlessen",
+        price: 2120,
+        features: ["40 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
+        featured: false,
       },
       {
-        label: "Spoed · Max",
-        name: "Drive Most Spoed",
-        tagline: "Maximaal tempo, alles inclusief — jij focust op slagen.",
-        forWhom: "Voor wie maximale snelheid wil met maximale zekerheid, examen inbegrepen.",
-        price: 2495,
-        features: [
-          "Alles uit Drive More Spoed",
-          "35 intensieve rijlessen",
-          "Praktijkexamen inbegrepen",
-          "Examentraining en faalangstbegeleiding",
-          "Hoogste prioriteit bij inplannen",
-        ],
+        name: "Maximale zekerheid",
+        lessons: "50 rijlessen",
+        price: 2650,
+        features: ["50 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Maximale voorbereiding en rust"],
         featured: false,
       },
     ],
@@ -258,52 +201,6 @@ export const nl = {
   // Compacte pakketten-teaser op de homepage. Prijzen/inhoud zijn nog placeholders (// VUL IN),
   // op één plek hier aan te passen. De volledige, uitgebreide pakketten (met regulier/spoed-
   // toggle en bevestigde prijzen) staan los op /rijlespakketten — die blijven ongewijzigd.
-  packagesTeaser: {
-    eyebrow: "Rijlespakketten",
-    heading: "Kies je pakket.",
-    lead: "Drie heldere pakketten. Geen kleine lettertjes.",
-    badge: "Populair",
-    from: "vanaf",
-    items: [
-      {
-        id: "start",
-        name: "Start",
-        lessons: "20 rijlessen",
-        // VUL IN: definitieve prijs.
-        price: "VUL IN",
-        features: ["20 rijlessen", "Persoonlijk lesplan", "Vaste begeleiding"],
-        cta: "Kies Start",
-        featured: false,
-      },
-      {
-        id: "populair",
-        name: "Populair",
-        lessons: "30 rijlessen",
-        // VUL IN: definitieve prijs.
-        price: "VUL IN",
-        features: ["30 rijlessen", "Persoonlijk lesplan", "Tussentijdse toets", "Examenbegeleiding"],
-        cta: "Kies Populair",
-        featured: true,
-      },
-      {
-        id: "compleet",
-        name: "Compleet",
-        lessons: "40 rijlessen",
-        // VUL IN: definitieve prijs.
-        price: "VUL IN",
-        // VUL IN: bevestig de exacte inclusief-lijst voor dit pakket — onderstaande is een voorstel.
-        features: ["40 rijlessen", "Persoonlijk lesplan", "Examenbegeleiding", "Voorrang bij inplannen"],
-        cta: "Kies Compleet",
-        featured: false,
-      },
-    ],
-    perLesson: "Liever per les betalen? Dat kan ook, vanaf €59 per rijles van 60 minuten.",
-    note: {
-      heading: "Twijfel je welk pakket bij jou past?",
-      body: "Plan een proefles. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
-      cta: "Plan mijn proefles →",
-    },
-  },
   serviceArea: {
     eyebrow: "Werkgebied",
     heading1: "Rijles bij jou",
@@ -357,9 +254,6 @@ export const nl = {
   lessonCars: {
     eyebrow: "Onze lesauto's",
     heading: "Kies wat bij jou past.",
-    // FOTO'S: de fotoplekken hieronder tonen nu een nette illustratieve placeholder
-    // (geen echte autofoto). Vervang zodra er echte foto's van de Cupra Formentor en
-    // Volkswagen Golf 8 zijn — zie /public en photoAlt hieronder.
     items: [
       {
         id: "automaat",
@@ -368,7 +262,8 @@ export const nl = {
         description: "Comfortabel, modern en ontspannen leren rijden.",
         cta: "Rijles in automaat →",
         href: "/contact",
-        photoAlt: "VUL IN: foto van de Cupra Formentor lesauto",
+        photoSrc: "/cupra-automaat.jpg",
+        photoAlt: "Groene Cupra Formentor lesauto van Rijschool Drive More",
         color: "red" as const,
       },
       {
@@ -378,7 +273,8 @@ export const nl = {
         description: "Leer volledig zelfstandig schakelen en autorijden.",
         cta: "Rijles in schakel →",
         href: "/contact",
-        photoAlt: "VUL IN: foto van de Volkswagen Golf 8 lesauto",
+        photoSrc: "/golf8-schakel.jpg",
+        photoAlt: "Zwarte Volkswagen Golf 8 lesauto van Rijschool Drive More",
         color: "blue" as const,
       },
     ],
@@ -482,8 +378,7 @@ export const nl = {
       error: "Er ging iets mis. Probeer het later opnieuw.",
       privacy: "Geen spam. Afmelden kan altijd.",
     },
-    // VUL IN: echt KvK-nummer.
-    kvk: "KvK: VUL IN",
+    kvk: `KvK ${BUSINESS.kvk}`,
     copyright: "Rijschool Drive More",
   },
   mobileCta: {

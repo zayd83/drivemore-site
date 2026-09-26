@@ -1,20 +1,13 @@
 import { CONTACT } from "@/lib/utils";
+import { BUSINESS } from "@/lib/config/business";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://rijschooldrivemore.nl";
-
-// VUL IN: echt vestigingsadres van de rijschool — nodig voor correcte lokale SEO (Google Bedrijfsprofiel/Maps).
-const ADDRESS = {
-  streetAddress: "Straatnaam 1", // VUL IN: echte straatnaam + huisnummer
-  postalCode: "1234 AB", // VUL IN: echte postcode
-  addressLocality: "Plaatsnaam", // VUL IN: echte plaats/stad
-  addressCountry: "NL",
-};
 
 export function getLocalBusinessSchema(options?: { areaServed?: string; url?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "DrivingSchool",
-    name: "Rijschool Drive More",
+    name: BUSINESS.name,
     url: options?.url ?? SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo.png`,
@@ -22,10 +15,25 @@ export function getLocalBusinessSchema(options?: { areaServed?: string; url?: st
     email: CONTACT.email,
     address: {
       "@type": "PostalAddress",
-      ...ADDRESS,
+      streetAddress: BUSINESS.streetAddress,
+      postalCode: BUSINESS.postalCode,
+      addressLocality: BUSINESS.addressLocality,
+      addressCountry: BUSINESS.addressCountry,
     },
-    // VUL IN: pas aan naar het echte (bredere) werkgebied als er geen specifieke plaats is opgegeven.
-    areaServed: options?.areaServed ?? "Plaatsnaam e.o.",
+    identifier: {
+      "@type": "PropertyValue",
+      name: "KvK",
+      value: BUSINESS.kvk,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
+    areaServed: options?.areaServed ?? BUSINESS.areaServed,
   };
 }
 

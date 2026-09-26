@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { TrainingChoice } from "@/components/sections/TrainingChoice";
-import { PackagesTeaser } from "@/components/sections/PackagesTeaser";
+import { PackagesPreview } from "@/components/sections/PackagesPreview";
 import { WhyDriveMore } from "@/components/sections/WhyDriveMore";
 import { LessonCars } from "@/components/sections/LessonCars";
 import { Reviews } from "@/components/sections/Reviews";
@@ -35,7 +35,7 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <TrainingChoice />
-      <PackagesTeaser />
+      <PackagesPreview />
       <WhyDriveMore />
       <LessonCars />
       {SHOW_REVIEWS && <Reviews />}

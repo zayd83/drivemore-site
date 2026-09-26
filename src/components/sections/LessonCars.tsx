@@ -1,21 +1,11 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
-
-function CarIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 11l1.4-4.2A2 2 0 0 1 8.3 5.5h7.4a2 2 0 0 1 1.9 1.3L19 11" />
-      <rect x="3" y="11" width="18" height="6" rx="2" />
-      <circle cx="7.5" cy="17.5" r="1.6" />
-      <circle cx="16.5" cy="17.5" r="1.6" />
-    </svg>
-  );
-}
 
 export function LessonCars() {
   const { t } = useLanguage();
@@ -48,32 +38,18 @@ export function LessonCars() {
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-brand-lg overflow-hidden aspect-[4/5] sm:aspect-[4/4.5] group"
+              className="relative rounded-brand-lg overflow-hidden aspect-[4/3] group"
             >
-              {/* Photo placeholder — replace with real photography (see photoAlt / i18n comment) */}
-              <div
-                role="img"
-                aria-label={item.photoAlt}
-                className="absolute inset-0 bg-gradient-to-br from-[#2a3344] to-[#0E1320]"
-              >
-                <div
-                  className={`absolute -top-10 -right-10 w-56 h-56 rounded-blob opacity-20 ${
-                    item.color === "red" ? "bg-brand-red" : "bg-brand-blue"
-                  }`}
-                />
-                <div className="absolute -bottom-16 -left-10 w-64 h-64 rounded-blob bg-white/[0.06]" />
-                <div className="absolute inset-0 grid place-items-center">
-                  <div className="w-28 h-28 sm:w-36 sm:h-36 text-white/15 transition-transform duration-500 group-hover:scale-105">
-                    <CarIcon />
-                  </div>
-                </div>
-                <span className="absolute top-4 right-4 font-sora font-semibold text-[10px] tracking-[0.14em] uppercase text-white/40">
-                  Foto volgt
-                </span>
-              </div>
+              <Image
+                src={item.photoSrc}
+                alt={item.photoAlt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
 
               {/* Bottom scrim + content */}
-              <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-brand-ink via-brand-ink/70 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-brand-ink/90 via-brand-ink/40 to-transparent pointer-events-none" />
               <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-7">
                 <span
                   className={`inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 font-sora font-bold text-[11px] tracking-[0.1em] uppercase text-white mb-3 ${

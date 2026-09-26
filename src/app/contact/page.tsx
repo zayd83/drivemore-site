@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/utils";
+import { BUSINESS, OPENING_HOURS } from "@/lib/config/business";
 
 export default function ContactPage() {
   const { t } = useLanguage();
@@ -300,22 +301,29 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Hours / note */}
+            {/* Address */}
             <div className="mt-8 p-5 bg-brand-light rounded-brand-lg border border-brand-line">
+              <h3 className="font-sora font-bold text-[15px] text-brand-ink">Adres</h3>
+              <p className="mt-2 text-[14px] text-brand-ink-body leading-relaxed">
+                {BUSINESS.name}
+                <br />
+                {BUSINESS.streetAddress}
+                <br />
+                {BUSINESS.postalCode} {BUSINESS.addressLocality}
+              </p>
+              <p className="mt-3 text-[12.5px] text-brand-ink-soft">KvK {BUSINESS.kvk}</p>
+            </div>
+
+            {/* Hours / note */}
+            <div className="mt-4 p-5 bg-brand-light rounded-brand-lg border border-brand-line">
               <h3 className="font-sora font-bold text-[15px] text-brand-ink">Bereikbaarheid</h3>
               <div className="mt-3 flex flex-col gap-2 text-[14px] text-brand-ink-body">
-                <div className="flex justify-between">
-                  <span>Maandag – Vrijdag</span>
-                  <span className="font-medium text-brand-ink">08:00 – 21:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Zaterdag</span>
-                  <span className="font-medium text-brand-ink">08:00 – 17:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Zondag</span>
-                  <span className="font-medium text-brand-ink">Op aanvraag</span>
-                </div>
+                {OPENING_HOURS.map((row) => (
+                  <div key={row.day} className="flex justify-between">
+                    <span>{row.day}</span>
+                    <span className="font-medium text-brand-ink">{row.hours}</span>
+                  </div>
+                ))}
               </div>
               <p className="mt-4 text-[12.5px] text-brand-ink-soft">
                 Via WhatsApp reageren we ook buiten kantoortijden.

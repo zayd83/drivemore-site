@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
@@ -28,11 +28,8 @@ function CheckIcon({ color }: { color: "red" | "blue" }) {
 
 export function PackagesPreview() {
   const { t } = useLanguage();
-  const [mode, setMode] = useState<"regulier" | "spoed">("regulier");
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  const packages = mode === "regulier" ? t.packages.regulier : t.packages.spoed;
 
   return (
     <section className="py-[clamp(60px,9vw,118px)]" id="pakketten">
@@ -63,51 +60,21 @@ export function PackagesPreview() {
           <p className="mt-4 text-[clamp(15px,1.8vw,17px)] leading-[1.65] text-brand-ink-body">
             {t.packages.lead}
           </p>
-
-          {/* Toggle */}
-          <div
-            role="tablist"
-            aria-label="Soort traject"
-            className="inline-flex bg-brand-light-2 border border-brand-line rounded-full p-1.5 mt-6 gap-1"
-          >
-            {(["regulier", "spoed"] as const).map((m) => (
-              <button
-                key={m}
-                role="tab"
-                aria-selected={mode === m}
-                onClick={() => setMode(m)}
-                className={`font-sora font-semibold text-[14px] px-5 py-2.5 rounded-full transition-all duration-200 ${
-                  mode === m
-                    ? "bg-white text-brand-ink shadow-card-sm"
-                    : "text-brand-ink-soft hover:text-brand-ink"
-                }`}
-              >
-                {m === "regulier" ? t.packages.toggle.regular : t.packages.toggle.intensive}
-              </button>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Cards */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={mode}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {packages.map((pkg, i) => (
+        {/* Cards — horizontal scroll-snap: side by side on desktop, swipeable on mobile */}
+        <div className="-mx-5 md:-mx-10 px-5 md:px-10 overflow-x-auto pb-4 [scrollbar-width:thin]">
+          <div className="flex gap-5 snap-x snap-mandatory md:grid md:grid-cols-5 md:gap-5">
+            {t.packages.items.map((pkg, i) => (
               <motion.article
                 key={pkg.name}
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative flex flex-col rounded-brand-lg transition-all duration-300 ${
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`relative flex flex-col rounded-brand-lg transition-all duration-300 flex-shrink-0 w-[78vw] max-w-[300px] sm:w-[300px] md:w-auto md:max-w-none snap-start ${
                   pkg.featured
                     ? "p-0 md:-translate-y-3 hover:md:-translate-y-4"
-                    : "border border-brand-line bg-white p-7 hover:-translate-y-1 hover:shadow-card"
+                    : "border border-brand-line bg-white p-6 hover:-translate-y-1 hover:shadow-card"
                 }`}
                 style={
                   pkg.featured
@@ -118,78 +85,53 @@ export function PackagesPreview() {
                     : {}
                 }
               >
-                {pkg.featured && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10 font-sora font-bold text-[11px] tracking-[0.14em] uppercase text-white bg-gradient-to-r from-brand-red to-brand-blue px-4 py-1.5 rounded-full shadow-[0_10px_22px_-10px_rgba(40,60,160,0.7)] whitespace-nowrap">
-                    {t.packages.badge}
-                  </span>
-                )}
-                <div
-                  className={`flex flex-col flex-1 ${
-                    pkg.featured
-                      ? "bg-white rounded-[32px] m-0.5 p-7"
-                      : ""
-                  }`}
-                >
-                  <span className="font-sora font-semibold text-[11px] tracking-[0.14em] uppercase text-brand-ink-soft">
-                    {pkg.label}
-                  </span>
-                  <h3 className="font-sora font-extrabold text-[26px] tracking-[-0.02em] mt-2.5 text-brand-ink">
+                <div className={`flex flex-col flex-1 ${pkg.featured ? "bg-white rounded-[32px] m-0.5 p-6" : ""}`}>
+                  <h3 className="font-sora font-extrabold text-[21px] tracking-[-0.02em] text-brand-ink">
                     {pkg.name}
                   </h3>
-                  <p className="text-[14.5px] text-brand-ink-soft leading-relaxed mt-1.5 min-h-[44px]">
-                    {pkg.tagline}
-                  </p>
-                  <p
-                    className={`text-[13px] leading-relaxed mt-1 font-medium ${
-                      pkg.featured ? "text-brand-ink-soft" : "text-brand-ink-soft/90"
-                    }`}
-                  >
-                    {pkg.forWhom}
-                  </p>
-                  <div className="font-sora font-extrabold text-[clamp(32px,4vw,40px)] tracking-[-0.02em] mt-4 flex items-baseline gap-2">
-                    <span className="font-inter font-medium text-[13px] text-brand-ink-soft">
+                  <p className="text-[13px] text-brand-ink-soft font-medium mt-1">{pkg.lessons}</p>
+                  <div className="font-sora font-extrabold text-[clamp(26px,3.4vw,32px)] tracking-[-0.02em] mt-4 flex items-baseline gap-2">
+                    <span className="font-inter font-medium text-[12.5px] text-brand-ink-soft">
                       {t.packages.from}
                     </span>
                     €{pkg.price.toLocaleString("nl-NL")}
                   </div>
-                  <ul className="mt-5 mb-6 space-y-3 flex-1">
+                  <ul className="mt-5 mb-6 space-y-2.5 flex-1">
                     {pkg.features.map((feat, fi) => (
-                      <li
-                        key={fi}
-                        className="flex gap-3 text-[14.5px] leading-[1.45] text-[#2a3344]"
-                      >
+                      <li key={fi} className="flex gap-2.5 text-[13.5px] leading-[1.4] text-[#2a3344]">
                         <CheckIcon color={pkg.featured ? "red" : "blue"} />
-                        <span className={fi === 0 && feat.startsWith("Alles") || feat.startsWith("Everything") ? "font-semibold text-brand-ink" : ""}>
-                          {feat}
-                        </span>
+                        {feat}
                       </li>
                     ))}
                   </ul>
                   <MagneticButton className="mt-auto w-full">
-                    <Button href="/contact" variant={pkg.featured ? "primary" : "secondary"} className="w-full">
-                      {t.packages.cta} {pkg.name}
+                    <Button href="/contact" variant={pkg.featured ? "primary" : "secondary"} className="w-full" size="md">
+                      {t.packages.cta}
                     </Button>
                   </MagneticButton>
                 </div>
               </motion.article>
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </div>
+
+        <p className="mt-8 text-center text-[14px] text-brand-ink-body">
+          {t.packages.perLesson}
+        </p>
 
         {/* Note */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5 }}
-          className="mt-10 bg-brand-light border border-brand-line rounded-brand-lg p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between"
+          className="mt-6 bg-brand-light border border-brand-line rounded-brand-lg p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between"
         >
           <div>
             <h3 className="font-sora font-bold text-[19px] text-brand-ink">
               {t.packages.note.heading}
             </h3>
             <p className="mt-1.5 text-[15px] text-brand-ink-body leading-relaxed">
-              {t.packages.note.body}{" "}
-              <strong className="text-brand-ink">{t.packages.note.body2}</strong>
+              {t.packages.note.body}
             </p>
           </div>
           <MagneticButton className="flex-shrink-0">
