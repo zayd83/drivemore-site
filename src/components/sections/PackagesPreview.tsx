@@ -62,8 +62,12 @@ export function PackagesPreview() {
           </p>
         </motion.div>
 
-        {/* Cards — horizontal scroll-snap: side by side on desktop, swipeable on mobile */}
-        <div className="-mx-5 md:-mx-10 px-5 md:px-10 overflow-x-auto pb-4 [scrollbar-width:thin]">
+        {/* Cards — horizontal scroll-snap: side by side on desktop, swipeable on mobile.
+            pt-8 + -mt-8 (cancels out) gives the "Meest gekozen" ribbon room to render —
+            it pokes above the card via a negative top offset (more so on hover-lift), and
+            setting overflow-x here implicitly clips overflow-y too, so without this
+            padding-for-headroom trick the badge gets cut off. */}
+        <div className="-mx-5 md:-mx-10 px-5 md:px-10 pt-8 -mt-8 overflow-x-auto pb-4 [scrollbar-width:thin]">
           <div className="flex gap-5 snap-x snap-mandatory md:grid md:grid-cols-5 md:gap-5">
             {t.packages.items.map((pkg, i) => (
               <motion.article
