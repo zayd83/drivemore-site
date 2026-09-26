@@ -85,6 +85,11 @@ export function PackagesPreview() {
                     : {}
                 }
               >
+                {pkg.featured && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10 font-sora font-bold text-[11px] tracking-[0.14em] uppercase text-white bg-gradient-to-r from-brand-red to-brand-blue px-4 py-1.5 rounded-full shadow-[0_10px_22px_-10px_rgba(40,60,160,0.7)] whitespace-nowrap">
+                    {t.packages.badge}
+                  </span>
+                )}
                 <div className={`flex flex-col flex-1 ${pkg.featured ? "bg-white rounded-[32px] m-0.5 p-6" : ""}`}>
                   <h3 className="font-sora font-extrabold text-[21px] tracking-[-0.02em] text-brand-ink">
                     {pkg.name}
