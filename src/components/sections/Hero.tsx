@@ -46,6 +46,7 @@ export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [contentVisible, setContentVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -67,16 +68,32 @@ export function Hero() {
     if (reduceMotion) {
       vid.pause();
     } else {
+      // Belt-and-suspenders: some browsers ignore the autoplay attribute
+      // if it was set before the video's readyState caught up.
       vid.play().catch(() => {});
     }
   }, [reduceMotion]);
 
+  // Belt-and-suspenders for the `muted` JSX prop: some browsers only honor
+  // autoplay if `.muted`/`.defaultMuted` are set as real DOM properties before
+  // the element starts loading. A callback ref runs at commit time (before
+  // paint), which is earlier and more reliable than a useEffect.
+  const setVideoRef = (el: HTMLVideoElement | null) => {
+    videoRef.current = el;
+    if (el) {
+      el.defaultMuted = true;
+      el.muted = true;
+    }
+  };
+
+  const showVideo = !reduceMotion && !videoFailed;
+
   return (
     <section className="relative min-h-[580px] sm:min-h-[640px] md:min-h-[680px] lg:min-h-[100svh] flex flex-col justify-end overflow-hidden bg-brand-ink">
       {/* Video background — full-screen cover, autoplay + loop, poster fallback */}
-      {!reduceMotion ? (
+      {showVideo && (
         <video
-          ref={videoRef}
+          ref={setVideoRef}
           autoPlay
           muted
           loop
@@ -84,11 +101,15 @@ export function Hero() {
           preload="auto"
           poster="/hero-poster.jpg"
           aria-hidden="true"
+          onError={() => setVideoFailed(true)}
           className="absolute inset-0 w-full h-full object-cover object-center"
         >
+          <source src="/hero-video.webm" type="video/webm" />
           <source src="/Drive-more-headervideo.mp4" type="video/mp4" />
         </video>
-      ) : (
+      )}
+      {/* Poster fallback — shown for prefers-reduced-motion and if the video fails to load/play */}
+      {!showVideo && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src="/hero-poster.jpg"
