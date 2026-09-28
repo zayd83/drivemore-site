@@ -19,7 +19,7 @@ const services = [
     forWhom: "Voor wie rustig en stap voor stap wil opbouwen.",
     emphasized: false,
     body: [
-      "Bij Drive More start je niet met een standaard programma. We beginnen met een proefles om in kaart te brengen waar je staat: wat kun je al, waar zit je spanning, en hoe leer jij het liefst? Pas daarna stellen we een lesplan op — alleen voor jou.",
+      "Bij Drive More start je niet met een standaard programma. We beginnen met een intake om in kaart te brengen waar je staat: wat kun je al, waar zit je spanning, en hoe leer jij het liefst? Pas daarna stellen we een lesplan op — alleen voor jou.",
       "Elke rijles duurt 60 minuten en is gericht op concrete vooruitgang. Na elke les krijg je eerlijke, opbouwende feedback: wat ging goed, wat gaan we de volgende keer aanpakken. Zo weet je altijd waar je aan toe bent.",
     ],
     color: "blue" as const,
@@ -131,7 +131,7 @@ export default function DienstenPage() {
                       : "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover"
                   }`}
                 >
-                  Plan een proefles →
+                  Plan een intake →
                 </Link>
               </div>
               {/* Body column */}

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Rijschool Drive More",
   },
   description:
-    "Rijschool Drive More: persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie. Plan je proefles.",
+    "Rijschool Drive More: persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie. Plan je intake.",
   keywords: [
     "rijschool",
     "rijlessen",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Rijschool Drive More",
     title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
     description:
-      "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je proefles.",
+      "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake.",
   },
   twitter: {
     card: "summary_large_image",

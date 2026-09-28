@@ -24,7 +24,7 @@ export default function RijlespakkettenPage() {
             Kies je route naar je <span className="grad">rijbewijs</span>.
           </h1>
           <p className="mt-5 text-[clamp(15px,1.8vw,18px)] leading-[1.65] text-brand-ink-body max-w-[52ch]">
-            Drie heldere pakketten — zowel regulier als spoed. Alle prijzen zijn inclusief BTW en tenzij anders vermeld per los pakket. Twijfel? Plan een proefles en we adviseren je eerlijk.
+            Drie heldere pakketten — zowel regulier als spoed. Alle prijzen zijn inclusief BTW en tenzij anders vermeld per los pakket. Twijfel? Plan een intake en we adviseren je eerlijk.
           </p>
         </div>
       </section>

@@ -37,7 +37,7 @@ export function CityPageContent({ slug }: { slug: string }) {
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <MagneticButton>
-                <Button href="/contact">Plan een proefles →</Button>
+                <Button href="/contact">Plan een intake →</Button>
               </MagneticButton>
               <Button href="/rijlespakketten" variant="secondary">
                 Bekijk pakketten
@@ -58,7 +58,7 @@ export function CityPageContent({ slug }: { slug: string }) {
                 Rijlespakketten voor leerlingen uit {city.name}
               </h2>
               <p className="mt-1.5 text-[15px] text-brand-ink-body leading-relaxed">
-                Bekijk onze pakketten en kies wat bij jouw tempo en doel past — of vraag eerst een proefles aan.
+                Bekijk onze pakketten en kies wat bij jouw tempo en doel past — of vraag eerst een intake aan.
               </p>
             </div>
             <MagneticButton className="flex-shrink-0">

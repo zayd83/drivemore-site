@@ -4,7 +4,7 @@ export const nl = {
   meta: {
     siteName: "Rijschool Drive More",
     siteDescription:
-      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je proefles.",
+      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je intake.",
   },
   nav: {
     services: "Diensten",
@@ -12,7 +12,7 @@ export const nl = {
     intensive: "Spoedcursus",
     about: "Over ons",
     contact: "Contact",
-    cta: "Plan proefles",
+    cta: "Plan intake",
     langSwitch: "EN",
   },
   hero: {
@@ -29,7 +29,7 @@ export const nl = {
       { icon: "car" as const, label: "Schakel & automaat" },
       { icon: "person" as const, label: "Persoonlijke begeleiding" },
     ],
-    ctaPrimary: "Plan een proefles →",
+    ctaPrimary: "Plan een intake →",
     ctaSecondary: "Bekijk pakketten",
     replay: "Opnieuw",
   },
@@ -67,13 +67,13 @@ export const nl = {
   },
   howItWorks: {
     eyebrow: "Zo werkt het",
-    heading1: "Van eerste proefles tot",
+    heading1: "Van eerste intake tot",
     headingAccent: "rijbewijs",
     lead: "Een helder traject in vier stappen — en op elk moment afgestemd op jou.",
     steps: [
       {
         n: "01",
-        title: "Proefles",
+        title: "Intake",
         body: "We bekijken je niveau en bepalen welke aanpak bij jou past.",
       },
       {
@@ -107,12 +107,12 @@ export const nl = {
     headingAccent: "rijbewijs",
     lead: "Vijf heldere pakketten — kies wat past bij jouw tempo en doel.",
     from: "vanaf",
-    cta: "Plan een proefles →",
+    cta: "Plan een intake →",
     perLesson: "Liever per les betalen? Dat kan ook — €65 per rijles van 50 minuten, of €78 per 60 minuten.",
     note: {
       heading: "Twijfel je welk pakket bij jou past?",
-      body: "Plan een proefles. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
-      cta: "Plan mijn proefles →",
+      body: "Plan een intake. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
+      cta: "Plan mijn intake →",
     },
     noWaitlistBadge: "Geen wachtlijst · direct starten",
     badge: "Meest gekozen",
@@ -308,7 +308,7 @@ export const nl = {
     heading1: "Klaar om te",
     headingAccent: "starten",
     heading2: "?",
-    lead: "Plan je proefles of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
+    lead: "Plan je intake of stel je vraag. We reageren snel via WhatsApp, telefoon of e-mail.",
     lowThreshold: "Nog twijfels? Stuur ons gewoon een appje — geen verplichtingen.",
     form: {
       naam: "Naam",
@@ -316,7 +316,7 @@ export const nl = {
       email: "E-mail",
       interesse: "Waarvoor neem je contact op?",
       interesseOptions: [
-        "Proefles",
+        "Intake",
         "Rijlespakket",
         "Spoedcursus",
         "Faalangstbegeleiding",
@@ -345,8 +345,8 @@ export const nl = {
     heading1: "Klaar om achter het stuur te",
     headingAccent: "stappen",
     heading2: "?",
-    lead: "Plan je proefles en ontdek welk rijtraject bij jou past.",
-    cta: "Plan mijn proefles →",
+    lead: "Plan je intake en ontdek welk rijtraject bij jou past.",
+    cta: "Plan mijn intake →",
     whatsappPrefix: "Liever eerst iets vragen?",
     whatsappLink: "WhatsApp ons.",
   },
@@ -383,7 +383,7 @@ export const nl = {
     copyright: "Rijschool Drive More",
   },
   mobileCta: {
-    plan: "Plan proefles",
+    plan: "Plan intake",
     whatsapp: "WhatsApp",
   },
   faq: {
@@ -393,15 +393,15 @@ export const nl = {
     items: [
       {
         q: "Hoeveel rijlessen heb ik nodig?",
-        a: "Dat verschilt per persoon — tijdens je proefles geven we een eerlijke inschatting. Voor veel leerlingen past een pakket van 20 tot 30 lessen goed.",
+        a: "Dat verschilt per persoon — tijdens je intake geven we een eerlijke inschatting. Voor veel leerlingen past een pakket van 20 tot 30 lessen goed.",
       },
       {
         q: "Kan ik direct beginnen met rijlessen?",
-        a: "In veel gevallen wel. Plan een proefles en we bekijken samen wanneer je kunt starten.",
+        a: "In veel gevallen wel. Plan een intake en we bekijken samen wanneer je kunt starten.",
       },
       {
         q: "Geven jullie automaat- en schakelrijlessen?",
-        a: "Ja, beide. Tijdens je proefles adviseren we wat het beste bij jou past.",
+        a: "Ja, beide. Tijdens je intake adviseren we wat het beste bij jou past.",
       },
       {
         q: "Kan ik mijn rijopleiding in termijnen betalen?",
@@ -420,8 +420,8 @@ export const nl = {
         a: "Zeker. In een compact, intensief traject naar je examen — soms in een paar weken.",
       },
       {
-        q: "Wat gebeurt er tijdens de proefles?",
-        a: "Tijdens je proefles rijd je een stukje, zodat we je niveau kunnen inschatten. Daarna geven we je eerlijk advies over welk traject en tempo het beste bij je past.",
+        q: "Wat gebeurt er tijdens de intake?",
+        a: "Tijdens je intake rijd je een stukje, zodat we je niveau kunnen inschatten. Daarna geven we je eerlijk advies over welk traject en tempo het beste bij je past.",
       },
     ],
   },

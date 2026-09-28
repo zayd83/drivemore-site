@@ -14,65 +14,65 @@ export const CITIES: CityInfo[] = [
     slug: "dordrecht",
     name: "Dordrecht",
     intro:
-      "Woon of werk je in Dordrecht en wil je op een prettige, persoonlijke manier leren rijden? Bij Drive More rijd je met een vaste instructeur die met jou meedenkt — geen wisselende gezichten, geen vast lesschema, maar een aanpak die bij jouw tempo past. Schakel of automaat: we starten met een proefles, zodat we precies weten waar we moeten beginnen.",
+      "Woon of werk je in Dordrecht en wil je op een prettige, persoonlijke manier leren rijden? Bij Drive More rijd je met een vaste instructeur die met jou meedenkt — geen wisselende gezichten, geen vast lesschema, maar een aanpak die bij jouw tempo past. Schakel of automaat: we starten met een intake, zodat we precies weten waar we moeten beginnen.",
     metaDescription:
-      "Rijschool in Dordrecht met persoonlijke begeleiding, schakel of automaat en geen wachtlijst. Plan je proefles bij Drive More en start snel met rijlessen op jouw niveau.",
+      "Rijschool in Dordrecht met persoonlijke begeleiding, schakel of automaat en geen wachtlijst. Plan je intake bij Drive More en start snel met rijlessen op jouw niveau.",
   },
   {
     slug: "zwijndrecht",
     name: "Zwijndrecht",
     intro:
-      "Rijschool Drive More verzorgt rijlessen voor leerlingen uit Zwijndrecht en de directe omgeving. In plaats van een standaardprogramma krijg je een lesplan dat is afgestemd op jouw niveau en doelen, met dezelfde begeleider van je eerste proefles tot aan het examen. Geen wachtlijst: je kunt vaak al binnen korte tijd starten.",
+      "Rijschool Drive More verzorgt rijlessen voor leerlingen uit Zwijndrecht en de directe omgeving. In plaats van een standaardprogramma krijg je een lesplan dat is afgestemd op jouw niveau en doelen, met dezelfde begeleider van je eerste intake tot aan het examen. Geen wachtlijst: je kunt vaak al binnen korte tijd starten.",
     metaDescription:
-      "Op zoek naar een rijschool in Zwijndrecht? Drive More biedt persoonlijke rijlessen, schakel én automaat, zonder wachtlijst. Plan vandaag nog je proefles.",
+      "Op zoek naar een rijschool in Zwijndrecht? Drive More biedt persoonlijke rijlessen, schakel én automaat, zonder wachtlijst. Plan vandaag nog je intake.",
   },
   {
     slug: "papendrecht",
     name: "Papendrecht",
     intro:
-      "Op zoek naar een rijschool in Papendrecht die echt naar jou luistert? Bij Drive More begin je met een proefles waarin we je niveau in kaart brengen, waarna je een persoonlijk traject krijgt — schakel of automaat, in jouw tempo. Eén vaste instructeur, heldere afspraken en geen onnodige lessen.",
+      "Op zoek naar een rijschool in Papendrecht die echt naar jou luistert? Bij Drive More begin je met een intake waarin we je niveau in kaart brengen, waarna je een persoonlijk traject krijgt — schakel of automaat, in jouw tempo. Eén vaste instructeur, heldere afspraken en geen onnodige lessen.",
     metaDescription:
-      "Rijlessen in Papendrecht bij Drive More: één vaste instructeur, een lesplan op jouw tempo en direct starten zonder wachtlijst. Plan je proefles.",
+      "Rijlessen in Papendrecht bij Drive More: één vaste instructeur, een lesplan op jouw tempo en direct starten zonder wachtlijst. Plan je intake.",
   },
   {
     slug: "sliedrecht",
     name: "Sliedrecht",
     intro:
-      "Leerlingen uit Sliedrecht kiezen voor Drive More vanwege de persoonlijke aanpak: één vaste begeleider, een lesplan op jouw niveau en de mogelijkheid om zowel schakel als automaat te leren rijden. We starten altijd met een proefles, zodat je precies weet wat je kunt verwachten voordat je een pakket kiest.",
+      "Leerlingen uit Sliedrecht kiezen voor Drive More vanwege de persoonlijke aanpak: één vaste begeleider, een lesplan op jouw niveau en de mogelijkheid om zowel schakel als automaat te leren rijden. We starten altijd met een intake, zodat je precies weet wat je kunt verwachten voordat je een pakket kiest.",
     metaDescription:
-      "Drive More verzorgt rijlessen in Sliedrecht — schakel of automaat, persoonlijke begeleiding en een lesplan op jouw niveau. Plan je proefles.",
+      "Drive More verzorgt rijlessen in Sliedrecht — schakel of automaat, persoonlijke begeleiding en een lesplan op jouw niveau. Plan je intake.",
   },
   {
     slug: "hendrik-ido-ambacht",
     name: "Hendrik-Ido-Ambacht",
     intro:
-      "Ook in Hendrik-Ido-Ambacht geeft Drive More rijles volgens hetzelfde uitgangspunt: geen lopende band, maar begeleiding die met jou meebeweegt. Tijdens je proefles bekijken we samen waar je staat, waarna we een lesplan opstellen dat past bij jouw tempo en doel — of dat nu rustig opbouwen is of juist snel richting je examen.",
+      "Ook in Hendrik-Ido-Ambacht geeft Drive More rijles volgens hetzelfde uitgangspunt: geen lopende band, maar begeleiding die met jou meebeweegt. Tijdens je intake bekijken we samen waar je staat, waarna we een lesplan opstellen dat past bij jouw tempo en doel — of dat nu rustig opbouwen is of juist snel richting je examen.",
     metaDescription:
-      "Rijschool in Hendrik-Ido-Ambacht met persoonlijke rijlessen op maat, schakel of automaat en geen wachtlijst. Plan je proefles bij Drive More.",
+      "Rijschool in Hendrik-Ido-Ambacht met persoonlijke rijlessen op maat, schakel of automaat en geen wachtlijst. Plan je intake bij Drive More.",
   },
   {
     slug: "alblasserdam",
     name: "Alblasserdam",
     intro:
-      "Drive More begeleidt leerlingen uit Alblasserdam van hun eerste proefles tot en met het praktijkexamen. Je rijdt bij dezelfde instructeur, op een schema dat rekening houdt met jouw agenda, en kiest zelf voor schakel of automaat. Geen wachtlijst en geen verrassingen — alleen een heldere aanpak.",
+      "Drive More begeleidt leerlingen uit Alblasserdam van hun eerste intake tot en met het praktijkexamen. Je rijdt bij dezelfde instructeur, op een schema dat rekening houdt met jouw agenda, en kiest zelf voor schakel of automaat. Geen wachtlijst en geen verrassingen — alleen een heldere aanpak.",
     metaDescription:
-      "Rijlessen in Alblasserdam bij Drive More: vaste begeleiding, schakel of automaat en snel starten zonder wachtlijst. Plan vandaag je proefles.",
+      "Rijlessen in Alblasserdam bij Drive More: vaste begeleiding, schakel of automaat en snel starten zonder wachtlijst. Plan vandaag je intake.",
   },
   {
     slug: "barendrecht",
     name: "Barendrecht",
     intro:
-      "Voor leerlingen in Barendrecht biedt Drive More persoonlijke rijlessen zonder wachtlijst. Na je proefles stellen we een lesplan op dat aansluit bij jouw niveau en tempo, met dezelfde begeleider gedurende het hele traject — tot en met je praktijkexamen.",
+      "Voor leerlingen in Barendrecht biedt Drive More persoonlijke rijlessen zonder wachtlijst. Na je intake stellen we een lesplan op dat aansluit bij jouw niveau en tempo, met dezelfde begeleider gedurende het hele traject — tot en met je praktijkexamen.",
     metaDescription:
-      "Rijschool in Barendrecht: persoonlijke rijlessen bij Drive More, zonder wachtlijst en met een lesplan op jouw niveau. Plan je proefles.",
+      "Rijschool in Barendrecht: persoonlijke rijlessen bij Drive More, zonder wachtlijst en met een lesplan op jouw niveau. Plan je intake.",
   },
   {
     slug: "ridderkerk",
     name: "Ridderkerk",
     intro:
-      "In Ridderkerk rijd je bij Drive More met een vaste instructeur die jouw voortgang goed kent, in plaats van steeds wisselende begeleiders. We beginnen met een proefles om je niveau te bepalen en bouwen van daaruit een lesplan op — schakel of automaat, in jouw tempo.",
+      "In Ridderkerk rijd je bij Drive More met een vaste instructeur die jouw voortgang goed kent, in plaats van steeds wisselende begeleiders. We beginnen met een intake om je niveau te bepalen en bouwen van daaruit een lesplan op — schakel of automaat, in jouw tempo.",
     metaDescription:
-      "Drive More geeft rijles in Ridderkerk met een vaste instructeur, schakel of automaat en geen wachtlijst. Plan vandaag nog je proefles.",
+      "Drive More geeft rijles in Ridderkerk met een vaste instructeur, schakel of automaat en geen wachtlijst. Plan vandaag nog je intake.",
   },
 ];
 

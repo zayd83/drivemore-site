@@ -13,7 +13,7 @@ export const en: Dictionary = {
     intensive: "Crash Course",
     about: "About",
     contact: "Contact",
-    cta: "Book trial lesson",
+    cta: "Book intake",
     langSwitch: "NL",
   },
   hero: {
@@ -30,7 +30,7 @@ export const en: Dictionary = {
       { icon: "car" as const, label: "Manual & automatic" },
       { icon: "person" as const, label: "Personal guidance" },
     ],
-    ctaPrimary: "Book a trial lesson →",
+    ctaPrimary: "Book an intake →",
     ctaSecondary: "View packages",
     replay: "Replay",
   },
@@ -67,13 +67,13 @@ export const en: Dictionary = {
   },
   howItWorks: {
     eyebrow: "How it works",
-    heading1: "From first trial lesson to",
+    heading1: "From first intake to",
     headingAccent: "driver's licence",
     lead: "A clear journey in four steps — tailored to you at every stage.",
     steps: [
       {
         n: "01",
-        title: "Trial lesson",
+        title: "Intake",
         body: "We assess your level and determine which approach suits you.",
       },
       {
@@ -106,12 +106,12 @@ export const en: Dictionary = {
     headingAccent: "driver's license",
     lead: "Five clear packages — choose what fits your pace and goal.",
     from: "from",
-    cta: "Book a trial lesson →",
+    cta: "Book an intake →",
     perLesson: "Prefer to pay per lesson? That's possible too — €65 per 50-minute lesson, or €78 per 60-minute lesson.",
     note: {
       heading: "Not sure which package suits you?",
-      body: "Book a trial lesson. We'll assess your level and give you honest advice on which route fits you.",
-      cta: "Book my trial lesson →",
+      body: "Book an intake. We'll assess your level and give you honest advice on which route fits you.",
+      cta: "Book my intake →",
     },
     noWaitlistBadge: "No waitlist · start right away",
     badge: "Most popular",
@@ -295,7 +295,7 @@ export const en: Dictionary = {
     heading1: "Ready to",
     headingAccent: "start",
     heading2: "?",
-    lead: "Book your trial lesson or ask your question. We respond quickly via WhatsApp, phone or email.",
+    lead: "Book your intake or ask your question. We respond quickly via WhatsApp, phone or email.",
     lowThreshold: "Still unsure? Just send us a WhatsApp message — no obligations.",
     form: {
       naam: "Name",
@@ -303,7 +303,7 @@ export const en: Dictionary = {
       email: "Email",
       interesse: "What are you contacting us about?",
       interesseOptions: [
-        "Trial lesson",
+        "Intake",
         "Lesson package",
         "Crash course",
         "Exam anxiety coaching",
@@ -330,8 +330,8 @@ export const en: Dictionary = {
     heading1: "Ready to get behind the",
     headingAccent: "wheel",
     heading2: "?",
-    lead: "Book your trial lesson and discover which route fits you.",
-    cta: "Book my trial lesson →",
+    lead: "Book your intake and discover which route fits you.",
+    cta: "Book my intake →",
     whatsappPrefix: "Prefer to ask something first?",
     whatsappLink: "WhatsApp us.",
   },
@@ -368,7 +368,7 @@ export const en: Dictionary = {
     copyright: "Drive More Driving School",
   },
   mobileCta: {
-    plan: "Book trial",
+    plan: "Book intake",
     whatsapp: "WhatsApp",
   },
   faq: {
@@ -378,15 +378,15 @@ export const en: Dictionary = {
     items: [
       {
         q: "How many driving lessons do I need?",
-        a: "This varies per person — during your trial lesson we give an honest estimate. For many students a package of 20 to 30 lessons fits well.",
+        a: "This varies per person — during your intake we give an honest estimate. For many students a package of 20 to 30 lessons fits well.",
       },
       {
         q: "Can I start driving lessons right away?",
-        a: "In many cases, yes. Book a trial lesson and we'll work out together when you can start.",
+        a: "In many cases, yes. Book an intake and we'll work out together when you can start.",
       },
       {
         q: "Do you offer both automatic and manual lessons?",
-        a: "Yes, both. During your trial lesson we advise what suits you best.",
+        a: "Yes, both. During your intake we advise what suits you best.",
       },
       {
         q: "Can I pay for my training in instalments?",
@@ -405,8 +405,8 @@ export const en: Dictionary = {
         a: "Absolutely. A compact, intensive programme toward your exam — sometimes in just a few weeks.",
       },
       {
-        q: "What happens during the trial lesson?",
-        a: "During your trial lesson you drive for a bit so we can assess your level. Afterwards we give you honest advice on which route and pace suits you best.",
+        q: "What happens during the intake?",
+        a: "During your intake you drive for a bit so we can assess your level. Afterwards we give you honest advice on which route and pace suits you best.",
       },
     ],
   },

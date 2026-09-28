@@ -18,13 +18,13 @@ import { SHOW_REVIEWS } from "@/lib/config/reviews";
 export const metadata: Metadata = {
   title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
   description:
-    "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je proefles bij Rijschool Drive More.",
+    "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake bij Rijschool Drive More.",
   alternates: { canonical: "/" },
 };
 
 // Volgorde bewust vastgelegd: Hero -> USP/vertrouwen -> Schakel/Automaat/Spoed ->
 // Pakketten & prijzen -> Waarom Drive More -> Lesauto's -> Reviews ->
-// Van proefles tot rijbewijs -> Spoed/Faalangst/Theorie -> Werkgebied -> FAQ -> Eind-CTA.
+// Van intake tot rijbewijs -> Spoed/Faalangst/Theorie -> Werkgebied -> FAQ -> Eind-CTA.
 export default function HomePage() {
   return (
     <>

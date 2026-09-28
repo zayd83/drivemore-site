@@ -65,11 +65,11 @@ export default function SpoedcursusPage() {
               Van aanmelding tot <span className="grad">geslaagd</span>.
             </h2>
             <p className="mt-5 text-[16px] leading-[1.75] text-brand-ink-body">
-              We starten met een proefles om te kijken wat je al kunt en hoeveel lessen realistisch zijn. Daarna plannen we alles in een vloeiend schema: lessen achter elkaar, examendatum zo vroeg mogelijk.
+              We starten met een intake om te kijken wat je al kunt en hoeveel lessen realistisch zijn. Daarna plannen we alles in een vloeiend schema: lessen achter elkaar, examendatum zo vroeg mogelijk.
             </p>
             <div className="mt-8 flex flex-col gap-4">
               {[
-                { n: "01", t: "Proefles", b: "We beoordelen je niveau en bespreken een realistisch tijdspad." },
+                { n: "01", t: "Intake", b: "We beoordelen je niveau en bespreken een realistisch tijdspad." },
                 { n: "02", t: "Intensief lesschema", b: "Lessen worden compact ingepland — ook s' avonds of in het weekend." },
                 { n: "03", t: "Tussentijdse toets (TVT)", b: "Verplicht bij CBR — we regelen dit als onderdeel van het traject." },
                 { n: "04", t: "Praktijkexamen", b: "We regelen een vroege exaamendatum en begeleiden je volledig." },
