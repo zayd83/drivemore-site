@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PackagesPreview } from "@/components/sections/PackagesPreview";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactCTA } from "@/components/sections/ContactCTA";
@@ -7,7 +8,7 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 export const metadata: Metadata = {
   title: "Rijlespakketten",
   description:
-    "Kies je rijlespakket bij Rijschool Drive More. Drive, Drive More of Drive Most — regulier of spoed. Transparante prijzen, maatwerk altijd.",
+    "Kies je rijlespakket bij Rijschool Drive More. Van Drive Start tot Drive Ultimate — transparante prijzen, maatwerk altijd.",
 };
 
 export default function RijlespakkettenPage() {
@@ -24,7 +25,7 @@ export default function RijlespakkettenPage() {
             Kies je route naar je <span className="grad">rijbewijs</span>.
           </h1>
           <p className="mt-5 text-[clamp(15px,1.8vw,18px)] leading-[1.65] text-brand-ink-body max-w-[52ch]">
-            Drie heldere pakketten — zowel regulier als spoed. Alle prijzen zijn inclusief BTW en tenzij anders vermeld per los pakket. Twijfel? Plan een intake en we adviseren je eerlijk.
+            Vijf heldere pakketten, van Drive Start tot Drive Ultimate. Alle prijzen zijn inclusief BTW. Rijbewijs snel nodig? Bekijk onze <Link href="/spoedcursus" className="underline underline-offset-2 hover:text-brand-ink">spoedopleiding</Link>. Twijfel? Plan een intake en we adviseren je eerlijk.
           </p>
         </div>
       </section>

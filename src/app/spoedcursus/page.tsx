@@ -125,7 +125,7 @@ export default function SpoedcursusPage() {
       </section>
 
       <div id="pakketten">
-        <PackagesPreview />
+        <PackagesPreview showSpoedToeslag />
       </div>
       {SHOW_REVIEWS && <Reviews />}
       <ContactCTA />

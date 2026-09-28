@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
+import { SPOED_TOESLAG } from "@/lib/config/pricing";
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
   return (
@@ -26,7 +27,7 @@ function CheckIcon({ color }: { color: "red" | "blue" }) {
   );
 }
 
-export function PackagesPreview() {
+export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag?: boolean }) {
   const { t } = useLanguage();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -105,6 +106,11 @@ export function PackagesPreview() {
                     </span>
                     €{pkg.price.toLocaleString("nl-NL")}
                   </div>
+                  {showSpoedToeslag && (
+                    <p className="mt-1 text-[12.5px] font-medium text-brand-ink-soft">
+                      + €{SPOED_TOESLAG} {t.packages.spoedToeslagLabel}
+                    </p>
+                  )}
                   <ul className="mt-5 mb-6 space-y-2.5 flex-1">
                     {pkg.features.map((feat, fi) => (
                       <li key={fi} className="flex gap-2.5 text-[13.5px] leading-[1.4] text-[#2a3344]">

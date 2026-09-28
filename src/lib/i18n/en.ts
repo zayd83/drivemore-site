@@ -107,8 +107,8 @@ export const en: Dictionary = {
     lead: "Five clear packages — choose what fits your pace and goal.",
     from: "from",
     cta: "Book an intake →",
-    // FILL IN: price per single lesson (45 min and 90 min) still to be confirmed by client.
-    perLesson: "Prefer to pay per lesson? That's possible too — a driving lesson takes 45 or 90 minutes.",
+    perLesson: "Prefer to pay per lesson? That's possible too — €53 per 45-minute lesson.",
+    spoedToeslagLabel: "express surcharge",
     note: {
       heading: "Not sure which package suits you?",
       body: "Book an intake. We'll assess your level and give you honest advice on which route fits you.",

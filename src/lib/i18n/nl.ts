@@ -108,8 +108,8 @@ export const nl = {
     lead: "Vijf heldere pakketten — kies wat past bij jouw tempo en doel.",
     from: "vanaf",
     cta: "Plan een intake →",
-    // VUL IN: prijs per losse les (45 min en 90 min) nog te bevestigen door klant.
-    perLesson: "Liever per les betalen? Dat kan ook — een rijles duurt 45 of 90 minuten.",
+    perLesson: "Liever per les betalen? Dat kan ook — €53 per rijles van 45 minuten.",
+    spoedToeslagLabel: "spoedtoeslag",
     note: {
       heading: "Twijfel je welk pakket bij jou past?",
       body: "Plan een intake. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
