@@ -20,7 +20,7 @@ const services = [
     emphasized: false,
     body: [
       "Bij Drive More start je niet met een standaard programma. We beginnen met een intake om in kaart te brengen waar je staat: wat kun je al, waar zit je spanning, en hoe leer jij het liefst? Pas daarna stellen we een lesplan op — alleen voor jou.",
-      "Elke rijles duurt 60 minuten en is gericht op concrete vooruitgang. Na elke les krijg je eerlijke, opbouwende feedback: wat ging goed, wat gaan we de volgende keer aanpakken. Zo weet je altijd waar je aan toe bent.",
+      "Elke rijles duurt 45 of 90 minuten en is gericht op concrete vooruitgang. Na elke les krijg je eerlijke, opbouwende feedback: wat ging goed, wat gaan we de volgende keer aanpakken. Zo weet je altijd waar je aan toe bent.",
     ],
     color: "blue" as const,
   },

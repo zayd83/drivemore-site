@@ -73,7 +73,7 @@ export const en: Dictionary = {
     steps: [
       {
         n: "01",
-        title: "Intake",
+        title: "Intake (1 hour)",
         body: "We assess your level and determine which approach suits you.",
       },
       {
@@ -107,7 +107,8 @@ export const en: Dictionary = {
     lead: "Five clear packages — choose what fits your pace and goal.",
     from: "from",
     cta: "Book an intake →",
-    perLesson: "Prefer to pay per lesson? That's possible too — €65 per 50-minute lesson, or €78 per 60-minute lesson.",
+    // FILL IN: price per single lesson (45 min and 90 min) still to be confirmed by client.
+    perLesson: "Prefer to pay per lesson? That's possible too — a driving lesson takes 45 or 90 minutes.",
     note: {
       heading: "Not sure which package suits you?",
       body: "Book an intake. We'll assess your level and give you honest advice on which route fits you.",
@@ -120,35 +121,35 @@ export const en: Dictionary = {
         name: "Drive Start",
         lessons: "15 driving lessons",
         price: 795,
-        features: ["15 driving lessons (60 min)", "Personal lesson plan", "Dedicated guidance"],
+        features: ["15 driving lessons (45 min)", "Personal lesson plan", "Dedicated guidance"],
         featured: false,
       },
       {
         name: "Drive Plus",
         lessons: "25 driving lessons",
         price: 1325,
-        features: ["25 driving lessons (60 min)", "Personal lesson plan", "Dedicated guidance", "Exam guidance"],
+        features: ["25 driving lessons (45 min)", "Personal lesson plan", "Dedicated guidance", "Exam guidance"],
         featured: true,
       },
       {
         name: "Drive Pro",
         lessons: "35 driving lessons",
         price: 1855,
-        features: ["35 driving lessons (60 min)", "Personal lesson plan", "Dedicated guidance", "Thorough exam preparation"],
+        features: ["35 driving lessons (45 min)", "Personal lesson plan", "Dedicated guidance", "Thorough exam preparation"],
         featured: false,
       },
       {
         name: "Drive Max",
         lessons: "40 driving lessons",
         price: 2120,
-        features: ["40 driving lessons (60 min)", "Personal lesson plan", "Dedicated guidance", "Thorough exam preparation"],
+        features: ["40 driving lessons (45 min)", "Personal lesson plan", "Dedicated guidance", "Thorough exam preparation"],
         featured: false,
       },
       {
         name: "Drive Ultimate",
         lessons: "50 driving lessons",
         price: 2650,
-        features: ["50 driving lessons (60 min)", "Personal lesson plan", "Dedicated guidance", "Maximum preparation and peace of mind"],
+        features: ["50 driving lessons (45 min)", "Personal lesson plan", "Dedicated guidance", "Maximum preparation and peace of mind"],
         featured: false,
       },
     ],
@@ -394,7 +395,7 @@ export const en: Dictionary = {
       },
       {
         q: "How long does a driving lesson take?",
-        a: "A lesson with us is always 60 minutes — a full lesson hour, not a 50-minute one.",
+        a: "A lesson with us takes 45 or 90 minutes, depending on your package or preference.",
       },
       {
         q: "In which areas does Drive More teach?",

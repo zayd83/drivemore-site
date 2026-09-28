@@ -73,7 +73,7 @@ export const nl = {
     steps: [
       {
         n: "01",
-        title: "Intake",
+        title: "Intake (1 uur)",
         body: "We bekijken je niveau en bepalen welke aanpak bij jou past.",
       },
       {
@@ -108,7 +108,8 @@ export const nl = {
     lead: "Vijf heldere pakketten — kies wat past bij jouw tempo en doel.",
     from: "vanaf",
     cta: "Plan een intake →",
-    perLesson: "Liever per les betalen? Dat kan ook — €65 per rijles van 50 minuten, of €78 per 60 minuten.",
+    // VUL IN: prijs per losse les (45 min en 90 min) nog te bevestigen door klant.
+    perLesson: "Liever per les betalen? Dat kan ook — een rijles duurt 45 of 90 minuten.",
     note: {
       heading: "Twijfel je welk pakket bij jou past?",
       body: "Plan een intake. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
@@ -121,35 +122,35 @@ export const nl = {
         name: "Drive Start",
         lessons: "15 rijlessen",
         price: 795,
-        features: ["15 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
+        features: ["15 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: false,
       },
       {
         name: "Drive Plus",
         lessons: "25 rijlessen",
         price: 1325,
-        features: ["25 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Examenbegeleiding"],
+        features: ["25 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Examenbegeleiding"],
         featured: true,
       },
       {
         name: "Drive Pro",
         lessons: "35 rijlessen",
         price: 1855,
-        features: ["35 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
+        features: ["35 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
         featured: false,
       },
       {
         name: "Drive Max",
         lessons: "40 rijlessen",
         price: 2120,
-        features: ["40 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
+        features: ["40 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
         featured: false,
       },
       {
         name: "Drive Ultimate",
         lessons: "50 rijlessen",
         price: 2650,
-        features: ["50 rijlessen (60 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Maximale voorbereiding en rust"],
+        features: ["50 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Maximale voorbereiding en rust"],
         featured: false,
       },
     ],
@@ -409,7 +410,7 @@ export const nl = {
       },
       {
         q: "Hoe lang duurt een rijles?",
-        a: "Een rijles duurt bij ons altijd 60 minuten — een vol lesuur, geen 50 minuten 'lesuur'.",
+        a: "Een rijles duurt bij ons 45 of 90 minuten, afhankelijk van je pakket of voorkeur.",
       },
       {
         q: "In welke plaatsen geeft Drive More rijles?",

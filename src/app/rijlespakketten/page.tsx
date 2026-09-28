@@ -35,7 +35,7 @@ export default function RijlespakkettenPage() {
         <div className="max-w-wrap mx-auto px-5 md:px-10 relative z-[2]">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { icon: "✓", title: "Altijd 60 min per les", body: "Elke rijles duurt een volledig uur — geen 50-minuten 'uur'." },
+              { icon: "✓", title: "45 of 90 minuten per les", body: "Kies de lesduur die bij jou past — flexibel per pakket of losse les." },
               { icon: "✓", title: "Persoonlijk lesplan", body: "Geen standaard schema, maar een plan dat past bij jouw niveau en doel." },
               { icon: "✓", title: "Transparante prijzen", body: "Wat je ziet is wat je betaalt. Geen verborgen kosten." },
             ].map((item, i) => (

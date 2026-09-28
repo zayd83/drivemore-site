@@ -72,7 +72,7 @@ export default function SpoedcursusPage() {
                 { n: "01", t: "Intake", b: "We beoordelen je niveau en bespreken een realistisch tijdspad." },
                 { n: "02", t: "Intensief lesschema", b: "Lessen worden compact ingepland — ook s' avonds of in het weekend." },
                 { n: "03", t: "Tussentijdse toets (TVT)", b: "Verplicht bij CBR — we regelen dit als onderdeel van het traject." },
-                { n: "04", t: "Praktijkexamen", b: "We regelen een vroege exaamendatum en begeleiden je volledig." },
+                { n: "04", t: "Praktijkexamen", b: "We regelen een vroege examendatum en begeleiden je volledig." },
               ].map((step, i) => (
                 <div key={i} className="flex gap-4 items-start">
                   <div
