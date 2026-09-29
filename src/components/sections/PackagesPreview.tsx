@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
 import { SPOED_TOESLAG } from "@/lib/config/pricing";
+import { GRATIS_HEREXAMEN, ACTIE_ACTIEF, ACTIE } from "@/lib/config/offers";
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
   return (
@@ -27,10 +28,19 @@ function CheckIcon({ color }: { color: "red" | "blue" }) {
   );
 }
 
-export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag?: boolean }) {
+export function PackagesPreview({
+  showSpoedToeslag = false,
+  limit,
+}: {
+  showSpoedToeslag?: boolean;
+  limit?: number;
+}) {
   const { t } = useLanguage();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const items = limit ? t.packages.items.slice(0, limit) : t.packages.items;
+  const isLimited = items.length < t.packages.items.length;
 
   return (
     <section className="py-[clamp(60px,9vw,118px)]" id="pakketten">
@@ -59,7 +69,7 @@ export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag
             <span className="grad">{t.packages.headingAccent}</span>.
           </h2>
           <p className="mt-4 text-[clamp(15px,1.8vw,17px)] leading-[1.65] text-brand-ink-body">
-            {t.packages.lead}
+            {isLimited ? t.packages.leadHome : t.packages.lead}
           </p>
         </motion.div>
 
@@ -69,8 +79,8 @@ export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag
             setting overflow-x here implicitly clips overflow-y too, so without this
             padding-for-headroom trick the badge gets cut off. */}
         <div className="-mx-5 md:-mx-10 px-5 md:px-10 pt-8 -mt-8 overflow-x-auto pb-4 [scrollbar-width:thin]">
-          <div className="flex gap-5 snap-x snap-mandatory md:grid md:grid-cols-5 md:gap-5">
-            {t.packages.items.map((pkg, i) => (
+          <div className={`flex gap-5 snap-x snap-mandatory md:grid md:gap-5 ${items.length === 3 ? "md:grid-cols-3" : "md:grid-cols-5"}`}>
+            {items.map((pkg, i) => (
               <motion.article
                 key={pkg.name}
                 initial={{ opacity: 0, y: 24 }}
@@ -118,6 +128,10 @@ export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag
                         {feat}
                       </li>
                     ))}
+                    <li className="flex gap-2.5 text-[13.5px] leading-[1.4] text-[#2a3344]">
+                      <CheckIcon color={pkg.featured ? "red" : "blue"} />
+                      {GRATIS_HEREXAMEN ? t.packages.gratisHerexamenLabel : t.packages.examenbegeleidingLabel}
+                    </li>
                   </ul>
                   <MagneticButton className="mt-auto w-full">
                     <Button href="/contact" variant={pkg.featured ? "primary" : "secondary"} className="w-full" size="md">
@@ -130,8 +144,41 @@ export function PackagesPreview({ showSpoedToeslag = false }: { showSpoedToeslag
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[14px] text-brand-ink-body">
-          {t.packages.perLesson}
+        {isLimited && (
+          <div className="mt-8 flex justify-center">
+            <MagneticButton>
+              <Button href="/rijlespakketten" variant="secondary">
+                {t.packages.viewAllCta}
+              </Button>
+            </MagneticButton>
+          </div>
+        )}
+
+        {ACTIE_ACTIEF ? (
+          <p className="mt-8 text-center text-[14px] text-brand-ink-body">
+            {t.packages.perLessonActieLead}{" "}
+            <span className="line-through text-brand-ink-soft/70">€{ACTIE.normalePrijsPerLes}</span>{" "}
+            <span className="font-sora font-bold text-brand-red">€{ACTIE.actiePrijsPerLes}</span>{" "}
+            {t.packages.perLessonSuffix}
+            {ACTIE.actieEinddatum && (
+              <span className="block text-[12px] text-brand-ink-soft mt-1">
+                {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}
+              </span>
+            )}
+          </p>
+        ) : (
+          <p className="mt-8 text-center text-[14px] text-brand-ink-body">
+            {t.packages.perLesson}
+          </p>
+        )}
+
+        <p className="mt-2 text-center">
+          <span className="block text-[11px] font-sora font-semibold uppercase tracking-wide text-brand-ink-soft">
+            {t.packages.intakeNoteIntro}
+          </span>
+          <span className="text-[13.5px] text-brand-ink-body font-medium">
+            {t.packages.intakeNoteText}
+          </span>
         </p>
 
         {/* Note */}

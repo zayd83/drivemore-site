@@ -6,6 +6,8 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { IconBlob } from "@/components/ui/IconBlob";
 import { WaveDivider } from "@/components/ui/WaveDivider";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Button } from "@/components/ui/Button";
 
 function PinIcon() {
   return (
@@ -38,7 +40,7 @@ export function ServiceArea() {
             {t.serviceArea.eyebrow}
           </span>
           <h2 className="font-sora font-extrabold text-[clamp(26px,4vw,38px)] leading-[1.1] tracking-[-0.02em] mt-4">
-            {t.serviceArea.heading1} <span className="grad">{t.serviceArea.headingAccent}</span>
+            {t.serviceArea.heading1} <span className="grad">{t.serviceArea.headingAccent}</span>.
           </h2>
           <p className="mt-3 text-[15px] leading-[1.65] text-brand-ink-body">
             {t.serviceArea.lead}
@@ -60,6 +62,12 @@ export function ServiceArea() {
                 {city.name}
               </Link>
             ))}
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <MagneticButton>
+              <Button href="/contact">{t.serviceArea.cta}</Button>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>

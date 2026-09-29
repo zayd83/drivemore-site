@@ -106,10 +106,19 @@ export const nl = {
     heading1: "Kies je route naar je",
     headingAccent: "rijbewijs",
     lead: "Vijf heldere pakketten — kies wat past bij jouw tempo en doel.",
+    leadHome: "Drie populaire pakketten — bekijk alle vijf voor het volledige aanbod.",
     from: "vanaf",
     cta: "Plan een intake →",
     perLesson: "Liever per les betalen? Dat kan ook — €53 per rijles van 45 minuten.",
+    perLessonActieLead: "Liever per les betalen? Dat kan ook —",
+    perLessonSuffix: "per rijles van 45 minuten.",
+    actieUntilLabel: "Actie t/m",
     spoedToeslagLabel: "spoedtoeslag",
+    gratisHerexamenLabel: "Gratis herexamen",
+    examenbegeleidingLabel: "Examenbegeleiding",
+    viewAllCta: "Bekijk alle pakketten →",
+    intakeNoteIntro: "Goed om te weten:",
+    intakeNoteText: "Intake €45 — bij een lespakket wordt dit volledig verrekend.",
     note: {
       heading: "Twijfel je welk pakket bij jou past?",
       body: "Plan een intake. We bekijken je niveau en adviseren je eerlijk welk traject bij jou past.",
@@ -129,28 +138,28 @@ export const nl = {
         name: "Drive Plus",
         lessons: "25 rijlessen",
         price: 1325,
-        features: ["25 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Examenbegeleiding"],
+        features: ["25 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: true,
       },
       {
         name: "Drive Pro",
         lessons: "35 rijlessen",
         price: 1855,
-        features: ["35 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
+        features: ["35 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: false,
       },
       {
         name: "Drive Max",
         lessons: "40 rijlessen",
         price: 2120,
-        features: ["40 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Ruime voorbereiding op het examen"],
+        features: ["40 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: false,
       },
       {
         name: "Drive Ultimate",
         lessons: "50 rijlessen",
         price: 2650,
-        features: ["50 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding", "Maximale voorbereiding en rust"],
+        features: ["50 rijlessen (45 min)", "Persoonlijk lesplan", "Vaste begeleiding"],
         featured: false,
       },
     ],
@@ -208,6 +217,7 @@ export const nl = {
     heading1: "Rijles bij jou",
     headingAccent: "in de buurt",
     lead: "Drive More geeft rijles in onder andere:",
+    cta: "Plan een intake in jouw regio →",
     // Losse landingspagina's per plaats (/rijschool-<slug>) volgen later — links wijzen er
     // nu al naartoe zodat er niets meer aangepast hoeft te worden zodra die pagina's er zijn.
     cities: [
@@ -252,6 +262,15 @@ export const nl = {
         color: "blue" as const,
       },
     ],
+  },
+  // Eyebrow-label wisselt automatisch naar "Gratis theorie" zodra GRATIS_THEORIE aan staat
+  // in src/lib/config/theory.ts — pas dat pas aan als de klant bevestigt dat het echt gratis is.
+  theoryPractice: {
+    eyebrow: "Theorie",
+    eyebrowFree: "Gratis theorie",
+    heading: "Theorie en praktijk slim combineren.",
+    body: "Oefen thuis of onderweg met uitlegvideo's en 50 oefenexamens.",
+    checks: ["Uitlegvideo's", "50 oefenexamens", "Direct zien waar je extra aandacht nodig hebt"],
   },
   lessonCars: {
     eyebrow: "Onze lesauto's",

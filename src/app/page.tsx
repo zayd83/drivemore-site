@@ -8,6 +8,7 @@ import { LessonCars } from "@/components/sections/LessonCars";
 import { Reviews } from "@/components/sections/Reviews";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
+import { TheoryPractice } from "@/components/sections/TheoryPractice";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { EndCta } from "@/components/sections/EndCta";
 import { FAQ } from "@/components/sections/FAQ";
@@ -23,8 +24,9 @@ export const metadata: Metadata = {
 };
 
 // Volgorde bewust vastgelegd: Hero -> USP/vertrouwen -> Schakel/Automaat/Spoed ->
-// Pakketten & prijzen -> Waarom Drive More -> Lesauto's -> Reviews ->
-// Van intake tot rijbewijs -> Spoed/Faalangst/Theorie -> Werkgebied -> FAQ -> Eind-CTA.
+// Pakketten & prijzen (top 3, link naar alle 5) -> Waarom Drive More -> Lesauto's -> Reviews ->
+// Van intake tot rijbewijs -> Spoed/Faalangst/Theorie -> Theorie & praktijk (video's/oefenexamens) ->
+// Werkgebied -> FAQ -> Eind-CTA.
 export default function HomePage() {
   return (
     <>
@@ -35,12 +37,13 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <TrainingChoice />
-      <PackagesPreview />
+      <PackagesPreview limit={3} />
       <WhyDriveMore />
       <LessonCars />
       {SHOW_REVIEWS && <Reviews />}
       <HowItWorks />
       <ServicesPreview />
+      <TheoryPractice />
       <ServiceArea />
       <FAQ />
       <EndCta />
