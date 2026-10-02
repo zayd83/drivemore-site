@@ -389,6 +389,14 @@ export const en: Dictionary = {
     plan: "Book intake",
     whatsapp: "WhatsApp",
   },
+  trustToast: {
+    messages: [
+      "Book your intake — often a spot within a week.",
+      "Lessons in Dordrecht and the surrounding area — manual and automatic.",
+      "Personal guidance, one dedicated instructor.",
+    ],
+    closeLabel: "Close",
+  },
   faq: {
     eyebrow: "Frequently asked questions",
     heading1: "Good to",

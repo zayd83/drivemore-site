@@ -406,6 +406,16 @@ export const nl = {
     plan: "Plan intake",
     whatsapp: "WhatsApp",
   },
+  // Kleine, eerlijke trust-toast — roteert door deze berichten (geen namen/plaatsen/fake
+  // urgentie). Aan/uit via SHOW_TRUST_TOAST in src/lib/config/trustToast.ts.
+  trustToast: {
+    messages: [
+      "Plan je intake — vaak al binnen een week plek.",
+      "Les in Dordrecht en omgeving — schakel én automaat.",
+      "Persoonlijke begeleiding, één vaste instructeur.",
+    ],
+    closeLabel: "Sluiten",
+  },
   faq: {
     eyebrow: "Veelgestelde vragen",
     heading1: "Goed om te",

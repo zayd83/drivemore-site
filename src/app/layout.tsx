@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MobileCTA } from "@/components/layout/MobileCTA";
+import { TrustToast } from "@/components/layout/TrustToast";
 import { getLocalBusinessSchema } from "@/lib/structuredData";
 
 const sora = Sora({
@@ -79,6 +80,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <MobileCTA />
+            <TrustToast />
           </LenisProvider>
         </LanguageProvider>
       </body>
