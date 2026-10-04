@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
 import { SPOED_TOESLAG } from "@/lib/config/pricing";
-import { GRATIS_HEREXAMEN, ACTIE_ACTIEF, ACTIE } from "@/lib/config/offers";
+import { GRATIS_HEREXAMEN, ACTIE, isActieZichtbaar } from "@/lib/config/offers";
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
   return (
@@ -35,12 +35,13 @@ export function PackagesPreview({
   showSpoedToeslag?: boolean;
   limit?: number;
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const items = limit ? t.packages.items.slice(0, limit) : t.packages.items;
   const isLimited = items.length < t.packages.items.length;
+  const actieZichtbaar = isActieZichtbaar();
 
   return (
     <section className="py-[clamp(60px,9vw,118px)]" id="pakketten">
@@ -154,7 +155,7 @@ export function PackagesPreview({
           </div>
         )}
 
-        {ACTIE_ACTIEF ? (
+        {actieZichtbaar ? (
           <p className="mt-8 text-center text-[14px] text-brand-ink-body">
             {t.packages.perLessonActieLead}{" "}
             <span className="line-through text-brand-ink-soft/70">€{ACTIE.normalePrijsPerLes}</span>{" "}
@@ -162,7 +163,7 @@ export function PackagesPreview({
             {t.packages.perLessonSuffix}
             {ACTIE.actieEinddatum && (
               <span className="block text-[12px] text-brand-ink-soft mt-1">
-                {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}
+                {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
               </span>
             )}
           </p>
