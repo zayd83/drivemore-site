@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { IconBlob } from "@/components/ui/IconBlob";
+import { Button } from "@/components/ui/Button";
 
 const ICONS = {
   spoedcursus: (
@@ -55,31 +55,25 @@ export function ServicesPreview() {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 items-stretch">
           {t.services.items.map((item, i) => (
             <motion.article
               key={item.id}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.08 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white border border-brand-line rounded-brand-lg p-6 group hover:-translate-y-1 hover:shadow-card hover:border-brand-ink/15 transition-all duration-300"
+              className="flex flex-col h-full bg-white border border-brand-line rounded-brand-lg p-6 group hover:-translate-y-1 hover:shadow-card hover:border-brand-ink/15 transition-all duration-300"
             >
               <IconBlob icon={ICONS[item.id as keyof typeof ICONS]} color={item.color} size="sm" className="mb-4" />
               <h3 className="font-sora font-bold text-[17px] tracking-[-0.01em] text-brand-ink">
                 {item.name}
               </h3>
-              <p className="mt-1.5 text-[13.5px] leading-[1.5] text-brand-ink-body">
+              <p className="mt-1.5 text-[13.5px] leading-[1.5] text-brand-ink-body flex-1">
                 {item.description}
               </p>
-              <Link
-                href={item.link}
-                className="inline-flex items-center gap-2 mt-3 font-sora font-semibold text-[13.5px] text-brand-ink group-hover:text-brand-red transition-colors"
-              >
+              <Button href={item.link} size="md" className="mt-4 w-full">
                 {item.linkLabel}
-                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+              </Button>
             </motion.article>
           ))}
         </div>

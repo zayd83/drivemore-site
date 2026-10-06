@@ -73,7 +73,7 @@ export const en: Dictionary = {
     steps: [
       {
         n: "01",
-        title: "Intake (1 hour)",
+        title: "Intake 1 hour",
         body: "We assess your level and determine which approach suits you.",
       },
       {
@@ -112,6 +112,7 @@ export const en: Dictionary = {
     perLessonActieLead: "Prefer to pay per lesson? That's possible too —",
     perLessonSuffix: "per 45-minute lesson.",
     actieUntilLabel: "Offer until",
+    actieBadge: "Offer",
     spoedToeslagLabel: "express surcharge",
     gratisHerexamenLabel: "Free retake exam",
     examenbegeleidingLabel: "Exam guidance",
@@ -164,7 +165,7 @@ export const en: Dictionary = {
     ],
   },
   trustBar: {
-    experience: "13+ years of experience",
+    experience: "15+ years of experience",
     noWaitlist: "No waitlist",
     personalGuidance: "Dedicated personal guidance",
     manualAutomatic: "Manual & automatic",
@@ -173,24 +174,27 @@ export const en: Dictionary = {
   trainingChoice: {
     eyebrow: "Training",
     heading: "Choose the training that fits you.",
+    featuredBadge: "Recommended",
     items: [
       {
         id: "schakel",
         icon: "gear" as const,
         title: "Manual",
         description: "Learn to drive fully independently, including shifting gears.",
-        linkLabel: "More about manual",
+        linkLabel: "View manual",
         href: "#",
-        color: "blue" as const,
+        color: "red" as const,
+        featured: true,
       },
       {
         id: "automaat",
         icon: "car" as const,
         title: "Automatic",
         description: "Comfortable, relaxed driving lessons without shifting gears.",
-        linkLabel: "More about automatic",
+        linkLabel: "View automatic",
         href: "#",
-        color: "red" as const,
+        color: "blue" as const,
+        featured: false,
       },
       {
         id: "spoed",
@@ -200,6 +204,7 @@ export const en: Dictionary = {
         linkLabel: "View crash course",
         href: "/spoedcursus",
         color: "blue" as const,
+        featured: false,
       },
     ],
   },
@@ -264,17 +269,6 @@ export const en: Dictionary = {
     heading: "Choose what suits you.",
     items: [
       {
-        id: "automaat",
-        badge: "Automatic",
-        carName: "Cupra Formentor",
-        description: "Comfortable, modern and relaxed driving lessons.",
-        cta: "Drive in automatic →",
-        href: "/contact",
-        photoSrc: "/cupra-automaat.jpg",
-        photoAlt: "Green Cupra Formentor lesson car from Rijschool Drive More",
-        color: "red" as const,
-      },
-      {
         id: "schakel",
         badge: "Manual",
         carName: "Volkswagen Golf 8",
@@ -283,6 +277,17 @@ export const en: Dictionary = {
         href: "/contact",
         photoSrc: "/golf8-schakel.jpg",
         photoAlt: "Black Volkswagen Golf 8 lesson car from Rijschool Drive More",
+        color: "red" as const,
+      },
+      {
+        id: "automaat",
+        badge: "Automatic",
+        carName: "Cupra Formentor",
+        description: "Comfortable, modern and relaxed driving lessons.",
+        cta: "Drive in automatic →",
+        href: "/contact",
+        photoSrc: "/cupra-automaat.jpg",
+        photoAlt: "Green Cupra Formentor lesson car from Rijschool Drive More",
         color: "blue" as const,
       },
     ],

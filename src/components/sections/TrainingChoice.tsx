@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { IconBlob } from "@/components/ui/IconBlob";
+import { Button } from "@/components/ui/Button";
 
 const ICONS = {
   gear: (
@@ -52,31 +52,32 @@ export function TrainingChoice() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
           {t.trainingChoice.items.map((item, i) => (
             <motion.article
               key={item.id}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white border border-brand-line rounded-brand-lg p-6 group hover:-translate-y-1 hover:shadow-card transition-all duration-300"
+              className={`relative flex flex-col h-full bg-white rounded-brand-lg p-6 group hover:-translate-y-1 hover:shadow-card transition-all duration-300 ${
+                item.featured ? "border-2 border-brand-red/30" : "border border-brand-line"
+              }`}
             >
+              {item.featured && (
+                <span className="absolute -top-3 left-6 font-sora font-bold text-[10.5px] tracking-[0.12em] uppercase text-white bg-brand-red px-3 py-1 rounded-full">
+                  {t.trainingChoice.featuredBadge}
+                </span>
+              )}
               <IconBlob icon={ICONS[item.icon]} color={item.color} size="sm" className="mb-4" />
               <h3 className="font-sora font-bold text-[19px] tracking-[-0.01em] text-brand-ink">
                 {item.title}
               </h3>
-              <p className="mt-2 text-[14px] leading-[1.6] text-brand-ink-body">
+              <p className="mt-2 text-[14px] leading-[1.6] text-brand-ink-body flex-1">
                 {item.description}
               </p>
-              <Link
-                href={item.href}
-                className="inline-flex items-center gap-2 mt-3.5 font-sora font-semibold text-[13.5px] text-brand-ink group-hover:text-brand-red transition-colors"
-              >
+              <Button href={item.href} className="mt-4 w-full">
                 {item.linkLabel}
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+              </Button>
             </motion.article>
           ))}
         </div>

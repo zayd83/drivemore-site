@@ -2,15 +2,16 @@
 // Bij UIT tonen de pakketten "Examenbegeleiding" in plaats van "Gratis herexamen".
 export const GRATIS_HEREXAMEN = true;
 
-// Actie op de losse-lesprijs. BEVESTIGD door de klant (2026-10-04): actie loopt t/m 16-10-2026.
-// Gebruik isActieZichtbaar() in componenten (nooit ACTIE_ACTIEF rechtstreeks) — die verbergt de
-// actie vanzelf zodra actieEinddatum verstreken is, zonder dat er iets in code hoeft te wijzigen.
+// Actie op de losse-lesprijs. BEVESTIGD door de klant (2026-10-06): actie loopt t/m 31-10-2026
+// (eind oktober 2026). Gebruik isActieZichtbaar() in componenten (nooit ACTIE_ACTIEF rechtstreeks)
+// — die verbergt de actie vanzelf zodra actieEinddatum verstreken is, zonder dat er iets in code
+// hoeft te wijzigen.
 export const ACTIE_ACTIEF = true;
 
 export const ACTIE = {
   normalePrijsPerLes: 60,
   actiePrijsPerLes: 53,
-  actieEinddatum: new Date("2026-10-16T23:59:59"),
+  actieEinddatum: new Date("2026-10-31T23:59:59"),
 };
 
 // Eigen functie i.p.v. een module-scope constante: Date.now() moet bij elke render opnieuw

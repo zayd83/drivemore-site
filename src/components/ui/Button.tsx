@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost-light" | "whatsapp" | "white";
+type Variant = "primary" | "secondary" | "ghost-light" | "whatsapp" | "white" | "blue";
 type Size = "md" | "lg";
 
 const base =
@@ -10,6 +10,7 @@ const base =
 const variants: Record<Variant, string> = {
   primary: "bg-brand-red text-white shadow-red-cta hover:shadow-red-hover hover:bg-brand-red-dark",
   secondary: "bg-white border-2 border-brand-line text-brand-ink hover:border-brand-red hover:text-brand-red",
+  blue: "bg-brand-blue text-white shadow-[0_12px_26px_-12px_rgba(27,79,209,0.6)] hover:shadow-[0_18px_34px_-12px_rgba(27,79,209,0.78)] hover:bg-brand-blue-light",
   "ghost-light": "border-2 border-white/35 text-white backdrop-blur-sm hover:bg-white/10 hover:border-white",
   whatsapp: "bg-[#25D366] text-white hover:brightness-95",
   // Solid white pill for use on colored/gradient bands (e.g. the crash-course highlight)

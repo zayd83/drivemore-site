@@ -166,7 +166,7 @@ export function Hero() {
               <MagneticButton>
                 <Button href="/contact">{t.hero.ctaPrimary}</Button>
               </MagneticButton>
-              <Button href="/rijlespakketten" variant="ghost-light">
+              <Button href="/rijlespakketten">
                 {t.hero.ctaSecondary}
               </Button>
             </motion.div>

@@ -65,7 +65,7 @@ export function LessonCars() {
                   {item.description}
                 </p>
                 <MagneticButton className="mt-4 w-fit">
-                  <Button href={item.href} variant="white" size="md">
+                  <Button href={item.href} size="md">
                     {item.cta}
                   </Button>
                 </MagneticButton>

@@ -73,7 +73,7 @@ export const nl = {
     steps: [
       {
         n: "01",
-        title: "Intake (1 uur)",
+        title: "Intake 1 uur",
         body: "We bekijken je niveau en bepalen welke aanpak bij jou past.",
       },
       {
@@ -113,6 +113,7 @@ export const nl = {
     perLessonActieLead: "Liever per les betalen? Dat kan ook —",
     perLessonSuffix: "per rijles van 45 minuten.",
     actieUntilLabel: "Actie t/m",
+    actieBadge: "Actie",
     spoedToeslagLabel: "spoedtoeslag",
     gratisHerexamenLabel: "Gratis herexamen",
     examenbegeleidingLabel: "Examenbegeleiding",
@@ -166,7 +167,7 @@ export const nl = {
   },
   // Compacte USP/vertrouwen-balk — items aan/uit te zetten via src/lib/config/trustBar.ts
   trustBar: {
-    experience: "13+ jaar ervaring",
+    experience: "15+ jaar ervaring",
     noWaitlist: "Geen wachtlijst",
     personalGuidance: "Vaste persoonlijke begeleiding",
     manualAutomatic: "Schakel & automaat",
@@ -177,26 +178,29 @@ export const nl = {
   trainingChoice: {
     eyebrow: "Rijopleiding",
     heading: "Kies de rijopleiding die bij jou past.",
+    featuredBadge: "Aanrader",
     items: [
       {
         id: "schakel",
         icon: "gear" as const,
         title: "Schakel",
         description: "Leer volledig zelfstandig rijden en schakelen.",
-        linkLabel: "Meer over schakel",
+        linkLabel: "Bekijk schakel",
         // VUL IN: link naar eigen landingspagina voor schakel zodra die bestaat.
         href: "#",
-        color: "blue" as const,
+        color: "red" as const,
+        featured: true,
       },
       {
         id: "automaat",
         icon: "car" as const,
         title: "Automaat",
         description: "Comfortabel en ontspannen leren rijden zonder schakelen.",
-        linkLabel: "Meer over automaat",
+        linkLabel: "Bekijk automaat",
         // VUL IN: link naar eigen landingspagina voor automaat zodra die bestaat.
         href: "#",
-        color: "red" as const,
+        color: "blue" as const,
+        featured: false,
       },
       {
         id: "spoed",
@@ -206,6 +210,7 @@ export const nl = {
         linkLabel: "Bekijk spoedopleiding",
         href: "/spoedcursus",
         color: "blue" as const,
+        featured: false,
       },
     ],
   },
@@ -277,17 +282,6 @@ export const nl = {
     heading: "Kies wat bij jou past.",
     items: [
       {
-        id: "automaat",
-        badge: "Automaat",
-        carName: "Cupra Formentor",
-        description: "Comfortabel, modern en ontspannen leren rijden.",
-        cta: "Rijles in automaat →",
-        href: "/contact",
-        photoSrc: "/cupra-automaat.jpg",
-        photoAlt: "Groene Cupra Formentor lesauto van Rijschool Drive More",
-        color: "red" as const,
-      },
-      {
         id: "schakel",
         badge: "Schakel",
         carName: "Volkswagen Golf 8",
@@ -296,6 +290,17 @@ export const nl = {
         href: "/contact",
         photoSrc: "/golf8-schakel.jpg",
         photoAlt: "Zwarte Volkswagen Golf 8 lesauto van Rijschool Drive More",
+        color: "red" as const,
+      },
+      {
+        id: "automaat",
+        badge: "Automaat",
+        carName: "Cupra Formentor",
+        description: "Comfortabel, modern en ontspannen leren rijden.",
+        cta: "Rijles in automaat →",
+        href: "/contact",
+        photoSrc: "/cupra-automaat.jpg",
+        photoAlt: "Groene Cupra Formentor lesauto van Rijschool Drive More",
         color: "blue" as const,
       },
     ],

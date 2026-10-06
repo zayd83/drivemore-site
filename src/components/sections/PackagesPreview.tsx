@@ -135,7 +135,7 @@ export function PackagesPreview({
                     </li>
                   </ul>
                   <MagneticButton className="mt-auto w-full">
-                    <Button href="/contact" variant={pkg.featured ? "primary" : "secondary"} className="w-full" size="md">
+                    <Button href="/contact" variant={pkg.featured ? "primary" : "blue"} className="w-full" size="md">
                       {t.packages.cta}
                     </Button>
                   </MagneticButton>
@@ -148,39 +148,64 @@ export function PackagesPreview({
         {isLimited && (
           <div className="mt-8 flex justify-center">
             <MagneticButton>
-              <Button href="/rijlespakketten" variant="secondary">
+              <Button href="/rijlespakketten">
                 {t.packages.viewAllCta}
               </Button>
             </MagneticButton>
           </div>
         )}
 
-        {actieZichtbaar ? (
-          <p className="mt-8 text-center text-[14px] text-brand-ink-body">
-            {t.packages.perLessonActieLead}{" "}
-            <span className="line-through text-brand-ink-soft/70">€{ACTIE.normalePrijsPerLes}</span>{" "}
-            <span className="font-sora font-bold text-brand-red">€{ACTIE.actiePrijsPerLes}</span>{" "}
-            {t.packages.perLessonSuffix}
-            {ACTIE.actieEinddatum && (
-              <span className="block text-[12px] text-brand-ink-soft mt-1">
-                {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
+        {/* Losse-les-prijs (+ actie indien actief) en intake-verrekening — bewust één opvallend
+            blok i.p.v. losse kleine tekstregels. */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.35 }}
+          className={`mt-10 rounded-brand-lg text-center p-7 md:p-8 ${
+            actieZichtbaar
+              ? "border-2 border-brand-red/25 bg-gradient-to-br from-brand-red/[0.06] via-white to-brand-blue/[0.06] shadow-card-sm"
+              : "border border-brand-line bg-brand-light"
+          }`}
+        >
+          {actieZichtbaar ? (
+            <>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-red px-3.5 py-1.5 text-[11px] font-sora font-bold uppercase tracking-[0.12em] text-white">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M13 2 4 14h6l-1 8 9-12h-6z" />
+                </svg>
+                {t.packages.actieBadge}
               </span>
-            )}
-          </p>
-        ) : (
-          <p className="mt-8 text-center text-[14px] text-brand-ink-body">
-            {t.packages.perLesson}
-          </p>
-        )}
+              <p className="mt-4 text-[14px] font-medium text-brand-ink-body">
+                {t.packages.perLessonActieLead}
+              </p>
+              <p className="mt-1.5 font-sora font-extrabold text-[clamp(24px,4vw,34px)] tracking-[-0.02em]">
+                <span className="line-through text-brand-ink-soft/55 text-[0.65em] mr-2 align-middle">
+                  €{ACTIE.normalePrijsPerLes}
+                </span>
+                <span className="text-brand-red">€{ACTIE.actiePrijsPerLes}</span>{" "}
+                <span className="text-[0.5em] font-inter font-semibold text-brand-ink-body align-middle">
+                  {t.packages.perLessonSuffix}
+                </span>
+              </p>
+              {ACTIE.actieEinddatum && (
+                <p className="mt-2 text-[13px] font-sora font-bold text-brand-ink-soft">
+                  {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-[15px] text-brand-ink-body">{t.packages.perLesson}</p>
+          )}
 
-        <p className="mt-2 text-center">
-          <span className="block text-[11px] font-sora font-semibold uppercase tracking-wide text-brand-ink-soft">
-            {t.packages.intakeNoteIntro}
-          </span>
-          <span className="text-[13.5px] text-brand-ink-body font-medium">
-            {t.packages.intakeNoteText}
-          </span>
-        </p>
+          <div className={actieZichtbaar ? "mt-5 pt-5 border-t border-brand-line/70" : "mt-3"}>
+            <span className="block text-[11px] font-sora font-semibold uppercase tracking-wide text-brand-ink-soft">
+              {t.packages.intakeNoteIntro}
+            </span>
+            <span className="text-[14px] text-brand-ink-body font-medium">
+              {t.packages.intakeNoteText}
+            </span>
+          </div>
+        </motion.div>
 
         {/* Note */}
         <motion.div
