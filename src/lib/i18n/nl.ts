@@ -114,7 +114,7 @@ export const nl = {
     perLessonSuffix: "per rijles van 45 minuten.",
     actieUntilLabel: "Actie t/m",
     actieBadge: "Actie",
-    spoedToeslagLabel: "spoedtoeslag",
+    spoedTotalLabel: "incl. spoedtoeslag",
     gratisHerexamenLabel: "Gratis herexamen",
     examenbegeleidingLabel: "Examenbegeleiding",
     viewAllCta: "Bekijk alle pakketten →",
@@ -164,6 +164,19 @@ export const nl = {
         featured: false,
       },
     ],
+  },
+  // Bedragen staan in src/lib/config/extraCosts.ts — hier alleen de labels/tekst.
+  extraCosts: {
+    heading: "Kosten buiten je lespakket",
+    cbrLabel: "CBR",
+    driveMoreLabel: "Rijschool Drive More",
+    items: {
+      rijexamen: "Rijexamen",
+      theorieExamen: "Theorie-examen",
+      medischeVerklaring: "CBR medische verklaring",
+      inschrijfkosten: "Inschrijfkosten",
+    },
+    note: "Deze kosten staan los van het gekozen lespakket.",
   },
   // Compacte USP/vertrouwen-balk — items aan/uit te zetten via src/lib/config/trustBar.ts
   trustBar: {
@@ -313,20 +326,6 @@ export const nl = {
     headingAccent: "Drive More",
     heading2: "zeggen.",
     cta: "Bekijk alle reviews →",
-  },
-  about: {
-    eyebrow: "Over ons",
-    heading1: "De mens achter",
-    headingAccent: "Drive More",
-    body1:
-      "Drive More is opgericht vanuit een simpel idee: iedereen verdient les die past bij wie hij of zij is. Geen standaard programma waar jij je naar moet plooien, maar een aanpak die meebeweegt met jouw tempo, jouw doelen en jouw manier van leren.",
-    body2:
-      "Na jaren ervaring in de praktijk weten we precies waar leerlingen op vastlopen — en hoe je daar met rust, geduld en een duidelijk plan doorheen komt. Of je nu net begint, faalangst hebt of snel je rijbewijs nodig hebt: we rijden samen naar dat ene doel, die roze pas.",
-    founder: "Mouad",
-    founderRole: "Oprichter — Rijschool Drive More",
-    photoAlt: "Foto Mouad, oprichter Drive More",
-    cta: "Meer over ons",
-    photoLabel: "Foto volgt",
   },
   contact: {
     eyebrow: "Contact",

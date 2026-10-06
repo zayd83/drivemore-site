@@ -113,7 +113,7 @@ export const en: Dictionary = {
     perLessonSuffix: "per 45-minute lesson.",
     actieUntilLabel: "Offer until",
     actieBadge: "Offer",
-    spoedToeslagLabel: "express surcharge",
+    spoedTotalLabel: "incl. express surcharge",
     gratisHerexamenLabel: "Free retake exam",
     examenbegeleidingLabel: "Exam guidance",
     viewAllCta: "View all packages →",
@@ -163,6 +163,18 @@ export const en: Dictionary = {
         featured: false,
       },
     ],
+  },
+  extraCosts: {
+    heading: "Costs outside your lesson package",
+    cbrLabel: "CBR",
+    driveMoreLabel: "Rijschool Drive More",
+    items: {
+      rijexamen: "Driving exam",
+      theorieExamen: "Theory exam",
+      medischeVerklaring: "CBR medical declaration",
+      inschrijfkosten: "Registration fee",
+    },
+    note: "These costs are separate from the chosen lesson package.",
   },
   trustBar: {
     experience: "15+ years of experience",
@@ -298,20 +310,6 @@ export const en: Dictionary = {
     headingAccent: "about Drive More",
     heading2: ".",
     cta: "See all reviews →",
-  },
-  about: {
-    eyebrow: "About us",
-    heading1: "The person behind",
-    headingAccent: "Drive More",
-    body1:
-      "Drive More was founded on a simple idea: everyone deserves lessons that suit who they are. No standard programme you have to mould yourself to, but an approach that moves with your pace, your goals and your way of learning.",
-    body2:
-      "After years of practical experience we know exactly where students get stuck — and how to get through it with calm, patience and a clear plan. Whether you're just starting out, struggle with anxiety, or need your license fast: we drive together toward that one goal, that pink card.",
-    founder: "Mouad",
-    founderRole: "Founder — Drive More Driving School",
-    photoAlt: "Photo of Mouad, founder of Drive More",
-    cta: "More about us",
-    photoLabel: "Photo coming soon",
   },
   contact: {
     eyebrow: "Contact",

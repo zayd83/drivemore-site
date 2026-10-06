@@ -7,6 +7,13 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
 import { SPOED_TOESLAG } from "@/lib/config/pricing";
 import { GRATIS_HEREXAMEN, ACTIE, isActieZichtbaar } from "@/lib/config/offers";
+import { EXTRA_COSTS } from "@/lib/config/extraCosts";
+
+function formatEuro(amount: number) {
+  return amount % 1 === 0
+    ? amount.toLocaleString("nl-NL")
+    : amount.toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
   return (
@@ -115,11 +122,11 @@ export function PackagesPreview({
                     <span className="font-inter font-medium text-[12.5px] text-brand-ink-soft">
                       {t.packages.from}
                     </span>
-                    €{pkg.price.toLocaleString("nl-NL")}
+                    €{(showSpoedToeslag ? pkg.price + SPOED_TOESLAG : pkg.price).toLocaleString("nl-NL")}
                   </div>
                   {showSpoedToeslag && (
                     <p className="mt-1 text-[12.5px] font-medium text-brand-ink-soft">
-                      + €{SPOED_TOESLAG} {t.packages.spoedToeslagLabel}
+                      {t.packages.spoedTotalLabel}
                     </p>
                   )}
                   <ul className="mt-5 mb-6 space-y-2.5 flex-1">
@@ -206,6 +213,54 @@ export function PackagesPreview({
             </span>
           </div>
         </motion.div>
+
+        {/* Kosten buiten het lespakket — alleen op de volledige pakketten-overzichten, niet in
+            de beknopte homepage-teaser. */}
+        {!isLimited && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            className="mt-6 border border-brand-line rounded-brand-lg p-7 md:p-8"
+          >
+            <h3 className="font-sora font-bold text-[17px] text-brand-ink">
+              {t.extraCosts.heading}
+            </h3>
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <span className="font-sora font-semibold text-[11px] tracking-[0.14em] uppercase text-brand-ink-soft">
+                  {t.extraCosts.cbrLabel}
+                </span>
+                <ul className="mt-2.5 space-y-1.5">
+                  <li className="flex justify-between text-[14px] text-brand-ink-body">
+                    <span>{t.extraCosts.items.rijexamen}</span>
+                    <span className="font-sora font-semibold text-brand-ink">€{formatEuro(EXTRA_COSTS.cbr.rijexamen)}</span>
+                  </li>
+                  <li className="flex justify-between text-[14px] text-brand-ink-body">
+                    <span>{t.extraCosts.items.theorieExamen}</span>
+                    <span className="font-sora font-semibold text-brand-ink">€{formatEuro(EXTRA_COSTS.cbr.theorieExamen)}</span>
+                  </li>
+                  <li className="flex justify-between text-[14px] text-brand-ink-body">
+                    <span>{t.extraCosts.items.medischeVerklaring}</span>
+                    <span className="font-sora font-semibold text-brand-ink">€{formatEuro(EXTRA_COSTS.cbr.medischeVerklaring)}</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <span className="font-sora font-semibold text-[11px] tracking-[0.14em] uppercase text-brand-ink-soft">
+                  {t.extraCosts.driveMoreLabel}
+                </span>
+                <ul className="mt-2.5 space-y-1.5">
+                  <li className="flex justify-between text-[14px] text-brand-ink-body">
+                    <span>{t.extraCosts.items.inschrijfkosten}</span>
+                    <span className="font-sora font-semibold text-brand-ink">€{formatEuro(EXTRA_COSTS.driveMore.inschrijfkosten)}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-5 text-[12.5px] text-brand-ink-soft">{t.extraCosts.note}</p>
+          </motion.div>
+        )}
 
         {/* Note */}
         <motion.div

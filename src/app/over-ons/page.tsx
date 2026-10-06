@@ -10,7 +10,7 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Leer Mouad kennen, oprichter van Rijschool Drive More. Persoonlijke begeleiding, maatwerk en een duidelijke aanpak — dat is hoe we werken.",
+    "Maak kennis met de oprichter van Rijschool Drive More. Persoonlijke begeleiding, maatwerk en een duidelijke aanpak — dat is hoe we werken.",
 };
 
 const values = [
@@ -50,23 +50,10 @@ export default function OverOnsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
             {/* Photo */}
             <div className="relative aspect-[4/5] max-w-sm mx-auto lg:mx-0 w-full">
-              <div className="w-full h-full rounded-brand-lg bg-gradient-to-br from-[#dfe6f3] to-[#eef2f9] border border-brand-line grid place-items-center overflow-hidden relative">
-                {/* Soft decorative blobs — stand-in for photography */}
-                <div className="absolute -top-10 -right-8 w-36 h-36 rounded-blob bg-brand-red/10" />
-                <div className="absolute -bottom-12 -left-10 w-44 h-44 rounded-blob bg-brand-blue/10" />
-                <div className="text-center select-none relative">
-                  <div className="font-sora font-black text-[90px] leading-none tracking-[-3px] opacity-30">
-                    <span className="text-brand-red">D</span>
-                    <span className="text-brand-blue">M</span>
-                  </div>
-                  <p className="font-sora font-semibold text-[11px] tracking-[0.14em] uppercase text-brand-ink-soft mt-3">
-                    Foto volgt
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-brand-sm shadow-card p-5">
-                <div className="font-sora font-bold text-[15px] text-brand-ink">Mouad</div>
-                <div className="font-inter text-[12px] text-brand-ink-soft mt-0.5">Oprichter & Rijinstructeur</div>
+              <div className="w-full h-full rounded-brand-lg bg-brand-light border border-brand-line grid place-items-center overflow-hidden">
+                <p className="font-sora font-semibold text-[11px] tracking-[0.14em] uppercase text-brand-ink-soft">
+                  Foto volgt
+                </p>
               </div>
             </div>
 
@@ -77,7 +64,7 @@ export default function OverOnsPage() {
               </h2>
               <div className="mt-6 flex flex-col gap-5 text-[16px] leading-[1.75] text-brand-ink-body">
                 <p>
-                  Drive More is opgericht door Mouad met een simpele overtuiging: rijles moet passen bij de leerling, niet andersom. Na jarenlange ervaring in het rijonderwijs merkte hij keer op keer hetzelfde patroon: leerlingen die vastliepen, niet omdat ze niet konden rijden, maar omdat de aanpak niet bij hen paste.
+                  Drive More is opgericht vanuit een simpele overtuiging: rijles moet passen bij de leerling, niet andersom. Na jarenlange ervaring in het rijonderwijs viel keer op keer hetzelfde patroon op: leerlingen die vastliepen, niet omdat ze niet konden rijden, maar omdat de aanpak niet bij hen paste.
                 </p>
                 <p>
                   Dus begon hij anders. Geen vast programma, geen afvinklijstjes. In plaats daarvan: een intake om te begrijpen wie jij bent als leerling. Daarna een plan dat écht bij je past — of je nu rustig wilt opbouwen, snel moet slagen of zenuwen hebt bij het examen.
@@ -90,8 +77,7 @@ export default function OverOnsPage() {
                 "Elke leerling leert anders. Mijn taak is erachter komen hoe jij leert — en dan precies die les geven."
               </blockquote>
               <div className="mt-6 pt-6 border-t border-brand-line">
-                <span className="font-sora font-bold text-[17px] text-brand-ink block">Mouad</span>
-                <span className="font-inter font-medium text-[13px] text-brand-ink-soft mt-0.5 block">Oprichter — Rijschool Drive More</span>
+                <span className="font-sora font-bold text-[16px] text-brand-ink block">Oprichter & rijinstructeur</span>
               </div>
             </div>
           </div>
