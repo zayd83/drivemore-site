@@ -51,17 +51,6 @@ export function LegalPageLayout({ pageKey, doc }: { pageKey: LegalPageKey; doc: 
         <h1 className="font-sora font-extrabold text-[clamp(30px,5vw,46px)] leading-[1.08] tracking-[-0.025em] mt-3">
           {page.title}
         </h1>
-        {doc.lastUpdated && (
-          <p className="mt-2.5 text-[13px] text-brand-ink-soft">
-            {t.legal.updatedLabel}:{" "}
-            {doc.lastUpdated.toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
-        )}
-
         {/* Bedrijfsgegevens */}
         <div className="mt-7 bg-brand-light border border-brand-line rounded-brand-lg p-6">
           <h2 className="font-sora font-bold text-[13px] tracking-[0.1em] uppercase text-brand-ink-soft">

@@ -399,11 +399,8 @@ export const en: Dictionary = {
     whatsapp: "WhatsApp",
   },
   trustToast: {
-    messages: [
-      "Book your intake — often a spot within a week.",
-      "Lessons in Dordrecht and the surrounding area — manual and automatic.",
-      "Personal guidance, one dedicated instructor.",
-    ],
+    signupTemplate: "{name} from {city} booked an intake {time}.",
+    timePhrases: ["just now", "2 minutes ago", "5 minutes ago", "8 minutes ago"],
     closeLabel: "Close",
   },
   faq: {
@@ -446,7 +443,6 @@ export const en: Dictionary = {
     ],
   },
   legal: {
-    updatedLabel: "Last updated",
     businessInfoHeading: "Business details",
     kvkLabel: "CoC",
     enNotice: "This page is available in Dutch.",

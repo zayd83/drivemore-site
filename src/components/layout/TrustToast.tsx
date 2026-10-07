@@ -6,11 +6,16 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useConsent } from "@/contexts/ConsentContext";
 import { SHOW_TRUST_TOAST } from "@/lib/config/trustToast";
+import { SIGNUP_NAMES } from "@/lib/config/signupPopup";
+import { CITIES } from "@/lib/config/cities";
 
 const SHOWN_KEY = "dm_trust_toast_shown"; // sessionStorage — max. 1x per bezoek (per tab)
-const ROTATION_KEY = "dm_trust_toast_idx"; // localStorage — welk bericht volgt op de volgende visit
 const SHOW_DELAY_MS = 4000;
 const AUTO_DISMISS_MS = 9000;
+
+function pickRandom<T>(arr: readonly T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 export function TrustToast() {
   const { t } = useLanguage();
@@ -28,19 +33,17 @@ export function TrustToast() {
     try {
       if (sessionStorage.getItem(SHOWN_KEY)) return;
     } catch {
-      // Privacy-modus of storage geblokkeerd — toon de toast dan gewoon eenmalig zonder rotatie-onthouden.
+      // Privacy-modus of storage geblokkeerd — toon de toast dan gewoon eenmalig.
     }
 
-    const messages = t.trustToast.messages;
-    if (messages.length === 0) return;
-
-    let idx = 0;
-    try {
-      const stored = localStorage.getItem(ROTATION_KEY);
-      idx = stored ? parseInt(stored, 10) % messages.length : 0;
-      if (Number.isNaN(idx)) idx = 0;
-    } catch {}
-    setMessage(messages[idx]);
+    const name = pickRandom(SIGNUP_NAMES);
+    const city = pickRandom(CITIES).name;
+    const time = pickRandom(t.trustToast.timePhrases);
+    const text = t.trustToast.signupTemplate
+      .replace("{name}", name)
+      .replace("{city}", city)
+      .replace("{time}", time);
+    setMessage(text);
 
     setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
@@ -48,7 +51,6 @@ export function TrustToast() {
       setVisible(true);
       try {
         sessionStorage.setItem(SHOWN_KEY, "1");
-        localStorage.setItem(ROTATION_KEY, String((idx + 1) % messages.length));
       } catch {}
     }, SHOW_DELAY_MS);
 
@@ -72,7 +74,7 @@ export function TrustToast() {
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: reduceMotion ? 0.25 : 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed z-50 left-4 right-4 bottom-[100px] sm:right-auto sm:max-w-[340px] lg:bottom-6"
+          className="fixed z-50 left-4 right-4 bottom-[100px] sm:left-auto sm:max-w-[340px] lg:bottom-6"
         >
           <div className="relative bg-white border border-brand-line rounded-brand-lg shadow-card p-4 pr-10">
             <Link

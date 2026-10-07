@@ -416,14 +416,11 @@ export const nl = {
     plan: "Plan intake",
     whatsapp: "WhatsApp",
   },
-  // Kleine, eerlijke trust-toast — roteert door deze berichten (geen namen/plaatsen/fake
-  // urgentie). Aan/uit via SHOW_TRUST_TOAST in src/lib/config/trustToast.ts.
+  // Fictieve "zojuist ingeschreven"-melding (op klantverzoek, zie src/lib/config/signupPopup.ts).
+  // Aan/uit via SHOW_TRUST_TOAST in src/lib/config/trustToast.ts.
   trustToast: {
-    messages: [
-      "Plan je intake — vaak al binnen een week plek.",
-      "Les in Dordrecht en omgeving — schakel én automaat.",
-      "Persoonlijke begeleiding, één vaste instructeur.",
-    ],
+    signupTemplate: "{name} uit {city} heeft {time} een intake ingepland.",
+    timePhrases: ["zojuist", "2 minuten geleden", "5 minuten geleden", "8 minuten geleden"],
     closeLabel: "Sluiten",
   },
   faq: {
@@ -467,7 +464,6 @@ export const nl = {
   },
   // UI rond de juridische pagina's — de bodytekst zelf komt uit content/legal/*.md en blijft NL.
   legal: {
-    updatedLabel: "Laatst bijgewerkt",
     businessInfoHeading: "Bedrijfsgegevens",
     kvkLabel: "KvK",
     enNotice: "This page is available in Dutch.",
