@@ -387,6 +387,12 @@ export const en: Dictionary = {
     },
     kvk: `CoC ${BUSINESS.kvk}`,
     copyright: "Drive More Driving School",
+    legalLinks: [
+      { label: "Privacy Policy", href: "/privacybeleid" },
+      { label: "Cookie Policy", href: "/cookiebeleid" },
+      { label: "Terms & Conditions", href: "/algemene-voorwaarden" },
+    ],
+    cookieSettingsLink: "Cookie Settings",
   },
   mobileCta: {
     plan: "Book intake",
@@ -438,5 +444,46 @@ export const en: Dictionary = {
         a: "During your intake you drive for a bit so we can assess your level. Afterwards we give you honest advice on which route and pace suits you best.",
       },
     ],
+  },
+  legal: {
+    updatedLabel: "Last updated",
+    businessInfoHeading: "Business details",
+    kvkLabel: "CoC",
+    enNotice: "This page is available in Dutch.",
+    placeholderNote: "Content coming soon.",
+    pages: {
+      privacy: { eyebrow: "Legal", title: "Privacy Policy" },
+      cookies: { eyebrow: "Legal", title: "Cookie Policy" },
+      terms: { eyebrow: "Legal", title: "Terms & Conditions" },
+    },
+  },
+  cookieBanner: {
+    text: "We use cookies to make the site work well and to improve it.",
+    linkLabel: "Read our cookie policy",
+    acceptAll: "Accept all",
+    necessaryOnly: "Necessary only",
+    settingsCta: "Settings",
+    settingsTitle: "Cookie settings",
+    alwaysOn: "Always on",
+    save: "Save preferences",
+    back: "Back",
+    categories: {
+      necessary: {
+        label: "Necessary",
+        description: "Required for the site to work properly. Cannot be turned off.",
+      },
+      functional: {
+        label: "Functional",
+        description: "Remembers your preferences, such as your language choice.",
+      },
+      analytics: {
+        label: "Analytics",
+        description: "Helps us understand how visitors use the site.",
+      },
+      marketing: {
+        label: "Marketing",
+        description: "For personalised ads — not currently active.",
+      },
+    },
   },
 };

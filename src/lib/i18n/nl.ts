@@ -405,6 +405,12 @@ export const nl = {
     },
     kvk: `KvK ${BUSINESS.kvk}`,
     copyright: "Rijschool Drive More",
+    legalLinks: [
+      { label: "Privacybeleid", href: "/privacybeleid" },
+      { label: "Cookiebeleid", href: "/cookiebeleid" },
+      { label: "Algemene voorwaarden", href: "/algemene-voorwaarden" },
+    ],
+    cookieSettingsLink: "Cookie-instellingen",
   },
   mobileCta: {
     plan: "Plan intake",
@@ -458,6 +464,48 @@ export const nl = {
         a: "Tijdens je intake rijd je een stukje, zodat we je niveau kunnen inschatten. Daarna geven we je eerlijk advies over welk traject en tempo het beste bij je past.",
       },
     ],
+  },
+  // UI rond de juridische pagina's — de bodytekst zelf komt uit content/legal/*.md en blijft NL.
+  legal: {
+    updatedLabel: "Laatst bijgewerkt",
+    businessInfoHeading: "Bedrijfsgegevens",
+    kvkLabel: "KvK",
+    enNotice: "This page is available in Dutch.",
+    placeholderNote: "Inhoud volgt binnenkort.",
+    pages: {
+      privacy: { eyebrow: "Juridisch", title: "Privacybeleid" },
+      cookies: { eyebrow: "Juridisch", title: "Cookiebeleid" },
+      terms: { eyebrow: "Juridisch", title: "Algemene voorwaarden" },
+    },
+  },
+  cookieBanner: {
+    text: "We gebruiken cookies om de site goed te laten werken en te verbeteren.",
+    linkLabel: "Lees ons cookiebeleid",
+    acceptAll: "Alles accepteren",
+    necessaryOnly: "Alleen noodzakelijk",
+    settingsCta: "Instellingen",
+    settingsTitle: "Cookie-instellingen",
+    alwaysOn: "Altijd aan",
+    save: "Voorkeuren opslaan",
+    back: "Terug",
+    categories: {
+      necessary: {
+        label: "Noodzakelijk",
+        description: "Nodig om de site goed te laten werken. Kan niet worden uitgezet.",
+      },
+      functional: {
+        label: "Functioneel",
+        description: "Onthoudt jouw voorkeuren, zoals je taalkeuze.",
+      },
+      analytics: {
+        label: "Analytisch",
+        description: "Helpt ons begrijpen hoe bezoekers de site gebruiken.",
+      },
+      marketing: {
+        label: "Marketing",
+        description: "Voor gepersonaliseerde advertenties — momenteel niet actief.",
+      },
+    },
   },
 };
 

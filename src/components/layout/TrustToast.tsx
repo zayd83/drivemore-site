@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useConsent } from "@/contexts/ConsentContext";
 import { SHOW_TRUST_TOAST } from "@/lib/config/trustToast";
 
 const SHOWN_KEY = "dm_trust_toast_shown"; // sessionStorage — max. 1x per bezoek (per tab)
@@ -13,12 +14,16 @@ const AUTO_DISMISS_MS = 9000;
 
 export function TrustToast() {
   const { t } = useLanguage();
+  const { ready: consentReady, bannerOpen: cookieBannerOpen } = useConsent();
   const [visible, setVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (!SHOW_TRUST_TOAST) return;
+    // Wacht tot de cookiekeuze bekend/gemaakt is — anders vechten twee popups om aandacht bij
+    // het eerste bezoek. `consentReady` voorkomt een mount-order race met ConsentProvider.
+    if (!consentReady || cookieBannerOpen) return;
 
     try {
       if (sessionStorage.getItem(SHOWN_KEY)) return;
@@ -49,7 +54,7 @@ export function TrustToast() {
 
     return () => clearTimeout(showTimer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [consentReady, cookieBannerOpen]);
 
   useEffect(() => {
     if (!visible) return;

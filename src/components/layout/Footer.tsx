@@ -4,12 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useConsent } from "@/contexts/ConsentContext";
 import { Button } from "@/components/ui/Button";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { CONTACT } from "@/lib/utils";
 
 export function Footer() {
   const { t, toggleLang, lang } = useLanguage();
+  const { openSettings } = useConsent();
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — moet leeg blijven
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -148,16 +150,28 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-[#7e8799]">
-          <span>
-            © {year} {t.footer.copyright} · {t.footer.kvk}
-          </span>
-          <button
-            onClick={toggleLang}
-            className="hover:text-white transition-colors font-semibold"
-          >
-            {lang === "nl" ? "🇬🇧 English" : "🇳🇱 Nederlands"}
-          </button>
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col gap-3 text-[12.5px] text-[#7e8799]">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span>
+              © {year} {t.footer.copyright} · {t.footer.kvk}
+            </span>
+            <button
+              onClick={toggleLang}
+              className="hover:text-white transition-colors font-semibold"
+            >
+              {lang === "nl" ? "🇬🇧 English" : "🇳🇱 Nederlands"}
+            </button>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+            {t.footer.legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
+                {link.label}
+              </Link>
+            ))}
+            <button onClick={openSettings} className="hover:text-white transition-colors">
+              {t.footer.cookieSettingsLink}
+            </button>
+          </div>
         </div>
       </div>
     </footer>

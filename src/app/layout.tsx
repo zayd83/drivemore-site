@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ConsentProvider } from "@/contexts/ConsentContext";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MobileCTA } from "@/components/layout/MobileCTA";
 import { TrustToast } from "@/components/layout/TrustToast";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { getLocalBusinessSchema } from "@/lib/structuredData";
 
 const sora = Sora({
@@ -74,14 +76,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
         />
         <LanguageProvider>
-          <LenisProvider>
-            <ScrollProgress />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <MobileCTA />
-            <TrustToast />
-          </LenisProvider>
+          <ConsentProvider>
+            <LenisProvider>
+              <ScrollProgress />
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <MobileCTA />
+              <TrustToast />
+              <CookieBanner />
+            </LenisProvider>
+          </ConsentProvider>
         </LanguageProvider>
       </body>
     </html>
