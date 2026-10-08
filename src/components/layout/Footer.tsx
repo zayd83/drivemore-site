@@ -38,7 +38,9 @@ export function Footer() {
   return (
     <footer className="relative bg-[#070a10] text-[#c7cedd] overflow-hidden">
       <WaveDivider fill="#0E1320" flip />
-      <div className="max-w-wrap mx-auto px-5 md:px-10 pt-16 pb-8 relative z-[2]">
+      {/* pb-28 op mobiel geeft ruimte vrij voor de fixed MobileCTA-balk onderaan (lg:hidden) —
+          zonder die ruimte verdwijnt de onderste regel (privacy/cookie-links) er visueel onder. */}
+      <div className="max-w-wrap mx-auto px-5 md:px-10 pt-16 pb-28 lg:pb-8 relative z-[2]">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
