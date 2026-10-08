@@ -10,7 +10,7 @@ import { SIGNUP_NAMES } from "@/lib/config/signupPopup";
 import { CITIES } from "@/lib/config/cities";
 
 const SHOWN_KEY = "dm_trust_toast_shown"; // sessionStorage — max. 1x per bezoek (per tab)
-const SHOW_DELAY_MS = 4000;
+const SHOW_DELAY_MS = 1000; // bijna direct bij het openen van de site, niet pas na enkele seconden
 const AUTO_DISMISS_MS = 9000;
 
 function pickRandom<T>(arr: readonly T[]): T {
