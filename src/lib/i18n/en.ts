@@ -390,7 +390,6 @@ export const en: Dictionary = {
     legalLinks: [
       { label: "Privacy Policy", href: "/privacybeleid" },
       { label: "Cookie Policy", href: "/cookiebeleid" },
-      { label: "Terms & Conditions", href: "/algemene-voorwaarden" },
     ],
     cookieSettingsLink: "Cookie Settings",
   },
@@ -450,7 +449,6 @@ export const en: Dictionary = {
     pages: {
       privacy: { eyebrow: "Legal", title: "Privacy Policy" },
       cookies: { eyebrow: "Legal", title: "Cookie Policy" },
-      terms: { eyebrow: "Legal", title: "Terms & Conditions" },
     },
   },
   cookieBanner: {

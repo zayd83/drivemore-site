@@ -6,7 +6,7 @@ import { BUSINESS } from "@/lib/config/business";
 import { CONTACT } from "@/lib/utils";
 import type { LegalDoc } from "@/lib/content/legal";
 
-type LegalPageKey = "privacy" | "cookies" | "terms";
+type LegalPageKey = "privacy" | "cookies";
 
 const MARKDOWN_COMPONENTS = {
   h1: (props: React.ComponentPropsWithoutRef<"h1">) => (
