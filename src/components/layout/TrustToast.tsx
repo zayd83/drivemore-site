@@ -9,7 +9,6 @@ import { SHOW_TRUST_TOAST } from "@/lib/config/trustToast";
 import { SIGNUP_NAMES } from "@/lib/config/signupPopup";
 import { CITIES } from "@/lib/config/cities";
 
-const SHOWN_KEY = "dm_trust_toast_shown"; // sessionStorage — max. 1x per bezoek (per tab)
 const SHOW_DELAY_MS = 1000; // bijna direct bij het openen van de site, niet pas na enkele seconden
 const AUTO_DISMISS_MS = 9000;
 
@@ -30,12 +29,6 @@ export function TrustToast() {
     // het eerste bezoek. `consentReady` voorkomt een mount-order race met ConsentProvider.
     if (!consentReady || cookieBannerOpen) return;
 
-    try {
-      if (sessionStorage.getItem(SHOWN_KEY)) return;
-    } catch {
-      // Privacy-modus of storage geblokkeerd — toon de toast dan gewoon eenmalig.
-    }
-
     const name = pickRandom(SIGNUP_NAMES);
     const city = pickRandom(CITIES).name;
     const time = pickRandom(t.trustToast.timePhrases);
@@ -47,12 +40,7 @@ export function TrustToast() {
 
     setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
-    const showTimer = setTimeout(() => {
-      setVisible(true);
-      try {
-        sessionStorage.setItem(SHOWN_KEY, "1");
-      } catch {}
-    }, SHOW_DELAY_MS);
+    const showTimer = setTimeout(() => setVisible(true), SHOW_DELAY_MS);
 
     return () => clearTimeout(showTimer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
