@@ -345,6 +345,17 @@ export const en: Dictionary = {
       phone: { label: "Call", sub: "06 11206001" },
       email: { label: "Email", sub: "contact@rijschooldrivemore.nl" },
     },
+    addressHeading: "Address",
+    kvkLabel: "CoC",
+    hoursHeading: "Availability",
+    openingHours: [
+      { day: "Monday – Friday", hours: "09:00 – 17:00" },
+      { day: "Saturday", hours: "Closed" },
+      { day: "Sunday", hours: "Closed" },
+    ],
+    phoneHoursLabel: "Available by phone: Mon–Fri 09:00–17:00",
+    whatsappNote: "We also reply via WhatsApp outside office hours.",
+    whatsappCta: "WhatsApp",
   },
   endCta: {
     eyebrow: "Get started",

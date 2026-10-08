@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/utils";
-import { BUSINESS, OPENING_HOURS } from "@/lib/config/business";
+import { BUSINESS } from "@/lib/config/business";
 
 export default function ContactPage() {
   const { t } = useLanguage();
@@ -303,7 +303,7 @@ export default function ContactPage() {
 
             {/* Address */}
             <div className="mt-8 p-5 bg-brand-light rounded-brand-lg border border-brand-line">
-              <h3 className="font-sora font-bold text-[15px] text-brand-ink">Adres</h3>
+              <h3 className="font-sora font-bold text-[15px] text-brand-ink">{t.contact.addressHeading}</h3>
               <p className="mt-2 text-[14px] text-brand-ink-body leading-relaxed">
                 {BUSINESS.name}
                 <br />
@@ -311,23 +311,61 @@ export default function ContactPage() {
                 <br />
                 {BUSINESS.postalCode} {BUSINESS.addressLocality}
               </p>
-              <p className="mt-3 text-[12.5px] text-brand-ink-soft">KvK {BUSINESS.kvk}</p>
+              <p className="mt-3 text-[12.5px] text-brand-ink-soft">
+                {t.contact.kvkLabel} {BUSINESS.kvk}
+              </p>
             </div>
 
-            {/* Hours / note */}
+            {/* Hours / reachability */}
             <div className="mt-4 p-5 bg-brand-light rounded-brand-lg border border-brand-line">
-              <h3 className="font-sora font-bold text-[15px] text-brand-ink">Bereikbaarheid</h3>
+              <h3 className="font-sora font-bold text-[15px] text-brand-ink">{t.contact.hoursHeading}</h3>
               <div className="mt-3 flex flex-col gap-2 text-[14px] text-brand-ink-body">
-                {OPENING_HOURS.map((row) => (
+                {t.contact.openingHours.map((row) => (
                   <div key={row.day} className="flex justify-between">
                     <span>{row.day}</span>
                     <span className="font-medium text-brand-ink">{row.hours}</span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-[12.5px] text-brand-ink-soft">
-                Via WhatsApp reageren we ook buiten kantoortijden.
-              </p>
+
+              {/* Telefonische bereikbaarheid */}
+              <div className="mt-4 pt-4 border-t border-brand-line">
+                <p className="text-[13px] text-brand-ink-body">{t.contact.phoneHoursLabel}</p>
+                <a
+                  href={`tel:+31${CONTACT.phone.slice(1)}`}
+                  className="mt-1 inline-flex items-center gap-1.5 font-sora font-semibold text-[15px] text-brand-blue hover:text-brand-red transition-colors"
+                >
+                  {CONTACT.phoneDisplay}
+                </a>
+              </div>
+
+              {/* WhatsApp */}
+              <div className="mt-4 pt-4 border-t border-brand-line">
+                <p className="text-[12.5px] text-brand-ink-soft">{t.contact.whatsappNote}</p>
+                <a
+                  href={CONTACT.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 font-sora font-semibold text-[13.5px] text-white rounded-full px-4 py-2 hover:brightness-95 transition-all"
+                  style={{ background: "#25D366" }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z" />
+                    <path d="M8.5 9.5c0 3 2 5 5 5" />
+                  </svg>
+                  {t.contact.whatsappCta}
+                </a>
+              </div>
+
+              {/* E-mail */}
+              <div className="mt-4 pt-4 border-t border-brand-line">
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="inline-flex items-center gap-1.5 font-sora font-semibold text-[13.5px] text-brand-blue hover:text-brand-red transition-colors"
+                >
+                  {CONTACT.email}
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>

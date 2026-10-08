@@ -10,8 +10,6 @@ export const BUSINESS = {
   areaServed: "Dordrecht en omgeving",
 };
 
-export const OPENING_HOURS = [
-  { day: "Maandag – Vrijdag", hours: "09:00 – 17:00" },
-  { day: "Zaterdag", hours: "Gesloten" },
-  { day: "Zondag", hours: "Gesloten" },
-];
+// Openingstijden voor weergave staan vertaald in src/lib/i18n/nl.ts en en.ts onder
+// `contact.openingHours` (dezelfde tijden gebruikt structuredData.ts hardcoded voor de
+// openingHoursSpecification).

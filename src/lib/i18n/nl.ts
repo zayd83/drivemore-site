@@ -361,6 +361,17 @@ export const nl = {
       phone: { label: "Bellen", sub: "06 11206001" },
       email: { label: "E-mail", sub: "contact@rijschooldrivemore.nl" },
     },
+    addressHeading: "Adres",
+    kvkLabel: "KvK",
+    hoursHeading: "Bereikbaarheid",
+    openingHours: [
+      { day: "Maandag – Vrijdag", hours: "09:00 – 17:00" },
+      { day: "Zaterdag", hours: "Gesloten" },
+      { day: "Zondag", hours: "Gesloten" },
+    ],
+    phoneHoursLabel: "Telefonisch bereikbaar: ma–vr 09:00–17:00",
+    whatsappNote: "Via WhatsApp reageren we ook buiten kantoortijden.",
+    whatsappCta: "WhatsApp",
   },
   // Compacte eind-CTA vlak boven de footer (homepage) — los van `contact`, dat blijft
   // de hero-tekst van de losse /contact-pagina.
