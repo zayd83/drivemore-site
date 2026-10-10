@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.6 },
     { path: "/privacybeleid", priority: 0.3 },
     { path: "/cookiebeleid", priority: 0.3 },
+    { path: "/algemene-voorwaarden", priority: 0.3 },
   ];
 
   const cityRoutes = CITIES.map((city) => ({
