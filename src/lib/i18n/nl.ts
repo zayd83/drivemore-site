@@ -419,6 +419,7 @@ export const nl = {
     legalLinks: [
       { label: "Privacybeleid", href: "/privacybeleid" },
       { label: "Cookiebeleid", href: "/cookiebeleid" },
+      { label: "Algemene voorwaarden", href: "/algemene-voorwaarden" },
     ],
     cookieSettingsLink: "Cookie-instellingen",
   },
@@ -481,6 +482,7 @@ export const nl = {
     pages: {
       privacy: { eyebrow: "Juridisch", title: "Privacybeleid" },
       cookies: { eyebrow: "Juridisch", title: "Cookiebeleid" },
+      terms: { eyebrow: "Juridisch", title: "Algemene voorwaarden" },
     },
   },
   cookieBanner: {
