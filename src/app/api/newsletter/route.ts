@@ -26,6 +26,12 @@ export async function POST(req: NextRequest) {
     const mailFrom = process.env.MAIL_FROM ?? "onboarding@resend.dev";
 
     if (!apiKey) {
+      // In productie nooit "gelukt" melden als er niets gemaild wordt — dan raakt de aanvraag
+      // stilletjes kwijt. De bezoeker krijgt dan de foutmelding met WhatsApp/e-mail als alternatief.
+      if (process.env.NODE_ENV === "production") {
+        console.error("RESEND_API_KEY ontbreekt — aanvraag NIET gemaild:", body.email);
+        return NextResponse.json({ error: "email not configured" }, { status: 503 });
+      }
       console.warn("RESEND_API_KEY not set — logging newsletter signup");
       console.log("[Newsletter signup]", body.email);
       return NextResponse.json({ ok: true });
@@ -47,7 +53,8 @@ export async function POST(req: NextRequest) {
 
     if (!resendRes.ok) {
       const errText = await resendRes.text();
-      console.error("Resend error:", errText);
+      // Volledige aanvraag mee loggen, zodat die uit de serverlogs terug te halen is.
+      console.error("Resend error:", errText, "— aanvraag:", body.email);
       return NextResponse.json({ error: "email send failed" }, { status: 502 });
     }
 
