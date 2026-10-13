@@ -45,7 +45,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="relative w-12 h-12 rounded-full overflow-hidden mb-4">
-              <Image src="/drivemorelogo.jpeg" alt="Drive More logo" fill sizes="48px" className="object-cover" />
+              <Image src="/drivemorelogo.jpeg" alt="Rijschool Drive More logo" fill sizes="48px" className="object-cover" />
             </div>
             <p className="text-[14px] leading-relaxed text-[#8e98ad] max-w-[280px]">
               {t.footer.tagline}
@@ -151,8 +151,22 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Werkgebied — sitebrede links naar de plaatspagina's */}
+        <nav aria-label={t.serviceArea.eyebrow} className="mt-12 text-[13px] text-[#7e8799]">
+          <span className="font-sora font-bold text-[12px] tracking-[0.14em] uppercase text-white mr-3">
+            {t.serviceArea.eyebrow}
+          </span>
+          <span className="inline-flex flex-wrap gap-x-3 gap-y-1 align-middle">
+            {t.serviceArea.cities.map((city) => (
+              <Link key={city.slug} href={`/rijschool-${city.slug}`} className="hover:text-white transition-colors">
+                Rijschool {city.name}
+              </Link>
+            ))}
+          </span>
+        </nav>
+
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col gap-3 text-[12.5px] text-[#7e8799]">
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col gap-3 text-[12.5px] text-[#7e8799]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span>
               © {year} {t.footer.copyright} · {t.footer.kvk}

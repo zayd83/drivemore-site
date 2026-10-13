@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export function FAQ() {
@@ -66,22 +66,19 @@ export function FAQ() {
                   />
                 </span>
               </button>
-              <AnimatePresence initial={false}>
-                {openIndex === i && (
-                  <motion.div
-                    key="content"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-5 px-5 sm:px-6 text-[15px] leading-[1.65] text-brand-ink-body">
-                      {item.a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Antwoord staat altijd in de HTML (alleen ingeklapt), zodat zoekmachines en
+                  AI-crawlers het lezen en het overeenkomt met de FAQPage-structured data. */}
+              <motion.div
+                initial={false}
+                animate={openIndex === i ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+                inert={openIndex !== i}
+              >
+                <p className="pb-5 px-5 sm:px-6 text-[15px] leading-[1.65] text-brand-ink-body">
+                  {item.a}
+                </p>
+              </motion.div>
             </motion.div>
           ))}
         </div>

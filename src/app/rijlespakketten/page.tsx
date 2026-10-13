@@ -30,7 +30,7 @@ export default function RijlespakkettenPage() {
             Kies je route naar je <span className="grad">rijbewijs</span>.
           </h1>
           <p className="mt-5 text-[clamp(15px,1.8vw,18px)] leading-[1.65] text-brand-ink-body max-w-[52ch]">
-            Vijf heldere pakketten, van Drive Start tot Drive Ultimate. Alle prijzen zijn inclusief BTW. Rijbewijs snel nodig? Bekijk onze <Link href="/spoedcursus" className="underline underline-offset-2 hover:text-brand-ink">spoedopleiding</Link>. Twijfel? Plan een intake en we adviseren je eerlijk.
+            Vijf heldere pakketten, van Drive Start tot Drive Ultimate. Alle prijzen zijn inclusief BTW. Rijbewijs snel nodig? Bekijk onze <Link href="/spoedcursus" className="underline underline-offset-2 hover:text-brand-ink">spoedopleiding</Link>. Extra hulp bij zenuwen of theorie? Zie onze <Link href="/diensten" className="underline underline-offset-2 hover:text-brand-ink">diensten</Link>. Twijfel? Plan een intake en we adviseren je eerlijk.
           </p>
         </div>
       </section>

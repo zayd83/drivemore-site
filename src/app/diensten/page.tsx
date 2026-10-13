@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { WhyDriveMore } from "@/components/sections/WhyDriveMore";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import { ServiceArea } from "@/components/sections/ServiceArea";
 import { pageMetadata } from "@/lib/seo";
 import { getBreadcrumbSchema } from "@/lib/structuredData";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -138,6 +139,12 @@ export default function DienstenPage() {
                 >
                   Plan een intake →
                 </Link>
+                <Link
+                  href={svc.id === "spoedcursus" ? "/spoedcursus" : "/rijlespakketten"}
+                  className="mt-3 block font-sora font-semibold text-[14px] text-brand-ink underline underline-offset-4 hover:text-brand-red transition-colors"
+                >
+                  {svc.id === "spoedcursus" ? "Alles over de spoedcursus" : "Bekijk rijlespakketten & prijzen"}
+                </Link>
               </div>
               {/* Body column */}
               <div className="flex flex-col gap-4">
@@ -153,6 +160,7 @@ export default function DienstenPage() {
       </section>
 
       <WhyDriveMore />
+      <ServiceArea />
       <ContactCTA />
     </>
   );

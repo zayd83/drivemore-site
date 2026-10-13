@@ -68,7 +68,7 @@ export function Header() {
             onClick={() => setMenuOpen(false)}
           >
             <span className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-              <Image src="/drivemorelogo.jpeg" alt="Drive More logo" fill sizes="40px" className="object-cover" priority />
+              <Image src="/drivemorelogo.jpeg" alt="Rijschool Drive More logo" fill sizes="40px" className="object-cover" priority />
             </span>
             <span className="leading-none">
               <span className={`block font-sora font-bold text-[12px] sm:text-[13px] tracking-[0.13em] transition-colors duration-300 ${lightMode ? "text-white" : "text-brand-ink"}`}>
