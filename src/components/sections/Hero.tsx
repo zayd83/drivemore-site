@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { preload } from "react-dom";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -42,6 +44,9 @@ const POINT_ICONS: Record<"bolt" | "car" | "person", React.ReactNode> = {
 };
 
 export function Hero() {
+  // De poster is het eerste zichtbare beeld (LCP): laat de browser 'm meteen met hoge prioriteit
+  // ophalen, nog voordat de video zelf begint te laden.
+  preload("/hero-poster.jpg", { as: "image", fetchPriority: "high" });
   const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [contentVisible, setContentVisible] = useState(false);
@@ -98,7 +103,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/hero-poster.jpg"
           aria-hidden="true"
           onError={() => setVideoFailed(true)}
@@ -110,12 +115,14 @@ export function Hero() {
       )}
       {/* Poster fallback — shown for prefers-reduced-motion and if the video fails to load/play */}
       {!showVideo && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           src="/hero-poster.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
       )}
 
