@@ -5,21 +5,24 @@ import { Button } from "@/components/ui/Button";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { EndCta } from "@/components/sections/EndCta";
 import { CITIES, getCity } from "@/lib/config/cities";
-import { getLocalBusinessSchema } from "@/lib/structuredData";
+import { getBreadcrumbSchema, getLocalBusinessSchema } from "@/lib/structuredData";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 export function CityPageContent({ slug }: { slug: string }) {
   const city = getCity(slug);
   if (!city) notFound();
 
   const otherCities = CITIES.filter((c) => c.slug !== slug);
-  const schema = getLocalBusinessSchema({ areaServed: city.name });
+  const path = `/rijschool-${city.slug}`;
+  const schema = [
+    getLocalBusinessSchema({ areaServed: city.name, url: `${SITE_URL}${path}` }),
+    getBreadcrumbSchema([{ name: `Rijschool ${city.name}`, path }]),
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={schema} />
 
       {/* Header */}
       <section className="pt-[120px] pb-14 md:pb-16 bg-gradient-to-b from-brand-light to-white">
@@ -59,6 +62,15 @@ export function CityPageContent({ slug }: { slug: string }) {
               </h2>
               <p className="mt-1.5 text-[15px] text-brand-ink-body leading-relaxed">
                 Bekijk onze pakketten en kies wat bij jouw tempo en doel past — of vraag eerst een intake aan.
+                Snel je rijbewijs nodig? Bekijk de{" "}
+                <Link href="/spoedcursus" className="underline underline-offset-2 hover:text-brand-ink">
+                  spoedcursus
+                </Link>
+                . Zenuwachtig voor het examen? Lees meer over{" "}
+                <Link href="/diensten#faalangst" className="underline underline-offset-2 hover:text-brand-ink">
+                  faalangstbegeleiding
+                </Link>
+                .
               </p>
             </div>
             <MagneticButton className="flex-shrink-0">
