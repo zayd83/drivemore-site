@@ -11,9 +11,9 @@ import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/utils";
 
 const NAV_LINKS = [
+  { labelKey: "intensive" as const, href: "/spoedcursus" },
   { labelKey: "packages" as const, href: "/rijlespakketten" },
   { labelKey: "services" as const, href: "/diensten" },
-  { labelKey: "intensive" as const, href: "/spoedcursus" },
   { labelKey: "about" as const, href: "/over-ons" },
   { labelKey: "contact" as const, href: "/contact" },
 ];
