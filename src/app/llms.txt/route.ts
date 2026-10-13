@@ -13,6 +13,10 @@ import { CONTACT, formatPrice } from "@/lib/utils";
 // Dagelijks opnieuw opgebouwd zodat een verlopen actie vanzelf verdwijnt.
 export const revalidate = 86400;
 
+// Bedragen met centen (bijv. € 44,50) altijd met twee decimalen.
+const eur = (n: number) =>
+  n % 1 === 0 ? formatPrice(n) : new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(n);
+
 export function GET() {
   const actie = isActieZichtbaar()
     ? `${formatPrice(ACTIE.actiePrijsPerLes)} per les van 45 minuten (actie t/m ${ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}, normaal ${formatPrice(ACTIE.normalePrijsPerLes)})`
@@ -46,7 +50,7 @@ export function GET() {
     ...nl.packages.items.map((p) => `- ${p.name}: ${p.lessons} van 45 minuten — ${formatPrice(p.price)}`),
     GRATIS_HEREXAMEN ? "- Bij alle pakketten: gratis herexamen als je zakt" : "",
     `- Inschrijfkosten Drive More: ${formatPrice(EXTRA_COSTS.driveMore.inschrijfkosten)}`,
-    `- CBR-kosten (los van het pakket): praktijkexamen ${formatPrice(EXTRA_COSTS.cbr.rijexamen)}, theorie-examen ${formatPrice(EXTRA_COSTS.cbr.theorieExamen)}, medische verklaring ${formatPrice(EXTRA_COSTS.cbr.medischeVerklaring)}`,
+    `- CBR-kosten (los van het pakket): praktijkexamen ${eur(EXTRA_COSTS.cbr.rijexamen)}, theorie-examen ${eur(EXTRA_COSTS.cbr.theorieExamen)}, medische verklaring ${eur(EXTRA_COSTS.cbr.medischeVerklaring)}`,
     "",
     "## Veelgestelde vragen",
     ...nl.faq.items.flatMap((item) => [`### ${item.q}`, item.a, ""]),

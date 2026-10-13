@@ -67,7 +67,7 @@ export default async function OpengraphImage() {
             <span style={{ color: "#ff4d57" }}>jou, niet andersom.</span>
           </div>
           <div style={{ marginTop: 28, fontSize: 28, color: "rgba(255,255,255,0.82)", lineHeight: 1.4 }}>
-            Schakel & automaat · Geen wachtlijst · Dordrecht e.o.
+            Schakel & automaat · Geen wachtlijst · Dordrecht
           </div>
         </div>
       </div>

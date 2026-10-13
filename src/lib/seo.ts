@@ -7,6 +7,15 @@ export const SITE_NAME = "Rijschool Drive More";
 // bij een echte contentwijziging (niet bij elke build, anders negeert Google de waarde).
 export const CONTENT_LAST_UPDATED = "2026-10-13";
 
+// Gegenereerd door app/opengraph-image.tsx. Expliciet meegeven is nodig: zodra een pagina een
+// eigen `openGraph`-object heeft, erft Next.js het beeld uit de root niet meer.
+const OG_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "Rijschool Drive More — persoonlijke rijlessen in Dordrecht en omgeving",
+};
+
 /**
  * Volledige metadata voor één pagina: unieke title/description, canonical, hreflang en
  * Open Graph + Twitter Card. Next.js voegt `openGraph` niet diep samen met de root-layout,
@@ -42,11 +51,13 @@ export function pageMetadata({
       url,
       title,
       description,
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [OG_IMAGE.url],
     },
   };
 }
