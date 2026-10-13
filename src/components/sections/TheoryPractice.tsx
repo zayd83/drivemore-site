@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { GRATIS_THEORIE } from "@/lib/config/theory";
@@ -15,30 +16,16 @@ function CheckIcon() {
   );
 }
 
-// Zuiver decoratieve, zelfgemaakte visual (geen gekopieerde/stock-afbeelding): een gradient-paneel
-// met een "afspelen"-icoon en het aantal oefenexamens, in de rood/blauw huisstijl.
 function TheoryVisual() {
   return (
-    <div
-      className="relative aspect-[4/3] rounded-brand-lg overflow-hidden flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #E11D28, #1B4FD1)" }}
-      aria-hidden="true"
-    >
-      <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-white/10" />
-      <div className="absolute -bottom-14 -right-8 w-56 h-56 rounded-full bg-white/10" />
-      <div className="relative z-10 flex flex-col items-center gap-4">
-        <div className="w-20 h-20 rounded-full bg-white/15 backdrop-blur-sm grid place-items-center">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-        <div className="text-center">
-          <div className="font-sora font-extrabold text-[40px] leading-none text-white">50</div>
-          <div className="mt-1 font-sora font-semibold text-[12px] tracking-[0.14em] uppercase text-white/80">
-            oefenexamens
-          </div>
-        </div>
-      </div>
+    <div className="relative aspect-[4/3] rounded-brand-lg overflow-hidden">
+      <Image
+        src="/gratistheorie.jpg"
+        alt="Lesauto met theorie-examen-bord bij een kruising met fietspad en voorrangsborden"
+        fill
+        sizes="(min-width: 768px) 50vw, 100vw"
+        className="object-cover"
+      />
     </div>
   );
 }
