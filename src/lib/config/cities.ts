@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 export interface CityInfo {
   slug: string;
@@ -84,16 +85,9 @@ export function getCityMetadata(slug: string): Metadata {
   const city = getCity(slug);
   if (!city) return {};
 
-  const title = `Rijschool in ${city.name}`;
-  return {
-    title,
+  return pageMetadata({
+    title: `Rijschool ${city.name} | Rijlessen automaat & schakel – Drive More`,
     description: city.metaDescription,
-    alternates: { canonical: `/rijschool-${city.slug}` },
-    openGraph: {
-      type: "website",
-      locale: "nl_NL",
-      title: `${title} | Rijschool Drive More`,
-      description: city.metaDescription,
-    },
-  };
+    path: `/rijschool-${city.slug}`,
+  });
 }

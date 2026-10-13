@@ -5,12 +5,16 @@ import { ContactCTA } from "@/components/sections/ContactCTA";
 import { SHOW_REVIEWS } from "@/lib/config/reviews";
 import { Button } from "@/components/ui/Button";
 import { WaveDivider } from "@/components/ui/WaveDivider";
+import { pageMetadata } from "@/lib/seo";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
+import { JsonLd } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Spoedcursus",
+export const metadata: Metadata = pageMetadata({
+  title: "Spoedcursus rijbewijs Dordrecht | In een paar weken – Drive More",
   description:
-    "Rijbewijs in een paar weken met de spoedcursus van Drive More. Intensief, compact en volledig begeleiding van les tot examen.",
-};
+    "Snel je rijbewijs halen in Dordrecht? De spoedcursus van Drive More plant lessen, tussentijdse toets en examen compact achter elkaar. Schakel of automaat.",
+  path: "/spoedcursus",
+});
 
 const checks = [
   "Je rijbewijs nodig voor een nieuwe baan of stage",
@@ -23,6 +27,7 @@ const checks = [
 export default function SpoedcursusPage() {
   return (
     <>
+      <JsonLd data={getBreadcrumbSchema([{ name: "Spoedcursus", path: "/spoedcursus" }])} />
       {/* Hero */}
       <section
         className="pt-[120px] pb-[clamp(48px,8vw,96px)] relative overflow-hidden"

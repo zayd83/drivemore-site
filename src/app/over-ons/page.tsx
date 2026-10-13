@@ -6,12 +6,16 @@ import { SHOW_REVIEWS } from "@/lib/config/reviews";
 import { Button } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { WaveDivider } from "@/components/ui/WaveDivider";
+import { pageMetadata } from "@/lib/seo";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
+import { JsonLd } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Over ons",
+export const metadata: Metadata = pageMetadata({
+  title: "Over Rijschool Drive More | Persoonlijke rijinstructeur Dordrecht",
   description:
-    "Maak kennis met de oprichter van Rijschool Drive More. Persoonlijke begeleiding, maatwerk en een duidelijke aanpak — dat is hoe we werken.",
-};
+    "Maak kennis met Rijschool Drive More in Dordrecht: 15+ jaar ervaring, één vaste instructeur en rijles die past bij jouw tempo. Lees hoe we werken.",
+  path: "/over-ons",
+});
 
 const values = [
   {
@@ -31,6 +35,7 @@ const values = [
 export default function OverOnsPage() {
   return (
     <>
+      <JsonLd data={getBreadcrumbSchema([{ name: "Over ons", path: "/over-ons" }])} />
       {/* Hero */}
       <section className="pt-[120px] pb-16 bg-gradient-to-b from-brand-light to-white">
         <div className="max-w-wrap mx-auto px-5 md:px-10">

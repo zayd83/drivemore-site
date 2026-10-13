@@ -4,7 +4,7 @@ export const nl = {
   meta: {
     siteName: "Rijschool Drive More",
     siteDescription:
-      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Rotterdam e.o. Plan je intake.",
+      "Rijschool Drive More — persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie in Dordrecht en omgeving. Schakel en automaat, geen wachtlijst. Plan je intake.",
   },
   nav: {
     services: "Diensten",

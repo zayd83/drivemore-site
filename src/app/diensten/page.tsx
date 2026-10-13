@@ -3,12 +3,16 @@ import Link from "next/link";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { WhyDriveMore } from "@/components/sections/WhyDriveMore";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import { pageMetadata } from "@/lib/seo";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
+import { JsonLd } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Diensten",
+export const metadata: Metadata = pageMetadata({
+  title: "Rijlessen, spoedcursus & faalangstbegeleiding Dordrecht – Drive More",
   description:
-    "Rijlessen, spoedcursus, faalangstbegeleiding en theorie bij Rijschool Drive More. Voor elke leerling de juiste aanpak.",
-};
+    "Rijlessen op maat, spoedcursus, faalangstbegeleiding en theorietraining bij Rijschool Drive More in Dordrecht en omgeving. Schakel of automaat, één vaste instructeur.",
+  path: "/diensten",
+});
 
 const services = [
   {
@@ -68,6 +72,7 @@ const services = [
 export default function DienstenPage() {
   return (
     <>
+      <JsonLd data={getBreadcrumbSchema([{ name: "Diensten", path: "/diensten" }])} />
       {/* Page hero */}
       <section className="pt-[120px] pb-16 bg-gradient-to-b from-brand-light to-white">
         <div className="max-w-wrap mx-auto px-5 md:px-10">

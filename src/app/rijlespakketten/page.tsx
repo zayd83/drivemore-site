@@ -4,16 +4,21 @@ import { PackagesPreview } from "@/components/sections/PackagesPreview";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { WaveDivider } from "@/components/ui/WaveDivider";
+import { pageMetadata } from "@/lib/seo";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
+import { JsonLd } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Rijlespakketten",
+export const metadata: Metadata = pageMetadata({
+  title: "Rijlespakketten & prijzen Dordrecht | Vanaf €795 – Drive More",
   description:
-    "Kies je rijlespakket bij Rijschool Drive More. Van Drive Start tot Drive Ultimate — transparante prijzen, maatwerk altijd.",
-};
+    "Vijf rijlespakketten van 15 tot 50 lessen, van €795 tot €2650 incl. btw. Schakel of automaat, persoonlijk lesplan en vaste begeleiding in Dordrecht e.o.",
+  path: "/rijlespakketten",
+});
 
 export default function RijlespakkettenPage() {
   return (
     <>
+      <JsonLd data={getBreadcrumbSchema([{ name: "Rijlespakketten", path: "/rijlespakketten" }])} />
       {/* Page hero */}
       <section className="pt-[120px] pb-16 bg-gradient-to-b from-brand-light to-white">
         <div className="max-w-wrap mx-auto px-5 md:px-10">

@@ -5,7 +5,7 @@ export const en: Dictionary = {
   meta: {
     siteName: "Drive More Driving School",
     siteDescription:
-      "Drive More Driving School — personalised driving lessons tailored to you. Lesson packages, intensive courses, exam anxiety coaching and theory in the Rotterdam area.",
+      "Drive More Driving School — personalised driving lessons tailored to you. Lesson packages, intensive courses, exam anxiety coaching and theory in Dordrecht and the surrounding area. Manual and automatic, no waiting list.",
   },
   nav: {
     services: "Services",

@@ -13,15 +13,17 @@ import { ServiceArea } from "@/components/sections/ServiceArea";
 import { EndCta } from "@/components/sections/EndCta";
 import { FAQ } from "@/components/sections/FAQ";
 import { getFaqSchema } from "@/lib/structuredData";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { nl } from "@/lib/i18n/nl";
 import { SHOW_REVIEWS } from "@/lib/config/reviews";
 
-export const metadata: Metadata = {
-  title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
+export const metadata: Metadata = pageMetadata({
+  title: "Rijschool Dordrecht | Automaat & schakel rijlessen – Drive More",
   description:
-    "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake bij Rijschool Drive More.",
-  alternates: { canonical: "/" },
-};
+    "Rijschool Drive More in Dordrecht e.o.: persoonlijke rijlessen in schakel of automaat, spoedcursus, faalangstbegeleiding en gratis theorie. Geen wachtlijst – plan je intake.",
+  path: "",
+});
 
 // Volgorde bewust vastgelegd: Hero -> USP/vertrouwen -> Schakel/Automaat/Spoed ->
 // Pakketten & prijzen (top 3, link naar alle 5) -> Waarom Drive More -> Lesauto's -> Reviews ->
@@ -30,10 +32,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqSchema(nl.faq.items)) }}
-      />
+      <JsonLd data={getFaqSchema(nl.faq.items)} />
       <Hero />
       <TrustBar />
       <TrainingChoice />

@@ -11,6 +11,8 @@ import { MobileCTA } from "@/components/layout/MobileCTA";
 import { TrustToast } from "@/components/layout/TrustToast";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { getLocalBusinessSchema } from "@/lib/structuredData";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -26,29 +28,35 @@ const inter = Inter({
   display: "swap",
 });
 
+// Fallback-metadata; elke pagina overschrijft title/description/canonical/OG via pageMetadata().
+// Het OG-/Twitter-beeld komt uit app/opengraph-image.tsx en geldt automatisch voor alle routes.
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rijschool Drive More — Jouw weg naar je rijbewijs",
+    default: "Rijschool Dordrecht | Automaat & schakel rijlessen – Drive More",
     template: "%s | Rijschool Drive More",
   },
   description:
-    "Rijschool Drive More: persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus, faalangstbegeleiding en theorie. Plan je intake.",
+    "Rijschool Drive More in Dordrecht: persoonlijke rijlessen in schakel of automaat, spoedcursus en faalangstbegeleiding. Geen wachtlijst. Plan je intake.",
+  applicationName: SITE_NAME,
   keywords: [
-    "rijschool",
-    "rijlessen",
-    "spoedcursus",
-    "rijbewijs",
-    "faalangstbegeleiding",
+    "rijschool Dordrecht",
+    "rijlessen Dordrecht",
+    "rijles automaat",
+    "rijles schakel",
+    "spoedcursus rijbewijs",
+    "faalangstbegeleiding rijexamen",
+    "rijschool Zwijndrecht",
+    "rijschool Papendrecht",
     "Drive More",
-    "Rotterdam",
   ],
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    siteName: "Rijschool Drive More",
-    title: "Rijschool Drive More — Jouw weg naar je rijbewijs",
+    siteName: SITE_NAME,
+    title: "Rijschool Dordrecht | Automaat & schakel rijlessen – Drive More",
     description:
-      "Persoonlijke rijlessen op maat. Rijlespakketten, spoedcursus en faalangstbegeleiding. Plan je intake.",
+      "Persoonlijke rijlessen in Dordrecht en omgeving. Schakel of automaat, spoedcursus en faalangstbegeleiding. Plan je intake.",
   },
   twitter: {
     card: "summary_large_image",
@@ -56,6 +64,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
@@ -71,10 +80,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-inter antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
-        />
+        <JsonLd data={getLocalBusinessSchema()} />
         <LanguageProvider>
           <ConsentProvider>
             <LenisProvider>
