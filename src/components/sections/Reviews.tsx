@@ -32,7 +32,12 @@ export function Reviews() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Kolommen groeien mee met het aantal reviews, zodat één review netjes gecentreerd staat. */}
+        <div
+          className={`grid grid-cols-1 gap-6 mx-auto ${
+            REVIEWS.length >= 3 ? "md:grid-cols-3" : REVIEWS.length === 2 ? "md:grid-cols-2 max-w-[820px]" : "max-w-[460px]"
+          }`}
+        >
           {REVIEWS.slice(0, 3).map((review, i) => (
             <motion.div
               key={i}
@@ -41,11 +46,13 @@ export function Reviews() {
               transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="bg-white border border-brand-line rounded-brand-lg p-7 flex flex-col hover:-translate-y-1 hover:shadow-card transition-all duration-300"
             >
-              <div className="text-[#f5b301] text-[15px] tracking-widest" aria-label={`${review.rating} van de 5 sterren`}>
-                {"★".repeat(review.rating)}
-                {"☆".repeat(Math.max(0, 5 - review.rating))}
-              </div>
-              <blockquote className="mt-4 text-[15.5px] leading-[1.65] text-[#2a3344] flex-1">
+              {review.rating !== undefined && (
+                <div className="text-[#f5b301] text-[15px] tracking-widest mb-4" aria-label={`${review.rating} van de 5 sterren`}>
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(Math.max(0, 5 - review.rating))}
+                </div>
+              )}
+              <blockquote className="text-[15.5px] leading-[1.65] text-[#2a3344] flex-1">
                 &ldquo;{review.text}&rdquo;
               </blockquote>
               <span className="mt-5 pt-4 border-t border-brand-line font-sora font-bold text-[14.5px] text-brand-ink">
@@ -55,11 +62,13 @@ export function Reviews() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <Button href={REVIEWS_LINK} variant="secondary">
-            {t.reviews.cta}
-          </Button>
-        </div>
+        {REVIEWS_LINK !== "#" && (
+          <div className="mt-10 flex justify-center">
+            <Button href={REVIEWS_LINK} variant="secondary">
+              {t.reviews.cta}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
