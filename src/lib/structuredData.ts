@@ -20,7 +20,7 @@ function getOfferCatalog() {
     itemListElement: nl.packages.items.map((pkg) => ({
       "@type": "Offer",
       name: pkg.name,
-      description: `${pkg.name}: ${pkg.lessons} van 45 minuten, persoonlijk lesplan en vaste begeleiding.`,
+      description: `${pkg.name}: ${pkg.lessons}, persoonlijk lesplan en vaste begeleiding.`,
       price: pkg.price,
       priceCurrency: "EUR",
       url: `${SITE_URL}/rijlespakketten`,

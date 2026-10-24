@@ -5,7 +5,7 @@ export const SITE_NAME = "Rijschool Drive More";
 
 // Datum van de laatste inhoudelijke wijziging — gebruikt als <lastmod> in de sitemap. Pas aan
 // bij een echte contentwijziging (niet bij elke build, anders negeert Google de waarde).
-export const CONTENT_LAST_UPDATED = "2026-10-13";
+export const CONTENT_LAST_UPDATED = "2026-10-24";
 
 // Gegenereerd door app/opengraph-image.tsx. Expliciet meegeven is nodig: zodra een pagina een
 // eigen `openGraph`-object heeft, erft Next.js het beeld uit de root niet meer.

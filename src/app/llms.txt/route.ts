@@ -19,8 +19,8 @@ const eur = (n: number) =>
 
 export function GET() {
   const actie = isActieZichtbaar()
-    ? `${formatPrice(ACTIE.actiePrijsPerLes)} per les van 45 minuten (actie t/m ${ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}, normaal ${formatPrice(ACTIE.normalePrijsPerLes)})`
-    : `${formatPrice(ACTIE.normalePrijsPerLes)} per les van 45 minuten`;
+    ? `${formatPrice(ACTIE.actiePrijsPerLes)} per les (actie t/m ${ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}, normaal ${formatPrice(ACTIE.normalePrijsPerLes)})`
+    : `${formatPrice(ACTIE.normalePrijsPerLes)} per les`;
 
   const lines = [
     `# ${BUSINESS.name}`,
@@ -47,7 +47,7 @@ export function GET() {
     "## Prijzen (incl. btw)",
     `- Intake (1 uur): ${nl.packages.intakeNoteText.replace(/^Intake /, "")}`,
     `- Losse rijles: ${actie}`,
-    ...nl.packages.items.map((p) => `- ${p.name}: ${p.lessons} van 45 minuten — ${formatPrice(p.price)}`),
+    ...nl.packages.items.map((p) => `- ${p.name}: ${p.lessons} — ${formatPrice(p.price)}`),
     GRATIS_HEREXAMEN ? "- Bij alle pakketten: gratis herexamen als je zakt" : "",
     `- Inschrijfkosten Drive More: ${formatPrice(EXTRA_COSTS.driveMore.inschrijfkosten)}`,
     `- CBR-kosten (los van het pakket): praktijkexamen ${eur(EXTRA_COSTS.cbr.rijexamen)}, theorie-examen ${eur(EXTRA_COSTS.cbr.theorieExamen)}, medische verklaring ${eur(EXTRA_COSTS.cbr.medischeVerklaring)}`,
