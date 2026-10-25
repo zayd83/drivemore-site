@@ -9,10 +9,23 @@ export const GRATIS_HEREXAMEN = true;
 export const ACTIE_ACTIEF = true;
 
 export const ACTIE = {
-  normalePrijsPerLes: 60,
-  actiePrijsPerLes: 53,
   actieEinddatum: new Date("2026-11-30T23:59:59"),
 };
+
+// Losse-lesprijs per lesauto. BEVESTIGD door de klant (2026-10-25): schakel €60 → €53,
+// automaat €72 → €65 tijdens de actie. `actie` geldt alleen zolang isActieZichtbaar() true is.
+export const LESPRIJZEN = {
+  schakel: { normaal: 60, actie: 53 },
+  automaat: { normaal: 72, actie: 65 },
+};
+
+export type LesautoType = keyof typeof LESPRIJZEN;
+
+/** Prijs die nu geldt, plus de doorgestreepte normale prijs zolang de actie loopt. */
+export function getLesprijs(type: LesautoType): { prijs: number; oudePrijs?: number } {
+  const { normaal, actie } = LESPRIJZEN[type];
+  return isActieZichtbaar() ? { prijs: actie, oudePrijs: normaal } : { prijs: normaal };
+}
 
 // Eigen functie i.p.v. een module-scope constante: Date.now() moet bij elke render opnieuw
 // worden geëvalueerd (ook in een lang draaiend serverproces), anders bevriest de uitkomst op het

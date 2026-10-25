@@ -6,6 +6,19 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
+import { getLesprijs, type LesautoType } from "@/lib/config/offers";
+
+// Losse-lesprijs op de autokaart; tijdens de actie met doorgestreepte normale prijs.
+function LessonPrice({ type, label }: { type: LesautoType; label: string }) {
+  const { prijs, oudePrijs } = getLesprijs(type);
+  return (
+    <p className="mt-3 flex items-baseline gap-2 font-sora">
+      {oudePrijs !== undefined && <span className="text-[15px] font-semibold text-white/55 line-through">€{oudePrijs}</span>}
+      <span className="text-[24px] font-extrabold tracking-[-0.02em] text-white">€{prijs}</span>
+      <span className="text-[13px] font-semibold text-white/80">{label}</span>
+    </p>
+  );
+}
 
 export function LessonCars() {
   const { t } = useLanguage();
@@ -64,6 +77,7 @@ export function LessonCars() {
                 <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 max-w-[32ch]">
                   {item.description}
                 </p>
+                <LessonPrice type={item.id as LesautoType} label={t.lessonCars.perLesson} />
                 <MagneticButton className="mt-4 w-fit">
                   <Button href={item.href} size="md">
                     {item.cta}

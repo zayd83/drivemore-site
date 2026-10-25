@@ -108,9 +108,9 @@ export const en: Dictionary = {
     leadHome: "Three popular packages — view all five for the full range.",
     from: "from",
     cta: "Book an intake →",
-    perLesson: "Prefer to pay per lesson? That's possible too — €53 per lesson.",
-    perLessonActieLead: "Prefer to pay per lesson? That's possible too —",
-    perLessonSuffix: "per lesson.",
+    perLessonActieLead: "Prefer to pay per lesson? That's possible too:",
+    perLessonSuffix: "per lesson",
+    lesautoLabels: { schakel: "Manual", automaat: "Automatic" },
     actieUntilLabel: "Offer until",
     actieBadge: "Offer",
     spoedTotalLabel: "incl. express surcharge",
@@ -279,6 +279,7 @@ export const en: Dictionary = {
   lessonCars: {
     eyebrow: "Our lesson cars",
     heading: "Choose what suits you.",
+    perLesson: "per lesson",
     items: [
       {
         id: "schakel",

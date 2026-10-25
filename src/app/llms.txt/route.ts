@@ -1,7 +1,7 @@
 import { BUSINESS } from "@/lib/config/business";
 import { CITIES } from "@/lib/config/cities";
 import { EXTRA_COSTS } from "@/lib/config/extraCosts";
-import { ACTIE, GRATIS_HEREXAMEN, isActieZichtbaar } from "@/lib/config/offers";
+import { ACTIE, GRATIS_HEREXAMEN, getLesprijs, type LesautoType } from "@/lib/config/offers";
 import { SPOED_TOESLAG } from "@/lib/config/pricing";
 import { GRATIS_THEORIE } from "@/lib/config/theory";
 import { nl } from "@/lib/i18n/nl";
@@ -18,9 +18,12 @@ const eur = (n: number) =>
   n % 1 === 0 ? formatPrice(n) : new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(n);
 
 export function GET() {
-  const actie = isActieZichtbaar()
-    ? `${formatPrice(ACTIE.actiePrijsPerLes)} per les (actie t/m ${ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}, normaal ${formatPrice(ACTIE.normalePrijsPerLes)})`
-    : `${formatPrice(ACTIE.normalePrijsPerLes)} per les`;
+  const losseLes = (type: LesautoType) => {
+    const { prijs, oudePrijs } = getLesprijs(type);
+    return oudePrijs !== undefined
+      ? `${formatPrice(prijs)} per les (actie t/m ${ACTIE.actieEinddatum.toLocaleDateString("nl-NL")}, normaal ${formatPrice(oudePrijs)})`
+      : `${formatPrice(prijs)} per les`;
+  };
 
   const lines = [
     `# ${BUSINESS.name}`,
@@ -46,7 +49,8 @@ export function GET() {
     "",
     "## Prijzen (incl. btw)",
     `- Intake (1 uur): ${nl.packages.intakeNoteText.replace(/^Intake /, "")}`,
-    `- Losse rijles: ${actie}`,
+    `- Losse rijles schakel: ${losseLes("schakel")}`,
+    `- Losse rijles automaat: ${losseLes("automaat")}`,
     ...nl.packages.items.map((p) => `- ${p.name}: ${p.lessons} — ${formatPrice(p.price)}`),
     GRATIS_HEREXAMEN ? "- Bij alle pakketten: gratis herexamen als je zakt" : "",
     `- Inschrijfkosten Drive More: ${formatPrice(EXTRA_COSTS.driveMore.inschrijfkosten)}`,

@@ -6,13 +6,39 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
 import { SPOED_TOESLAG } from "@/lib/config/pricing";
-import { GRATIS_HEREXAMEN, ACTIE, isActieZichtbaar } from "@/lib/config/offers";
+import { GRATIS_HEREXAMEN, ACTIE, LESPRIJZEN, getLesprijs, isActieZichtbaar, type LesautoType } from "@/lib/config/offers";
 import { EXTRA_COSTS } from "@/lib/config/extraCosts";
 
 function formatEuro(amount: number) {
   return amount % 1 === 0
     ? amount.toLocaleString("nl-NL")
     : amount.toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// Losse-lesprijs voor schakel én automaat, met doorgestreepte normale prijs zolang de actie loopt.
+function PerLessonPrices({ labels, suffix }: { labels: Record<LesautoType, string>; suffix: string }) {
+  return (
+    <div className="mt-3 mx-auto max-w-[360px] flex flex-col gap-2">
+      {(Object.keys(LESPRIJZEN) as LesautoType[]).map((type) => {
+        const { prijs, oudePrijs } = getLesprijs(type);
+        return (
+          <div
+            key={type}
+            className="flex items-baseline justify-between gap-3 rounded-brand-sm bg-white/80 border border-brand-line px-4 py-2.5"
+          >
+            <span className="font-sora font-bold text-[15px] text-brand-ink">{labels[type]}</span>
+            <span className="font-sora font-extrabold text-[22px] tracking-[-0.02em]">
+              {oudePrijs !== undefined && (
+                <span className="line-through text-brand-ink-soft/55 text-[0.7em] mr-2">€{formatEuro(oudePrijs)}</span>
+              )}
+              <span className={oudePrijs !== undefined ? "text-brand-red" : "text-brand-ink"}>€{formatEuro(prijs)}</span>{" "}
+              <span className="text-[0.6em] font-inter font-semibold text-brand-ink-body">{suffix}</span>
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 function CheckIcon({ color }: { color: "red" | "blue" }) {
@@ -185,23 +211,18 @@ export function PackagesPreview({
               <p className="mt-4 text-[14px] font-medium text-brand-ink-body">
                 {t.packages.perLessonActieLead}
               </p>
-              <p className="mt-1.5 font-sora font-extrabold text-[clamp(24px,4vw,34px)] tracking-[-0.02em]">
-                <span className="line-through text-brand-ink-soft/55 text-[0.65em] mr-2 align-middle">
-                  €{ACTIE.normalePrijsPerLes}
-                </span>
-                <span className="text-brand-red">€{ACTIE.actiePrijsPerLes}</span>{" "}
-                <span className="text-[0.5em] font-inter font-semibold text-brand-ink-body align-middle">
-                  {t.packages.perLessonSuffix}
-                </span>
-              </p>
+              <PerLessonPrices labels={t.packages.lesautoLabels} suffix={t.packages.perLessonSuffix} />
               {ACTIE.actieEinddatum && (
-                <p className="mt-2 text-[13px] font-sora font-bold text-brand-ink-soft">
+                <p className="mt-3 text-[13px] font-sora font-bold text-brand-ink-soft">
                   {t.packages.actieUntilLabel} {ACTIE.actieEinddatum.toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
                 </p>
               )}
             </>
           ) : (
-            <p className="text-[15px] text-brand-ink-body">{t.packages.perLesson}</p>
+            <>
+              <p className="text-[15px] text-brand-ink-body">{t.packages.perLessonActieLead}</p>
+              <PerLessonPrices labels={t.packages.lesautoLabels} suffix={t.packages.perLessonSuffix} />
+            </>
           )}
 
           <div className={actieZichtbaar ? "mt-5 pt-5 border-t border-brand-line/70" : "mt-3"}>

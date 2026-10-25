@@ -109,9 +109,9 @@ export const nl = {
     leadHome: "Drie populaire pakketten — bekijk alle vijf voor het volledige aanbod.",
     from: "vanaf",
     cta: "Plan een intake →",
-    perLesson: "Liever per les betalen? Dat kan ook — €53 per rijles.",
-    perLessonActieLead: "Liever per les betalen? Dat kan ook —",
-    perLessonSuffix: "per rijles.",
+    perLessonActieLead: "Liever per les betalen? Dat kan ook:",
+    perLessonSuffix: "per rijles",
+    lesautoLabels: { schakel: "Schakel", automaat: "Automaat" },
     actieUntilLabel: "Actie t/m",
     actieBadge: "Actie",
     spoedTotalLabel: "incl. spoedtoeslag",
@@ -293,6 +293,7 @@ export const nl = {
   lessonCars: {
     eyebrow: "Onze lesauto's",
     heading: "Kies wat bij jou past.",
+    perLesson: "per rijles",
     items: [
       {
         id: "schakel",
