@@ -20,7 +20,23 @@ export default function ContactPage() {
     newsletter: false,
     website: "", // honeypot — moet leeg blijven, echte bezoekers zien/vullen dit veld niet
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "invalid" | "loading" | "success" | "mailto">("idle");
+
+  // Vooraf ingevulde mail aan contact@ — gebruikt als automatisch mailen (Resend) niet lukt,
+  // zodat een aanvraag nooit verloren gaat.
+  const mailtoHref = () => {
+    const l = tf.mailto.labels;
+    const lines = [
+      `${l.naam}: ${formData.naam}`,
+      `${l.email}: ${formData.email}`,
+      formData.tel && `${l.tel}: ${formData.tel}`,
+      `${l.interesse}: ${formData.interesse}`,
+      formData.bericht && `\n${l.bericht}:\n${formData.bericht}`,
+      `\n${l.newsletter}: ${formData.newsletter ? l.yes : l.no}`,
+    ].filter(Boolean);
+    const subject = `${tf.mailto.subject}: ${formData.interesse} — ${formData.naam}`;
+    return `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -34,6 +50,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Eerst zelf controleren: een lege of foute aanvraag mag niet als (lege) mail de deur uit.
+    if (!formData.naam.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      setStatus("invalid");
+      return;
+    }
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -44,7 +65,9 @@ export default function ContactPage() {
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
     } catch {
-      setStatus("error");
+      // Automatisch mailen lukte niet → open de mail-app van de bezoeker met de aanvraag erin.
+      setStatus("mailto");
+      window.location.href = mailtoHref();
     }
   };
 
@@ -128,6 +151,17 @@ export default function ContactPage() {
               <div className="rounded-brand-lg bg-brand-blue/10 border border-brand-blue/30 p-8 text-center">
                 <div className="text-4xl mb-4">🚗</div>
                 <h2 className="font-sora font-bold text-[22px] text-brand-ink">{tf.success}</h2>
+              </div>
+            ) : status === "mailto" ? (
+              <div className="rounded-brand-lg bg-brand-red/[0.06] border border-brand-red/25 p-8 text-center">
+                <div className="text-4xl mb-4">✉️</div>
+                <h2 className="font-sora font-bold text-[22px] text-brand-ink">{tf.mailto.heading}</h2>
+                <p className="mt-3 text-[15px] leading-relaxed text-brand-ink-body max-w-[44ch] mx-auto">{tf.mailto.body}</p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+                  <Button href={mailtoHref()}>{tf.mailto.retry}</Button>
+                  <Button href={CONTACT.whatsapp} variant="secondary">WhatsApp</Button>
+                </div>
+                <p className="mt-4 text-[13px] text-brand-ink-soft">{tf.mailto.noMailApp}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-0">
@@ -241,8 +275,8 @@ export default function ContactPage() {
                   {tf.newsletter}
                 </label>
 
-                {status === "error" && (
-                  <p className="text-brand-red text-[14px] mb-3">{tf.error}</p>
+                {status === "invalid" && (
+                  <p className="text-brand-red text-[14px] mb-3">{tf.invalid}</p>
                 )}
 
                 <Button type="submit" disabled={status === "loading"} className="w-full">

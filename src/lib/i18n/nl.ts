@@ -355,6 +355,16 @@ export const nl = {
       note: "Door te versturen ga je akkoord dat we contact met je opnemen.",
       success: "Bedankt! Je aanvraag is verstuurd — we nemen snel contact met je op.",
       error: "Er ging iets mis. Probeer het opnieuw of stuur een e-mail.",
+      invalid: "Vul je naam en een geldig e-mailadres in.",
+      // Fallback als automatisch mailen niet lukt: de mail-app van de bezoeker opent met de aanvraag.
+      mailto: {
+        heading: "Nog één klik: druk op verzenden",
+        body: "Je mail-app is geopend met je aanvraag al ingevuld, gericht aan ons. Druk daar op verzenden en we nemen snel contact met je op.",
+        retry: "Mail-app opnieuw openen",
+        noMailApp: "Opent er niets? Stuur ons dan een appje via WhatsApp.",
+        subject: "Aanvraag via website",
+        labels: { naam: "Naam", email: "E-mail", tel: "Telefoon", interesse: "Interesse", bericht: "Bericht", newsletter: "Nieuwsbrief", yes: "Ja", no: "Nee" },
+      },
     },
     direct: {
       heading: "Direct contact",

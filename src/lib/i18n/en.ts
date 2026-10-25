@@ -339,6 +339,15 @@ export const en: Dictionary = {
       note: "By submitting you agree we may contact you.",
       success: "Thank you! Your enquiry has been sent — we'll be in touch soon.",
       error: "Something went wrong. Please try again or send an email.",
+      invalid: "Please enter your name and a valid email address.",
+      mailto: {
+        heading: "One more click: press send",
+        body: "Your email app has opened with your enquiry already filled in and addressed to us. Press send there and we'll be in touch soon.",
+        retry: "Open email app again",
+        noMailApp: "Nothing opened? Send us a WhatsApp message instead.",
+        subject: "Enquiry via website",
+        labels: { naam: "Name", email: "Email", tel: "Phone", interesse: "Interest", bericht: "Message", newsletter: "Newsletter", yes: "Yes", no: "No" },
+      },
     },
     direct: {
       heading: "Direct contact",
