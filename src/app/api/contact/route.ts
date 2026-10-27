@@ -10,6 +10,8 @@ interface ContactBody {
   website?: string; // honeypot — moet leeg zijn
 }
 
+// Env-variabelen (RESEND_API_KEY e.d.) worden bewust pas binnen de handler gelezen: ontbreken ze,
+// dan faalt alleen dit request — het laden van de app zelf crasht nooit.
 export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as ContactBody;
